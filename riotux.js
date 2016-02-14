@@ -1,6 +1,17 @@
+/*!
+   --------------------------------
+   Riotux.js
+   --------------------------------
+   + https://github.com/luisvinicius167/Riotux
+   + version 0.0.1
+   + Copyright 2016 Luis Vinícius
+   + Licensed under the MIT license
+   + Documentation: https://github.com/luisvinicius167/Riotux
+*/
+
 ;(function( window ) {
-  
-var Riotux = { 
+var Riotux = {
+  // the easy way to separate namespace to event
   separate: ':',
   centralDispatcher: new GlobalObserver(),
   namespaces: [],
@@ -9,7 +20,7 @@ var Riotux = {
     this.stores[storeName] = store;
   },
   addNamespace: function ( observer, method) {
-    this.namespaces.push(observer + ':' + method);
+    this.namespaces.push(observer + this.separate + method);
   },
   getNamespaces: function ( ) {
     return this.namespaces;
@@ -18,21 +29,22 @@ var Riotux = {
      return this.stores;
   },
   removeStores: function () {
-    this.stores = {}
+    this.stores = {};
   },
   getNamespace: function ( name ) {
-    var namespaces = []
+    var namespaces = [];
     this.namespaces.forEach(function ( index ) {
       var split = index.split(Riotux.separate)
       if ( split[0] === name ) {
-        namespaces.push(split[1])
+        namespaces.push(split[1]);
       }
-    })
-    return namespaces
+    });
+    return namespaces;
   }
-}
-var _riot_methods = ['on','one','off','trigger']
+};
 
+var _riot_methods = ['on','one','off','trigger'];
+// provides riot observable api for Riotux
 _riot_methods.forEach(function ( api ) {
   Riotux[api] = function ( ) {
     var args = [].slice.call(arguments);
