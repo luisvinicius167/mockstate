@@ -1,5 +1,5 @@
 # Riotux
-Easy Event Controller for Riot.js based in Namespaces and Stores.
+Easy Event Controller for Riot.js based in Namespaces and Stores. Tiny size: 700 bytes.
 Store can listen and trigger events for other Stores and Views. Views also listen and trigger events for other Views and Stores too. 
 
 #####``` Store -> View | View  -> View | Store -> Store ```
@@ -15,7 +15,7 @@ Requires Riot 2.0+
 
 ## API
 Riotux provides an Easy way to Dispatch events, using riot.observable like global dispaticher. 
-Riotux is based on Namespaces/Observers and Stores. In the Stores you can register the methods and organize your namespaces according a store. All events is based following this structure: ``` 'namespace:event' ```
+Riotux is based on Namespaces/Observers and Stores. In the Stores you can register the methods and organize your namespaces according each store. All events is based following this structure: ``` 'namespace:event' ```
 
 * ``` addStore ```: This method add an Store with this namespace.
 * ``` getStores ```: Return all Stores who you have in your application
@@ -46,7 +46,7 @@ Just trigger the event fot the listenrs who have the namespace
 ``` Riotux.trigger('namespace:event', args) ```
 
 ### View
-In the Riot tag View you can trigger and listen events. Listen for event, and execute callback when it is triggered. This applies just for the view or store who contains this namespace, so that you may receive the same event from multiple sources who contais this namespace.
+In the Riot tag View you can trigger and listen events. Listen for event, and execute callback when it is triggered. This applies just for the view or store who contains this namespace.
 
 ```javascript
 
