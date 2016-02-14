@@ -1,7 +1,7 @@
 {
   "name": "riotux",
   "version": "0.0.1",
-  "description": "Easy Event Controller for Riot.js based in Namespaces",
+  "description": "Easy Event Controller for Riot.js based in Namespaces and Stores.",
   "main": "Riotux.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,7 @@
     "flux",
     "riotux"
   ],
-  "author": "Luis Vinicius",
+  "author": "Luis Vinícius <dev_luis@hotmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luisvinicius167/Riotux/issues"
