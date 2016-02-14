@@ -8,7 +8,7 @@ Store can listen and trigger events for other Stores and Views. Views also liste
 ``` npm install riotux ```
 
 ## Manual install
-Just include ``` riotux.min.js``` file in your project.
+Just include ``` dist/riotux.min.js``` file in your project.
 
 ## Usage 
 Requires Riot 2.0+
