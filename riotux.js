@@ -61,4 +61,5 @@ function GlobalObserver () {
 if ( !window.Riotux ) {
   window.Riotux = Riotux;
 }
+if (typeof(module) !== 'undefined')  module.exports = Riotux;
 }(window));
