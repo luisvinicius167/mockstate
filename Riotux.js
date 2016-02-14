@@ -17,7 +17,7 @@ var Riotux = {
   getStores: function ( ) {
      return this.stores;
   },
-  resetStores: function () {
+  removeStores: function () {
     this.stores = {}
   },
   getNamespace: function ( name ) {
@@ -41,7 +41,6 @@ _riot_methods.forEach(function ( api ) {
     this.centralDispatcher[api].apply(null, args);
   }
 })
-
 
 function GlobalObserver () {
   riot.observable(this);
