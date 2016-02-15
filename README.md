@@ -2,7 +2,7 @@
 Easy Event Controller for Riot.js based in Namespaces and Stores. Tiny size: 700 bytes.  <br>
 Store can listen and trigger events for other Stores and Views. Views also listen and trigger events for other Views and Stores too. 
 
-#####``` Store -> View | View  -> Store | View  -> View | Store -> Store ```
+#####``` Store -> View | View  -> Store | Store -> Store ```
 
 ## Install
 ``` npm install riotux ```
@@ -50,26 +50,22 @@ In the Riot tag View you can trigger and listen events. Listen for event, and ex
 
 ```javascript
 
-// Example, inside a Riot View (tag):
-Riotux.trigger('Products:start', 'Luis Vinicius')
-Riotux.on(event, callback)
+// Trigger to store; inside a Riot View (tag):
+Riotux.trigger('Product:start', 'Luis Vinicius')
+Riotux.on(namespace:event, callback)
 
-// Example, inside Riot view (tag):
-Riotux.on('Product:start', function ( ) {
-    console.log('Started');
-})
 ``` 
 
 ####Remove event listener.
 
 ```javascript
   
-  Riotux.off(event);
-  Riotux.off(event, callback);
+  Riotux.off(namespace:eventevent);
+  Riotux.off(namespace:eventevent, callback);
 ```
 
-Same as Riotux.on(), executes once.
-``` Riotux.one(event, callback) ```
+Same as Riotux.on(), but executes once.
+``` Riotux.one(namespace:eventevent, callback) ```
 
 #### License
 MIT License.
