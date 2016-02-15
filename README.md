@@ -2,7 +2,7 @@
 Easy Event Controller for Riot.js based in Namespaces and Stores. Tiny size: 700 bytes.  <br>
 Store can listen and trigger events for other Stores and Views. Views also listen and trigger events for other Views and Stores too. 
 
-#####``` Store -> View | View  -> Store | Store -> Store ```
+#####``` Store -> View | View  -> Store | Store -> Store | View -> View ```
 
 ## Install
 ``` npm install riotux ```
