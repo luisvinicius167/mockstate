@@ -9,57 +9,60 @@
    + Documentation: https://github.com/luisvinicius167/Riotux
 */
 
-;(function( window ) {
-var Riotux = {
-  // the easy way to separate namespace to event
-  separate: ':',
-  centralDispatcher: new GlobalObserver(),
-  namespaces: [],
-  stores: {},
-  addStore: function (storeName, store) {
-    this.stores[storeName] = store;
-  },
-  addNamespace: function ( observer, method) {
-    this.namespaces.push(observer + this.separate + method);
-  },
-  getNamespaces: function ( ) {
-    return this.namespaces;
-  },
-  getStores: function ( ) {
-     return this.stores;
-  },
-  removeStores: function () {
+;(function (window, riot){
+  
+  function riotux ( ) {
     this.stores = {};
-  },
-  getNamespace: function ( name ) {
-    var namespaces = [];
-    this.namespaces.forEach(function ( index ) {
-      var split = index.split(Riotux.separate)
-      if ( split[0] === name ) {
-        namespaces.push(split[1]);
-      }
-    });
-    return namespaces;
+    this.events = {};
   }
-};
-
-var _riot_methods = ['on','one','off','trigger'];
-// provides riot observable api for Riotux
-_riot_methods.forEach(function ( api ) {
-  Riotux[api] = function ( ) {
-    var args = [].slice.call(arguments);
-    var names = args[0].split(this.separate);
-    Riotux.addNamespace(names[0], names[1]);
-    this.centralDispatcher[api].apply(null, args);
+ 
+  riotux.prototype = {
+    addStore: function ( name, store ){
+      this.stores[name] = store;
+    },
+    
+    check: function ( store, api ) {
+      console.log(store, api);
+      this.stores[store];
+    },
+    
+    getEvents: function ( store ) {
+      return this.events[store];
+    },
+    
+    register: function (store, event, data ) {
+      this.events[store] = [event, data];
+    },
+    
+    on: function ( store, event, callback ) {
+      this.stores[store].on(event, callback);
+    },
+    
+    trigger: function ( store, event, callback ) {
+      this.stores[store].trigger(event, callback);
+    },
+    
+    one: function ( store, event, callback ) {
+      this.stores[store].one(event, callback);
+    },
+    
+    off: function ( store, event, callback ) {
+      this.stores[store].off(event, callback);
+    },
+    listen: function ( event, callback ) {
+      this.Dispatcher.on(event, callback);
+    },
+    emmit: function ( event, args ) {
+      this.Dispatcher.trigger(event, args);
+    }
+  };
+  
+  function Dispatcher ( ) {
+    riot.observable(this);
   }
-})
-
-function GlobalObserver () {
-  riot.observable(this);
-}
-
-if ( !window.Riotux ) {
-  window.Riotux = Riotux;
-}
-if (typeof(module) !== 'undefined')  module.exports = Riotux;
-}(window));
+  
+  if (!window.riotux) {
+    window.riotux = new riotux;
+    window.riotux.Dispatcher = new Dispatcher();
+  }
+}(window, riot));
