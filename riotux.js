@@ -9,7 +9,7 @@
    + Documentation: https://github.com/luisvinicius167/Riotux
 */
 
-;(function (window, riot){
+;(function ( window, riot ) {
   
   function riotux ( ) {
     this.stores = {};
@@ -19,19 +19,6 @@
   riotux.prototype = {
     addStore: function ( name, store ){
       this.stores[name] = store;
-    },
-    
-    check: function ( store, api ) {
-      console.log(store, api);
-      this.stores[store];
-    },
-    
-    getEvents: function ( store ) {
-      return this.events[store];
-    },
-    
-    register: function (store, event, data ) {
-      this.events[store] = [event, data];
     },
     
     on: function ( store, event, callback ) {
@@ -49,9 +36,11 @@
     off: function ( store, event, callback ) {
       this.stores[store].off(event, callback);
     },
+    
     listen: function ( event, callback ) {
       this.Dispatcher.on(event, callback);
     },
+    
     emmit: function ( event, args ) {
       this.Dispatcher.trigger(event, args);
     }
