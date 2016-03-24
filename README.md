@@ -20,8 +20,6 @@ Riotux is based on Namespaces/Observers and Stores. In the Stores you can regist
 * ``` addStore ```: This method add an Store with this namespace.
 * ``` getStores ```: Return all Stores who you have in your application
 * ``` removeStores ```: Remove all Stores
-* ``` getNamespace( namespace ) ```: Return all methods with the namespace who you pass in the argument.
-* ``` getNamespaces() ```: Return an array with all namespaces you have
 
 
 ### Store
@@ -60,12 +58,12 @@ Riotux.on(namespace:event, callback)
 
 ```javascript
   
-  Riotux.off(namespace:eventevent);
-  Riotux.off(namespace:eventevent, callback);
+  Riotux.off(namespace:event);
+  Riotux.off(namespace:event, callback);
 ```
 
 Same as Riotux.on(), but executes once.
-``` Riotux.one(namespace:eventevent, callback) ```
+``` Riotux.one(namespace:event, callback) ```
 
 #### License
 MIT License.
