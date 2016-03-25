@@ -4,12 +4,14 @@
 
 riotux follows the riot.js principle, be simple. You have Stores that trigger and listen methods for other Stores. And you have the Dispatcher, that connects your Views with other Views and Stores.
 
-## Install
+See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flow example for this Demo you find under.
+
+#### Install
 Requires Riot 2.0+
 
 ``` npm install riotux ```
 
-## Manual install
+#### Manual install
 Just include ``` dist/riotux.min.js``` file in your project.
 
 Store Data-Flow example:
