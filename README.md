@@ -22,7 +22,9 @@ function CarStore ( ) {
   
   // listen to 'start' event
   this.on('start', function ( person ) {
-    console.log(person + ' started the car.')
+    console.log(person + ' started the car.');
+    // Emmit the method for view that listen to
+    riotux.emmit('carMoving', person);
   });
 };
 
@@ -37,11 +39,11 @@ function PersonStore ( ) {
  
   // listen to 'startCar' event
   this.on('startCar', function ( person ) {
-    riotux.trigger('car', 'start', person);
+    riotux.trigger('carStore', 'start', person);
   });
 };
 
-var person = new PersonStore();
+var personStore = new PersonStore();
 riotux.addStore('personStore', personStore);
 ```
 
@@ -58,24 +60,24 @@ Dispatcher Data-Flow example:
 
 ```html
 <!-- In your .tag component -->
-<button name="start-car" onclick = { startCar }>Start the Car</button>
+<h1 if = { name }>{ name } started the Car</h1>
+  
+<!-- <button name="start-car" onclick = { startCar }>Start the Car</button> -->
 
 <script>
-  var self = this;
-  self.name = "Foo Bar";
+    var self = this; 
+    self.status = false;
+    
+    self.on('mount', function(){
+      riotux.trigger('personStore', 'startCar', 'Luis Vinicius');  
+    });
+   
+    riotux.listen('carMoving', function ( person ) {
+      self.name = person;
+      self.update();
+    });  
+  </script>
   
-  // Register the listener on the Dispatcher
-  riotux.listen('startCar', function ( person ){
-    riotux.trigger('personStore', 'startCar', person);
-  });
-  
-  // The function that will be triggered when the button is clicked
-  self.startCar = function ( ) {
-    riotux.emmit('startCar', self.name);
-  };
-  // >output: Foo Bar started the car.
-</script>
-
 ```
 
 The Dispatcher connects the Views with Stores, or View to other Views. If you need to call a method present in your Store inside your View,
@@ -87,7 +89,7 @@ The Stores are a riot.observable(). All stores should be created and registered 
 Add an Store:
  * ```riotux.addStore(storeName, Store)```
  
-Store to Store methods: The method will applied for the Store that you pass in the event. If you have two methods with the same name, the method that will be call is the method to the store that you pass.
+Apply to Store: The method will applied for the Store that you pass in the event. If you have two methods with the same name, the method that will be call is the method to the store that you pass.
  
  * Like riot on: ```riotux.on(storeName, event, callback)```
  
