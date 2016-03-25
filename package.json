@@ -1,14 +1,14 @@
 {
   "name": "riotux",
-  "version": "0.0.1",
-  "description": "Easy Event Controller for Riot.js based in Namespaces and Stores.",
-  "main": "Riotux.js",
+  "version": "1.0.0",
+  "description": "Simple Event Controller for Riot.js.",
+  "main": "riotux.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luisvinicius167/Riotux.git"
+    "url": "git+https://github.com/luisvinicius167/riotux.git"
   },
   "keywords": [
     "riotjs",
@@ -19,7 +19,7 @@
   "author": "Luis Vinícius <dev_luis@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luisvinicius167/Riotux/issues"
+    "url": "https://github.com/luisvinicius167/riotux/issues"
   },
-  "homepage": "https://github.com/luisvinicius167/Riotux#readme"
+  "homepage": "https://github.com/luisvinicius167/riotux#readme"
 }
