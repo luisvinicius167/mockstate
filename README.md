@@ -2,7 +2,7 @@
 
 >Simple Event Controller / Dispatcher for Riot.js.
 
-riotux is designed thinking in simple. You have Stores that trigger and listen methods for other Stores. And you have the Dispatcher, that connects your Views with your Stores.
+riotux follows the riot.js principle, be simple. You have Stores that trigger and listen methods for other Stores. And you have the Dispatcher, that connects your Views with other Views and Stores.
 
 ## Install
 Requires Riot 2.0+
@@ -20,7 +20,6 @@ function CarStore ( ) {
   
   // listen to 'start' event
   this.on('start', function ( person ) {
-    console.log(person + ' started the car.');
     // Emmit the method for view that listen to
     riotux.emmit('carMoving', person);
   });
@@ -48,19 +47,18 @@ riotux.addStore('personStore', personStore);
 ```javascript
 // The Person will start the Car
 
-riotux.trigger('personStore', 'startCar', 'Jhon Doe');
+riotux.trigger('personStore', 'startCar', 'You');
 
 // >output: Jhon Doe started the car.
 ```
 
-Dispatcher Data-Flow example:
+Dispatcher Data-Flow example in View:
 
 
 ```html
 <!-- In your .tag component -->
+<h1 if="{!name}">Who started the car?</h1>
 <h1 if = { name }>{ name } started the Car</h1>
-  
-<!-- <button name="start-car" onclick = { startCar }>Start the Car</button> -->
 
 <script>
     var self = this; 
@@ -72,13 +70,14 @@ Dispatcher Data-Flow example:
    
     riotux.listen('carMoving', function ( person ) {
       self.name = person;
-      self.update();
+      setTimeout(function(){
+        self.update();
+      }, 2000);
     });  
   </script>
 ```
 
-The Dispatcher connects the Views with Stores, or View to other Views. If you need to call a method present in your Store inside your View,
-you need register this using the method 'listen, that will register your method inside the Dispatcher. For trigger, you just use the 'emmit' method passing the event name for the method that you want to call.
+The Dispatcher connects the Views with other Views and Stores. If you need to call a method present in your Store inside your View, you need register this using the method 'listen, that will register your method inside the Dispatcher. For trigger you can use 'trigger' method to Stores and use the 'emmit' method passing the event name for the method that you want to call in other View.
 
 #### API
 The Stores are a riot.observable(). All stores should be created and registered before the Riot app is mounted to works fine.
