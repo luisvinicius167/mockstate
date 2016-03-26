@@ -51,11 +51,17 @@ riotux.addStore('personStore', personStore);
 ```
 
 ```javascript
-// The Person will start the Car
+/**----------------------------------- 
+  * Data-Flow: Store -> Store -> View.
+  *-----------------------------------
+  * Trigger the event 'startCar' to personStore, passing 'You' like argument.
+  * The personStore trigger the event to carStore passing the argument too.
+  * carStore recieve and log in the console and emmit the event to View.
+  */
 
 riotux.trigger('personStore', 'startCar', 'You');
 
-// >output: You started the Car.
+// > output: You started the Car.
 ```
 
 #### Dispatcher
