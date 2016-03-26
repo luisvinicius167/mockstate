@@ -1,8 +1,8 @@
 # riotux
 
->Simple Event Controller / Dispatcher for Riot.js.
+>Simple Event Controller for Riot.js.
 
-riotux follows the riot.js principle, be simple. You have Stores that trigger and listen methods for other Stores. And you have the Dispatcher, that connects your Views with other Views and Stores.
+riotux provides more organization for datastore in your application. You have Stores, that trigger and listen methods for other Stores, and you have the Dispatcher, that connects your Views with other Views or Stores.
 
 See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flow example for this Demo you find under.
 
@@ -51,7 +51,7 @@ riotux.addStore('personStore', personStore);
 
 riotux.trigger('personStore', 'startCar', 'You');
 
-// >output: Jhon Doe started the car.
+// >output: You started the car.
 ```
 
 Dispatcher Data-Flow example in View:
@@ -67,7 +67,7 @@ Dispatcher Data-Flow example in View:
     self.status = false;
     
     self.on('mount', function(){
-      riotux.trigger('personStore', 'startCar', 'Luis Vinicius');  
+      riotux.trigger('personStore', 'startCar', 'You');  
     });
    
     riotux.listen('carMoving', function ( person ) {
@@ -79,7 +79,7 @@ Dispatcher Data-Flow example in View:
   </script>
 ```
 
-The Dispatcher connects the Views with other Views and Stores. If you need to call a method present in your Store inside your View, you need register this using the method 'listen, that will register your method inside the Dispatcher. For trigger you can use 'trigger' method to Stores and use the 'emmit' method passing the event name for the method that you want to call in other View.
+The Dispatcher connects the Views with other Views or Stores. If you need to call a method present in your Store inside your View, you need register this using the method 'listen, that will register your method inside the Dispatcher. For trigger you can use 'trigger' method to Stores and use the 'emmit' method passing the event name for the method that you want to call in other View.
 
 #### API
 The Stores are a riot.observable(). All stores should be created and registered before the Riot app is mounted to works fine.
@@ -87,7 +87,7 @@ The Stores are a riot.observable(). All stores should be created and registered 
 Add an Store:
  * ```riotux.addStore(storeName, Store)```
  
-Apply to Store: The method will applied for the Store that you pass in the event. If you have two methods with the same name, the method that will be call is the method to the store that you pass.
+Apply to Store: The method will applied for the Store that you pass in argument like 'storeName'. If you have two methods with the same name, the method that will be call is the method to the store that have the same name that you passed in arguments.
  
  * Like riot on: ```riotux.on(storeName, event, callback)```
  
