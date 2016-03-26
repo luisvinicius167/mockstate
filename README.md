@@ -25,6 +25,7 @@ function CarStore ( ) {
   
   // listen to 'start' event
   this.on('start', function ( person ) {
+    console.log(person + ' started the Car.')
     // Emmit the method for view that listen to
     riotux.emmit('carMoving', person);
   });
@@ -54,7 +55,7 @@ riotux.addStore('personStore', personStore);
 
 riotux.trigger('personStore', 'startCar', 'You');
 
-// >output: You started the car.
+// >output: You started the Car.
 ```
 
 #### Dispatcher
