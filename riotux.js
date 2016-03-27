@@ -2,7 +2,7 @@
     --------------------------------
     riotux.js
     --------------------------------
-    + https://github.com/luisvinicius167/Riotux
+    + https://luisvinicius167.github.io/riotux/
     + version 1.0.0
     + Copyright 2016 Luis Vinícius
     + Licensed under the MIT license
@@ -129,7 +129,7 @@
       
       /**
        * @param { string } event - the event API that you want return registered events
-       * @return { object } return all events initialized at the moment
+       * @return { array } return all events initialized at the moment
        */
       getDispatcherEvent: function ( event ) {
         return this.Dispatcher.events[event];
