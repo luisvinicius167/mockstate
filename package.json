@@ -21,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/luisvinicius167/riotux/issues"
   },
-  "homepage": "https://github.com/luisvinicius167/riotux#readme"
+  "homepage": "https://github.com/luisvinicius167/riotux#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "riot": "^2.3.13"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-shell": "^1.2.1"
+  }
 }
