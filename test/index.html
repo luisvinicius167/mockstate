@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>riotux tests</title>
+  <link rel="stylesheet" href="css/mocha.css" />
+  <script src="js/mocha.js"></script>
+  <script src="js/chai.js"></script>
+  <script src="js/riot.min.js"></script>
+  <script src="../dist/riotux.min.js"></script>
+</head>
+<body>
+  <div id="mocha"></div>
+  <one></one>
+  <script>
+    mocha.setup('bdd');
+    window.onload = function() {
+      mocha.run();  
+    }
+  </script>
+  
+    <script src="stores/PersonStore.js"></script>
+    <script src="stores/CarStore.js"></script>
+    <script src="stores/initStoreTests.js"></script>
+    <script src="js/build.js"></script>    
+    <script src="js/test.js"></script>
+    <script>
+      riot.mount('one');
+    </script>
+</body>
+</html>
