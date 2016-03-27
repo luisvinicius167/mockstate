@@ -100,28 +100,28 @@ Add an Store:
  
 **Stores**: The method will applied for the Store that you pass in argument like 'storeName'. If you have two methods with the same name, the method that will be call is the method to the store that have the same name that you passed in arguments.
  
- * Listen the event for the Store that pass like storeName: ```riotux.on(storeName, event, callback)```
+ * ```riotux.on(storeName, event, callback)```: listen the event for the Store that pass like storeName.
  
- * Trigger the event for the Store that pass like storeName: ```riotux.trigger(storeName, event [, args])```
+ * ```riotux.trigger(storeName, event [, args])```: trigger the event for the Store that pass like storeName. 
  
- * Listen the event, just one time, for the Store that pass like storeName:  ```riotux.one(storeName, event, callback)```
+ * ```riotux.one(storeName, event, callback)```: listen the event, just one time, for the Store that pass like storeName.
  
- * Cancel the event for the Store that pass like storeName: ```riotux.off(storeName, event [, callback])```
+ * ```riotux.off(storeName, event [, callback])```: Cancel the event for the Store that pass like storeName.
 
 
 **Dispatcher**:
  
- * Listen an event: ```riotux.listen(event, callback)```
+ * ```riotux.listen(event, callback)```: listen an event 
  
- * Trigger an event: ```riotux.emmit(event [, args])```
+ * ```riotux.emmit(event [, args])```: trigger an event. 
  
- * Listen an event, just one time: ```riotux.listenOne(event, callback)```
+ * ```riotux.listenOne(event, callback)```: listen an event, just one time. 
  
- * Remove an event: ```riotux.cancel(event [, callback])```
+ * ```riotux.cancel(event [, callback])```: remove an event. 
 
 **Helper methods**:
  
- * Return the events initialized in Dispatcher at the moment. eventAPI can be: ```listen```, ```listenOne```, ```emmit``` and ```cancel```: ```riotux.getDispatcherEvents( eventAPI )```
+ * ```riotux.getDispatcherEvents( eventAPI )```: return the events initialized in Dispatcher at the momen, eventAPI can be: ```listen```, ```listenOne```, ```emmit``` and ```cancel```.
 
 ### License
 MIT License.
