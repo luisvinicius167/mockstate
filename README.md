@@ -6,15 +6,15 @@ riotux provides more organization for datastore in your application. You have St
 
 See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flow example for this Demo you find under.
 
-#### Install
+### Install
 Requires Riot 2.0+
 
 ``` npm install riotux ```
 
-#### Manual install
+### Manual install
 Just include ``` dist/riotux.min.js``` file in your project.
 
-#### Stores: 
+### Stores: 
 The Stores can listen and trigger methods for other Stores. To trigger methods to Views, you need use the Dispatcher method ```riotux.emmit```, that will call the event for Views that listen for this.
 
 Stores Data-Flow example:
@@ -64,7 +64,7 @@ riotux.trigger('personStore', 'startCar', 'You');
 // > output: You started the Car.
 ```
 
-#### Dispatcher
+### Dispatcher
 The Dispatcher connects the View with other Views or Stores. If you need to listen a method present in your Store inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.trigger```, to trigger for Store that listen to and use the 'riotux.emmit' method passing the event name for the method that you want to call to other View that listen to.
 
 Dispatcher Data-Flow example in View:
@@ -92,7 +92,7 @@ Dispatcher Data-Flow example in View:
   </script>
 ```
 
-#### API
+### API
 The Stores are a riot.observable(). All stores should be created and registered before the Riot app is mounted to works fine.
 
 Add an Store:
@@ -123,5 +123,5 @@ Add an Store:
  
  * Return the events initialized in Dispatcher at the moment. eventAPI can be: ```listen```, ```listenOne```, ```emmit``` and ```cancel```: ```riotux.getDispatcherEvents( eventAPI )```
 
-#### License
+### License
 MIT License.
