@@ -1,6 +1,6 @@
 # riotux
 
->Simple Event Controller for Riot.js.
+>Simple Event Controller for Riot.js, inspired in Flux Pattern.
 
 riotux provides more organization for datastore in your application. You have Stores, that trigger and listen methods for other Stores, and you have the Dispatcher, that connects your Views with other Views or Stores.
 
