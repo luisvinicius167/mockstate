@@ -1,7 +1,7 @@
 {
  "name": "riotux",
  "version": "1.0.0",
- "description": "Simple Event Controller for Riot.js.",
+ "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
  "main": "riotux.js",
  "scripts": {
    "test": "echo \"Error: no test specified\" && exit 1"
