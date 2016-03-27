@@ -121,7 +121,7 @@ Dispatcher:
 
 Helper methods:
  
- * Return all events registered in the Dispatcher: ```riotux.getDispatcherEvents( )```
+ * Return the events initialized in Dispatcher at the moment. eventAPI can be: ```listen```, ```listenOne```, ```emmit``` and ```cancel```: ```riotux.getDispatcherEvents( eventAPI )```
 
 #### License
 MIT License.
