@@ -2,7 +2,7 @@
 
 >Simple Event Controller for Riot.js, inspired in Flux Pattern.
 
-riotux provides more organization for datastore in your application. Your Stores can call and listen events to other Stores and Components, that can call and listen events to Stores too. The Dispatcher is used to communicate between Components.
+**riotux** provides more organization for datastore in your application. Your Stores can call and listen events to other Stores and Components, that can call and listen events to Stores too. The Dispatcher is used to communicate between Components.
 
 See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flow example for this Demo you find under.
 
@@ -15,7 +15,7 @@ Requires Riot 2.0+
 Just include ``` dist/riotux.min.js``` file in your project.
 
 ### Stores: 
-The Stores can listen and trigger methods for other Stores and Components.
+The Stores are a riot.observable(). Stores can listen and trigger methods for other Stores and Components. The method will applied for the Store that you passing in argument like 'storeName'. If you have two methods with the same name, the method that will be call is the method to the store that have the same name that you passed in arguments.
 
 Stores Data-Flow example:
 ```javascript
@@ -74,10 +74,9 @@ riotux.on('carStore', 'carMoving', function (person) {
 ```
 
 ### Dispatcher
-The Dispatcher connects Component with other Components. If you need to listen a method present in one Component inside your Component, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emmit``` method passing the event name for the method that you want to call to other Component that listen to.
+The Dispatcher connects your Component with other Components. If you need to listen a method present in one Component inside your Component, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emmit``` passing the event name for the method that you want to call to other Component that listen to.
 
 Dispatcher Data-Flow example in View:
-
 
 ```html
 <!-- In your .tag component -->
@@ -108,12 +107,12 @@ Dispatcher Data-Flow example in View:
 ```
 
 ### API
-The Stores are a riot.observable(). All stores should be created and registered before the Riot app is mounted to works fine.
+All stores should be created and registered before the Riot app is mounted to works fine.
 
 Add an Store:
  * ```riotux.addStore(storeName, Store)```
  
-**Stores**: The method will applied for the Store that you pass in argument like 'storeName'. If you have two methods with the same name, the method that will be call is the method to the store that have the same name that you passed in arguments.
+**Stores**:
  
  * ```riotux.on(storeName, event, callback)```: listen the event for the Store that pass like storeName.
  
