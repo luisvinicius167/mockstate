@@ -52,16 +52,19 @@ riotux.addStore('personStore', personStore);
 
 ```javascript
 /**----------------------------------- 
-  * Data-Flow: Store -> Store -> Component.
+  * Data-Flow: Component -> personStore -> carStore -> Component.
   *-----------------------------------
-  * Trigger the event 'startCar' to personStore, passing 'You' like argument.
+  * When the component is mounted, trigger the event 'startCar' to 
+  * personStore, passing 'You' like argument.
   * The personStore trigger the event to carStore passing the argument too.
-  * carStore recieve and log in the console and emmit the event to View.
+  * carStore recieves and trigger for the components that listen to event.
   */
 
+// In your component .tag
 this.on('mount', function ( ) {
   riotux.trigger('personStore', 'startCar', 'You');
 });
+
 // listen the method from carStore
 riotux.on('carStore', 'carMoving', function (person) {
   console.log(person + ' started the Car.');
