@@ -78,8 +78,6 @@ Dispatcher Data-Flow example in View:
 
 ```html
 <!-- In your .tag component -->
-<h1 if="{!name}">Who started the car?</h1>
-<h1 if = { name }>{ name } started the Car</h1>
 
 <script>
     var self = this; 
