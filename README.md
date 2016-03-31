@@ -1,4 +1,8 @@
-# riotux
+
+  <center>
+    <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F0WPW57TJ/riotux_logo.png?pub_secret=d695cfd8bd" alt="riotux event controller inspired in Flux Pattern." width="280"/></a>
+  </center>
+
 
 >Simple Event Controller for Riot.js, inspired in Flux Pattern.
 
