@@ -1,10 +1,9 @@
 
-  <center>
-    <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F0WPW57TJ/riotux_logo.png?pub_secret=d695cfd8bd" alt="riotux event controller inspired in Flux Pattern." width="280"/></a>
-  </center>
+<p align="center">
+  <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F0WPW57TJ/riotux_logo.png?pub_secret=d695cfd8bd" alt="riotux event controller inspired in Flux Pattern." width="280" style="max-width:100%;"/></a>
+</p>
 
-
->Simple Event Controller for Riot.js, inspired in Flux Pattern.
+> Simple Event Controller for Riot.js, inspired in Flux Pattern.
 
 **riotux** provides more organization for datastore in your application. Your Stores can call and listen events to other Stores and Components, that can call and listen events to Stores too. The Dispatcher is used to communicate between Components.
 
