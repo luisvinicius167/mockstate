@@ -6,14 +6,14 @@
 ## Intro 
 Simple Event Controller for Riot.js, inspired in Flux Pattern. **riotux** provides more organization for datastore in your application. Your Stores can call and listen events to other Stores and Components, that can call and listen events to Stores too. The Dispatcher is used to communicate between Components.
 
-See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flow example for this Demo you find under.
+See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a>
 
 ### Install
 Requires Riot 2.0+
-#### Npm:
+##### Npm:
 ``` npm install riotux ```
 
-#### Bower:
+##### Bower:
 ``` bower install riotux ```
 
 ### Manual install
