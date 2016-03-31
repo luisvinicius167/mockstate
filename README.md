@@ -10,8 +10,11 @@ See the <a href="http://luisvinicius167.github.io/riotux">Demo.</a> The Data-Flo
 
 ### Install
 Requires Riot 2.0+
-
+#### Npm:
 ``` npm install riotux ```
+
+#### Bower:
+``` bower install riotux ```
 
 ### Manual install
 Just include ``` dist/riotux.min.js``` file in your project.

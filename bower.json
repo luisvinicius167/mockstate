@@ -1,0 +1,24 @@
+{
+  "name": "riotux",
+  "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
+  "main": "riotux.js",
+  "authors": [
+    "Luis Vinícius <dev_luis@hotmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "riotjs",
+    "riot.js",
+    "flux",
+    "riotux"
+  ],
+  "homepage": "https://github.com/luisvinicius167/riotux",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
