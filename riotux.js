@@ -18,15 +18,21 @@
     function riotux ( ) {
       this.stores = {};
     }
-  
+    
     riotux.prototype = {
     
       /**
        * @param { string } storeName The name of your store
        * @param { object } store Your store
        */
-      addStore: function ( storeName, store ){
+      addStore: function ( storeName, store ) {
         this.stores[storeName] = store;
+      },
+      /**
+       * @param { string } name store name
+       */
+      removeStore: function ( name ) {
+        delete this.stores[name];
       },
       /**
        * @param { string } store The name of your store
