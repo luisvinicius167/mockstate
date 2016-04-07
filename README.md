@@ -4,7 +4,7 @@
 </p>
 
 ## Intro 
-Simple Event Controller for Riot.js, inspired in Flux Pattern. **riotux** provides more organization for datastore in your application. Your Stores can call and listen events to other Stores and Components, that can call and listen events to Stores too. The Dispatcher is used to communicate between Components.
+Simple Event Controller for Riot.js, inspired in Flux Pattern. **riotux** provides more organization for datastore in your application. Stores can talk with other Stores and Views, that can talk to Stores too. The Dispatcher provides that your Views can talk with other Views.
 
 ### Examples:
 <a href="http://luisvinicius167.github.io/riot-riotux-blog">Blog example with Riot.js and riotux</a>
@@ -16,7 +16,7 @@ Requires Riot 2.0+
 * Bower: ``` bower install riotux ```
 
 ### Stores: 
-The Stores are a riot.observable(). Stores can listen and trigger methods for other Stores and Components. The method will applied for the Store that you passing in argument like 'storeName'. If you have two methods with the same name, the method that will be call is the method to the store that have the same name that you passed in arguments.
+The Stores are a riot.observable(). Stores can talk with other Stores and Views. The event will applied for the Store that you passing in argument like 'storeName'. If you have two methods with the same name, don't worry, the method that will be call is the method to the store that have the same name that you passed in arguments.
 
 Stores Data-Flow example:
 ```javascript
@@ -37,7 +37,7 @@ riotux.addStore('carStore', carStore);
 ```
 
 ```javascript
-// Your Other Store
+// Your Person Store
 function PersonStore ( ) {
   riot.observable(this);
  
@@ -53,12 +53,12 @@ riotux.addStore('personStore', personStore);
 
 ```javascript
 /**----------------------------------- 
-  * Data-Flow: Component -> personStore -> carStore -> Component.
+  * Data-Flow: View -> personStore -> carStore -> View.
   *-----------------------------------
-  * When the component is mounted, trigger the event 'startCar' to 
+  * When the View is mounted, trigger the event 'startCar' to 
   * personStore, passing 'You' like argument.
   * The personStore trigger the event to carStore passing the argument too.
-  * carStore recieves and trigger for the components that listen to event.
+  * carStore recieves and trigger for the Views that listen to event.
   */
 
 // In your component .tag
@@ -75,12 +75,12 @@ riotux.on('carStore', 'carMoving', function (person) {
 ```
 
 ### Dispatcher
-The Dispatcher connects your Component with other Components. If you need to listen a method present in one Component inside your Component, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emmit``` passing the event name for the method that you want to call to other Component that listen to.
+The Dispatcher connects your Views with other Views. If you need to listen a method present in other View, inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emmit```, passing the event name for the method that you want, to trigger to other View that listen the method.
 
 Dispatcher Data-Flow example in View:
 
 ```html
-<!-- In your .tag component -->
+<!-- In your .tag view -->
 
 <script>
     var self = this; 
@@ -93,7 +93,7 @@ Dispatcher Data-Flow example in View:
 ```
 
 ```html
-<!-- In your other .tag component -->
+<!-- In your other .tag view -->
 
 <script>
     var self = this; 
@@ -108,7 +108,7 @@ Dispatcher Data-Flow example in View:
 ```
 
 ### API
-All stores should be created and registered before the Riot app is mounted to works fine.
+All Stores should be created and registered before the Riot app is mounted to works fine.
 
 Add an Store:
  * ```riotux.addStore(storeName, Store)```
