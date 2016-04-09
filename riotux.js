@@ -91,7 +91,7 @@
        */
       emit: function ( event, args ) {
         this.Dispatcher.trigger(event, args);
-        this.register('emmit', event, args);
+        this.register('emit', event, args);
       },
       
       /**
