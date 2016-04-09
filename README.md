@@ -28,7 +28,7 @@ function CarStore ( ) {
   // listen to 'start' event
   this.on('start', function ( person ) {
     console.log(person + ' started the Car.')
-    // Emmit the method for view that listen to
+    // Emit the method for view that listen to
     this.trigger('carMoving', person);
   });
 };
@@ -76,7 +76,7 @@ riotux.on('carStore', 'carMoving', function (person) {
 ```
 
 ### Dispatcher
-The Dispatcher connects your Views with other Views. If you need to listen a method present in other View, inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emmit```, passing the event name for the method that you want, to trigger to other View that listen the method.
+The Dispatcher connects your Views with other Views. If you need to listen a method present in other View, inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emit```, passing the event name for the method that you want, to trigger to other View that listen the method.
 
 Dispatcher Data-Flow example in View:
 
@@ -88,7 +88,7 @@ Dispatcher Data-Flow example in View:
     self.status = false;
     
     self.on('mount', function(){
-      riotux.emmit('eventName', 'Argument');  
+      riotux.emit('eventName', 'Argument');  
     });
 </script>
 ```
@@ -129,7 +129,7 @@ Add an Store:
  
  * ```riotux.listen(event, callback)```: listen an event 
  
- * ```riotux.emmit(event [, args])```: trigger an event. 
+ * ```riotux.emit(event [, args])```: trigger an event. 
  
  * ```riotux.listenOne(event, callback)```: listen an event, just one time. 
  
@@ -137,7 +137,7 @@ Add an Store:
 
 **Helper methods**:
  
- * ```riotux.getDispatcherEvents( eventAPI )```: return the events initialized in Dispatcher at the momen, eventAPI can be: ```listen```, ```listenOne```, ```emmit``` and ```cancel```.
+ * ```riotux.getDispatcherEvents( eventAPI )```: return the events initialized in Dispatcher at the momen, eventAPI can be: ```listen```, ```listenOne```, ```emit``` and ```cancel```.
 
 ### License
 MIT License.
