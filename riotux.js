@@ -89,7 +89,7 @@
        * @param { string }   event The name of your event
        * @param { function } callback function that will trigger
        */
-      emmit: function ( event, args ) {
+      emit: function ( event, args ) {
         this.Dispatcher.trigger(event, args);
         this.register('emmit', event, args);
       },
@@ -141,7 +141,7 @@
       this.events = {
         listen: [],
         listenOne: [],
-        emmit: [],
+        emit: [],
         cancel: []
       };
     }
