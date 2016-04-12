@@ -44,11 +44,18 @@
       },
     
       /**
-       * @param { string } store The name of your store
+       * @param { string | array } store The name of your store or stores
        * @param { string } event The name of your event
        * @param { function } callback function that will trigger
        */
       trigger: function ( store, event, callback ) {
+        var self = this;
+        if ( typeof store === "object" && store instanceof Array ) {
+          store.forEach(function ( item ) {
+            self.stores[item].trigger(event, callback);
+          });
+          return;
+        }
         this.stores[store].trigger(event, callback);
       },
     
