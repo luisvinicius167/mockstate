@@ -113,6 +113,9 @@ All Stores should be created and registered before the Riot app is mounted to wo
 
 Add an Store:
  * ```riotux.addStore(storeName, Store)```
+
+Remove an Store:
+ * ```riotux.removeStore(storeName)```
  
 **Stores**:
  
