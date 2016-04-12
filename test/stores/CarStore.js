@@ -9,7 +9,11 @@ function CarStore ( ) {
   this.on('getColor', function(){
     console.log('carStore');
     riotux.emmit('getCarColor');
-  })
+  });
+  this.on('getName', function(){
+    console.log('CarStore');
+    window.carGetNameEvent = true;
+  });
 };
 
 var carStore = new CarStore();

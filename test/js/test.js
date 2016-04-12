@@ -19,6 +19,12 @@ describe('Stores', function(){
       });
     })
   });
+  describe('#allStores', function(){
+    it('should be return true if all stores listen the event that would be triggered', function(){
+      chai.assert.equal(true, window.personGetNameEvent);
+      chai.assert.equal(true, window.carGetNameEvent);
+    })
+  })
 });
 
 /** Dispatcher */
