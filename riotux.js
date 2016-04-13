@@ -12,6 +12,27 @@
     'use strict';
     
     /**
+     * @name stores
+     * @func stores
+     * @desc The Helper function to turn all Stores listening or trigger to all
+     * @param { object } riotux The riotux instance
+     * @param { string } api Event API
+     * @param { string | array } stores The name of Store or names with all Stores
+     * @param { string } event The event name
+     * @param { object | string | Function } args The data or callback
+     */
+    function stores ( riotux, api, stores, event, args ) {
+      var self = riotux;
+      if ( typeof stores === "object" && stores instanceof Array ) {
+        stores.forEach(function ( store ) {
+          self.stores[store][api](event, args);
+        });
+        return;
+      }
+      self.stores[stores][api](event, args);
+    };
+    
+    /**
      * @desc Event Controller for Riot.js
      * @function riotux
      */
@@ -40,23 +61,16 @@
        * @param { function } callback function that will trigger
        */
       on: function ( store, event, callback ) {
-        this.stores[store].on(event, callback);
+        stores(this, 'on', store, event, callback);
       },
     
       /**
        * @param { string | array } store The name of your store or stores
        * @param { string } event The name of your event
-       * @param { function } callback function that will trigger
+       * @param { object | string } Data that will send
        */
-      trigger: function ( store, event, callback ) {
-        var self = this;
-        if ( typeof store === "object" && store instanceof Array ) {
-          store.forEach(function ( item ) {
-            self.stores[item].trigger(event, callback);
-          });
-          return;
-        }
-        this.stores[store].trigger(event, callback);
+      trigger: function ( store, event, data ) {
+        stores(this, 'trigger', store, event, data);
       },
     
       /**
@@ -116,6 +130,7 @@
         this.Dispatcher.off(event, callback);
         this.register('cancel', event, callback);
       },
+      
       /**
        * @desc Register the event on Dispatcher.events
        * @param { string }   event - the name of event API
@@ -149,6 +164,10 @@
       }
     };
     
+   /**
+    * @func Dispatcher
+    * @desc The Dispatcher that will improve Views talk with other Views
+    */
     function Dispatcher ( ) {
       riot.observable(this);
       this.events = {

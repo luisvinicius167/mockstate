@@ -47,7 +47,7 @@ describe('Dispatcher', function() {
     });
     describe('#events.emmit.length', function() {
       it('should be 0, because emmit method is not initialized', function ( ) {
-        chai.expect(riotux.getDispatcherEvent('emmit')).to.have.length(0);
+        chai.expect(riotux.getDispatcherEvent('emit')).to.have.length(0);
       });
     });
     describe('#events.listenOne.length', function() {
