@@ -12,8 +12,7 @@
     'use strict';
     
     /**
-     * @name stores
-     * @func stores
+     * @function stores
      * @desc The Helper function to turn all Stores listening or trigger to all
      * @param { object } riotux The riotux instance
      * @param { string } api Event API
