@@ -119,24 +119,24 @@ Remove an Store:
  
 **Stores**:
  
- * ```riotux.on(storeName, event, callback)```: listen the event for the Store that pass like storeName. If you want to Listen more one Store, pass the storeNames inside an Array.
+ * ```riotux.on(storeName, event, callback)```: Listen the event for the Store that pass like storeName. If you want to Listen more one Store, pass the storeNames inside an Array.
  
- * ```riotux.trigger(storeName, event [, args])```: trigger the event for the Store that pass like storeName. If you want to Trigger to more one Store, pass the storeNames inside an Array.
+ * ```riotux.trigger(storeName, event [, args])```: Trigger the event for the Store that pass like storeName. If you want to Trigger to more one Store, pass the storeNames inside an Array.
  
- * ```riotux.one(storeName, event, callback)```: listen the event, just one time, for the Store that pass like storeName.
+ * ```riotux.one(storeName, event, callback)```: Listen the event, just one time, for the Store that pass like storeName.
  
  * ```riotux.off(storeName, event [, callback])```: Cancel the event for the Store that pass like storeName.
 
 
 **Dispatcher**:
  
- * ```riotux.listen(event, callback)```: listen an event 
+ * ```riotux.listen(event, callback)```: Listen an event. 
  
- * ```riotux.emit(event [, args])```: trigger an event. 
+ * ```riotux.emit(event [, args])```: Trigger an event. 
  
- * ```riotux.listenOne(event, callback)```: listen an event, just one time. 
+ * ```riotux.listenOne(event, callback)```: Listen an event, just one time. 
  
- * ```riotux.cancel(event [, callback])```: remove an event. 
+ * ```riotux.cancel(event [, callback])```: Remove an event. 
 
 **Helper methods**:
  
