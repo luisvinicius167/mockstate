@@ -31,6 +31,11 @@ function CarStore ( ) {
     // Emit the method for view that listen to
     this.trigger('carMoving', person);
   });
+  
+  // show the name of CarStore on console
+  this.on('showName', function ( ) {
+    console.log('The name of Store is CarStore');
+  });
 };
 
 var carStore = new CarStore();
@@ -45,6 +50,11 @@ function PersonStore ( ) {
   // listen to 'startCar' event
   this.on('startCar', function ( person ) {
     riotux.trigger('carStore', 'start', person);
+  });
+  
+  // show the name of PersonStore on console
+  this.on('showName', function ( ) {
+    console.log('The name of Store is PersonStore');
   });
 };
 
@@ -65,6 +75,9 @@ riotux.addStore('personStore', personStore);
 // In your component .tag
 this.on('mount', function ( ) {
   riotux.trigger('personStore', 'startCar', 'You');
+  
+  // Trigger the event to each store passed inside the array
+  riotux.trigger(['carStore', 'personStore'], 'showName');
 });
 
 // listen the method from carStore
