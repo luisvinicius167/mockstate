@@ -119,9 +119,9 @@ Remove an Store:
  
 **Stores**:
  
- * ```riotux.on(storeName, event, callback)```: listen the event for the Store that pass like storeName.
+ * ```riotux.on(storeName, event, callback)```: listen the event for the Store that pass like storeName. If you want to Listen more one Store, pass the storeNames inside an Array.
  
- * ```riotux.trigger(storeName, event [, args])```: trigger the event for the Store that pass like storeName. If more one Store listen the method, you need to pass the storeNames inside an Array.
+ * ```riotux.trigger(storeName, event [, args])```: trigger the event for the Store that pass like storeName. If you want to Trigger to more one Store, pass the storeNames inside an Array.
  
  * ```riotux.one(storeName, event, callback)```: listen the event, just one time, for the Store that pass like storeName.
  
