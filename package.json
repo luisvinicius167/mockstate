@@ -1,6 +1,6 @@
 {
  "name": "riotux",
- "version": "1.0.0",
+ "version": "1.0.1",
  "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
  "main": "riotux.js",
  "scripts": {
