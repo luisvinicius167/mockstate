@@ -10,6 +10,18 @@
   */
   ;(function ( window, riot ) {
     'use strict';
+    /**
+     * @function concatArgs
+     * @desc The Helper function to concat arguments to pass in the trigger method
+     * @param { string } event The event name
+     * @param { array } args The arguments passed that will applied
+     * @return Array
+     */
+    function concatArgs (event, args ){
+      var eventArr = [event];
+      var argsToSend = eventArr.concat(args);
+      return argsToSend;
+    };
     
     /**
      * @function stores
@@ -24,11 +36,11 @@
       var self = riotux;
       if ( typeof stores === "object" && stores instanceof Array ) {
         stores.forEach(function ( store ) {
-          self.stores[store][api](event, args);
+          self.stores[store][api].apply(null, concatArgs(event, args));
         });
         return;
       }
-      self.stores[stores][api](event, args);
+      self.stores[stores][api].apply(null, concatArgs(event, args));
     };
     
     /**
@@ -69,7 +81,8 @@
        * @param { object | string } Data that will send
        */
       trigger: function ( store, event, data ) {
-        stores(this, 'trigger', store, event, data);
+        var args = Array.prototype.slice.call(arguments, 2);
+        stores(this, 'trigger', store, event, args);
       },
     
       /**
@@ -115,8 +128,9 @@
        * @param { string }   event The name of your event
        * @param { function } callback function that will trigger
        */
-      emit: function ( event, args ) {
-        this.Dispatcher.trigger(event, args);
+      emit: function ( event, data ) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        this.Dispatcher.trigger.apply(null, concatArgs(event, args));
         this.register('emit', event, args);
       },
       
