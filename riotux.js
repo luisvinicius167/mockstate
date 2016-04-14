@@ -3,7 +3,6 @@
     riotux.js
     --------------------------------
     + https://luisvinicius167.github.io/riotux/
-    + version 1.0.0
     + Copyright 2016 Luis Vinícius
     + Licensed under the MIT license
     + Documentation: https://github.com/luisvinicius167/riotux
