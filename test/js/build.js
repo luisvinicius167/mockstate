@@ -9,7 +9,15 @@ riot.tag2('one', '', '', '', function(opts) {
       self.name = name;
       console.log(self.name)
     });
-
+    
+    self.on('mount', function() {
+      riotux.emit('getLen', 'one', 'two');
+    })
+    
+    riotux.listen('getLen', function () {
+      window.lenEmit = 2;
+    });  
+    
     self.on('unmount', function () {
       riotux.cancel('init');
     });
