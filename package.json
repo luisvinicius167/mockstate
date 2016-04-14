@@ -1,25 +1,25 @@
 {
- "name": "riotux",
- "version": "1.0.0",
- "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
- "main": "riotux.js",
- "scripts": {
-   "test": "echo \"Error: no test specified\" && exit 1"
- },
- "repository": {
-   "type": "git",
-   "url": "git+https://github.com/luisvinicius167/riotux.git"
- },
- "keywords": [
-   "riotjs",
-   "riot.js",
-   "flux",
-   "riotux"
- ],
- "author": "Luis Vinícius <dev_luis@hotmail.com>",
- "license": "MIT",
- "bugs": {
-   "url": "https://github.com/luisvinicius167/riotux/issues"
- },
- "homepage": "https://github.com/luisvinicius167/riotux#readme"
+  "name": "riotux",
+  "version": "1.0.1",
+  "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
+  "main": "riotux.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisvinicius167/riotux.git"
+  },
+  "keywords": [
+    "riotjs",
+    "riot.js",
+    "flux",
+    "riotux"
+  ],
+  "author": "Luis Vinícius <dev_luis@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luisvinicius167/riotux/issues"
+  },
+  "homepage": "https://github.com/luisvinicius167/riotux#readme"
 }
