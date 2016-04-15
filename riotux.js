@@ -9,6 +9,7 @@
   */
   ;(function ( window, riot ) {
     'use strict';
+    
     /**
      * @function concatArgs
      * @desc The Helper function to concat arguments to pass in the trigger method
@@ -16,9 +17,10 @@
      * @param { array } args The arguments passed that will applied
      * @return Array
      */
-    function concatArgs (event, args ){
-      var eventArr = [event];
-      var argsToSend = eventArr.concat(args);
+    function concatArgs ( event, args ){
+      var eventArr = [event]
+        , argsToSend = eventArr.concat(args)
+      ;
       return argsToSend;
     };
     
@@ -77,9 +79,8 @@
       /**
        * @param { string | array } store The name of your store or stores
        * @param { string } event The name of your event
-       * @param { object | string } Data that will send
        */
-      trigger: function ( store, event, data ) {
+      trigger: function ( store, event ) {
         var args = Array.prototype.slice.call(arguments, 2);
         stores(this, 'trigger', store, event, args);
       },
@@ -125,9 +126,8 @@
       /**
        * @desc Trigger the event that Dispatcher listening
        * @param { string }   event The name of your event
-       * @param { function } callback function that will trigger
        */
-      emit: function ( event, data ) {
+      emit: function ( event ) {
         var args = Array.prototype.slice.call(arguments, 1);
         this.Dispatcher.trigger.apply(null, concatArgs(event, args));
         this.register('emit', event, args);
@@ -190,8 +190,12 @@
       };
     }
     
-    if (!window.riotux) {
+    if ( !window.riotux ) {
       window.riotux = new riotux;
       window.riotux.Dispatcher = new Dispatcher();
+    };
+    
+    if ( typeof(module) !== "undefined" ) {
+      module.exports = riotux;
     }
   }( window, riot ));
