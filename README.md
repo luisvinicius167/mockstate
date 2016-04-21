@@ -7,6 +7,7 @@
 Event Controller for Riot.js, inspired in Flux Pattern. **riotux** provides more organization for data store in your application. Stores can talk with other Stores and Views, that can talk to Stores too. The Dispatcher provides that your Views can talk with other Views.
 
 ### Examples:
+<a href="https://front-sale.firebaseapp.com/">Brazilian Point of Sale with Riot.js and riotux</a>
 <a href="http://luisvinicius167.github.io/riot-riotux-blog">Blog example with Riot.js and riotux</a><br>
 <a href="https://medium.com/@luisvinicius/riotux-event-controller-inspired-in-flux-8deaea738305#.ehsjexxl1"> A brief introduction about riotux</a>
 
