@@ -1,6 +1,6 @@
 
 <p align="center">
-  <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F0WPW57TJ/riotux_logo.png?pub_secret=d695cfd8bd" alt="riotux event controller inspired in Flux Pattern." width="300" style="max-width:100%;"/></a>
+  <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F153RT34K/component__2_.png?pub_secret=266342c4cf" alt="riotux event controller inspired in Flux Pattern." width="600" style="max-width:100%;"/></a>
 </p>
 
 ## Intro 
