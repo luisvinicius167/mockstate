@@ -1,10 +1,12 @@
+#riotux [![npm package](https://img.shields.io/badge/npm-v1.01-lightgrey.svg)](https://www.npmjs.com/package/riotux)
+> Flux-inspired Application Architecture for Riot.js.
 
 <p align="center">
-  <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F153RT34K/component__2_.png?pub_secret=266342c4cf" alt="riotux event controller inspired in Flux Pattern." width="600" style="max-width:100%;"/></a>
+  <a href="http://luisvinicius167.github.io/riotux/"><img src ="https://files.slack.com/files-pri/T02QC0DMD-F1558P92T/riotux_flux__1_.png?pub_secret=415453c3b9" alt="Flux-inspired Application Architecture for Riot.js." width="500" style="max-width:100%;"/></a>
 </p>
 
 ## Intro 
-Event Controller for Riot.js, inspired in Flux Pattern. **riotux** provides more organization for data store in your application. Stores can talk with other Stores and Views, that can talk to Stores too. The Dispatcher provides that your Views can talk with other Views.
+**riotux** provides more organization for data store in your application. Stores can talk with other Stores and Views, that can talk to Stores too. The Dispatcher provides that your Views can talk with other Views.
 
 ### Examples:
 <a href="https://front-sale.firebaseapp.com/">Brazilian Point of Sale with Riot.js and riotux</a><br>
