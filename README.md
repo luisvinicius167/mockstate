@@ -1,4 +1,4 @@
-#riotux [![npm package](https://img.shields.io/badge/npm-v1.01-lightgrey.svg)](https://www.npmjs.com/package/riotux)
+#riotux [![npm package](https://img.shields.io/badge/npm-v1.02-lightgrey.svg)](https://www.npmjs.com/package/riotux)
 > Flux-inspired Application Architecture for Riot.js.
 
 <p align="center">
