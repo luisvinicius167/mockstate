@@ -92,7 +92,7 @@ riotux.on('carStore', 'carMoving', function (person) {
 ```
 
 ### Dispatcher
-The Dispatcher connects your Views with other Views. If you need to listen a method present in other View, inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method```riotux.emit```, passing the event name for the method that you want, to trigger to other View that listen the method.
+The Dispatcher connects your Views with other Views. If you need to listen a method present in other View, inside your View, you need register this using the method ```riotux.listen```, that will register your method inside the Dispatcher. You can use the method ```riotux.emit```, passing the event name for the method that you want, to trigger to other View that listen the method.
 
 Dispatcher Data-Flow example in View:
 
