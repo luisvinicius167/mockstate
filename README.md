@@ -7,7 +7,6 @@ riotux is an application architecture for centralized state management in Riot.j
 ### Examples:
 <a href="https://front-sale.firebaseapp.com/">Brazilian Point of Sale with Riot.js and riotux</a><br>
 <a href="http://luisvinicius167.github.io/riot-riotux-blog">Blog example with Riot.js and riotux</a><br>
-<a href="https://medium.com/@luisvinicius/riotux-event-controller-inspired-in-flux-8deaea738305#.ehsjexxl1"> A brief introduction about riotux</a>
 
 ### Install
 Requires Riot 2.0+
@@ -19,7 +18,7 @@ Requires Riot 2.0+
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your Riot components. This is where riotux comes into play.
 
 
-### Stores: 
+### Store: 
 The **store** is basically a container that holds your application state. There are two things that makes a riotux store different:
 
  * The store are **reactive**. Your component can observe changes in the store state, and when the state is changed, your component will be updated.
@@ -45,7 +44,20 @@ var store = riotux.Store({
 });
 ```
 
-### Mutations
+#### State
+Application state is held in the store, as a single object. **riotux** uses a single state tree - that is, this single object contains all your application level state and serves as the "single source of truth". This also means usually you will have only one store for each application.
+
+#### Observer state changes in your Component
+Simple. When the state change in your store, the new state value is triggered. To recieve the new state value, you just use ```riotux.on(stateObserver, callback)```. The ```stateObserver``` is the state name that you want to observe and when it change, the callback will be triggered.
+
+```javascript
+  riotux.on('count', function ( new_state ) {
+    self.count = new_state;
+    self.update();
+  });
+```
+
+#### Mutations
 The mutations are essentially events: each mutation has a name and a callback. In riotux the callback function will receive the state as the first argument:
 
 ```javascript
@@ -89,6 +101,7 @@ var store = riotux.Store({
 Actions are just functions that dispatch mutations. The actions will be called from components.
 
 Creating an action:
+
 ```javascript
 var action = riotux.Actions({
   add: function ( number ) {
@@ -105,6 +118,7 @@ var action = riotux.Actions({
 ```
 
 The ```emit``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
+
 ### Data Flow
 In riotux data flow is unidirectional, as it should be in Flux:
 
@@ -112,7 +126,24 @@ In riotux data flow is unidirectional, as it should be in Flux:
 * Actions dispatch mutations that change the state;
 * Changes in state flow from the store back into the component via riotux obervables.
 
+### Getter
+If you want to get the state value, use ```riotux.getter(sate_name)```.
+
 ### Application Structure
+
+```project
+├──index.html
+├──components
+|   ├──component.tag
+|   ├──other.tag
+├──riotux
+|   ├──store.js
+|   ├──action.js
+```
+### Principles:
+* Application state is held in the store, as a single object. 
+* The only way to mutate the state is by dispatching mutations on the store.
+* Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
 ### License
 MIT License.

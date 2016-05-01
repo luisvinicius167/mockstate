@@ -2,18 +2,9 @@
   
   <script>
     var self = this;
-    
-    riotux.listen('init', function ( value ) {
-      window.initied = value;
-    });
-    
-    riotux.listen('getName', function ( name ) {
-      self.name = name;
-      console.log(self.name)
-    });
-    
-    self.on('unmount', function () {
-      riotux.cancel('init');
+    riotux.emit('counter', 'change_count', 2);
+    riotux.on('counter', function ( count ) {
+      window.counter = count;
     });
   </script>  
 </one>

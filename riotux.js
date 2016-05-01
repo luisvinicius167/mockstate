@@ -89,6 +89,9 @@
         var args = Array.prototype.slice.call(arguments, 2);
         _currentState = arguments[0];
         this.actions[arguments[1]].apply(null, args);
+      },
+      getter: function ( name ) {
+        return _store.state[name];
       }
     };
 
