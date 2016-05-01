@@ -1,4 +1,4 @@
-# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.2-blue.svg)](https://www.npmjs.com/package/riotux)
+# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.3-blue.svg)](https://www.npmjs.com/package/riotux)
 > Flux and Redux inspired Application Architecture for Riot.js.
 
 ## Intro 
@@ -24,6 +24,10 @@ In riotux data flow is unidirectional, as it should be in Flux:
 * Actions dispatch mutations that change the state;
 * Changes in state flow from the store back into the component via riotux obervables.
 
+### Principles:
+* Application state is held in the store, as a single object. 
+* The only way to mutate the state is by dispatching mutations on the store.
+* Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
 ### Store: 
 The **store** is basically a container that holds your application state. There are two things that makes a riotux store different:
@@ -121,10 +125,10 @@ var action = riotux.Actions({
 #### Calling an action on your component
 
 ```javascript
-  riotux.emit('count', 'increment', 10);
+  riotux.action('count', 'increment', 10);
 ```
 
-The ```emit``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
+The ```action``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
 
 ### Getter
 If you want to get the state value, use ```riotux.getter(sate_name)```.
@@ -140,10 +144,6 @@ If you want to get the state value, use ```riotux.getter(sate_name)```.
 |   ├──store.js
 |   ├──action.js
 ```
-### Principles:
-* Application state is held in the store, as a single object. 
-* The only way to mutate the state is by dispatching mutations on the store.
-* Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
 ### License
 MIT License.
