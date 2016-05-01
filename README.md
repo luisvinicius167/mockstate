@@ -1,4 +1,4 @@
-#riotux [![npm package](https://img.shields.io/badge/npm-1.0.2-blue.svg)](https://www.npmjs.com/package/riotux)
+# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.2-blue.svg)](https://www.npmjs.com/package/riotux)
 > Flux and Redux inspired Application Architecture for Riot.js.
 
 ## Intro 
@@ -16,6 +16,13 @@ Requires Riot 2.0+
 
 ### Why you need riotux?
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your Riot components. This is where riotux comes into play.
+
+### Data Flow
+In riotux data flow is unidirectional, as it should be in Flux:
+
+* The component triggers action calls;
+* Actions dispatch mutations that change the state;
+* Changes in state flow from the store back into the component via riotux obervables.
 
 
 ### Store: 
@@ -105,7 +112,7 @@ Creating an action:
 ```javascript
 var action = riotux.Actions({
   add: function ( number ) {
-    store.dispatch('changeTitle', title);
+    store.dispatch('increment', number);
     // if you don't have a store instance in your application
     // riotux.store.dispatch('increment', 1);
   }
@@ -118,13 +125,6 @@ var action = riotux.Actions({
 ```
 
 The ```emit``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
-
-### Data Flow
-In riotux data flow is unidirectional, as it should be in Flux:
-
-* The component triggers action calls;
-* Actions dispatch mutations that change the state;
-* Changes in state flow from the store back into the component via riotux obervables.
 
 ### Getter
 If you want to get the state value, use ```riotux.getter(sate_name)```.

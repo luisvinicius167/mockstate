@@ -39,7 +39,7 @@
          * @name  dispatch 
          * @description Send the data for change state and update all listening components when state changed]
          * @param  { string } type [the name of mutation function you want to call]
-         * @return { Promisse } 
+         * @return { Promise } 
          */
         dispatch: function ( name ) {
           var _slice = Array.prototype.slice.call(arguments, 1)
@@ -48,7 +48,7 @@
           ;
           return new Promise( function ( resolve, reject ) {
             resolve(_store.mutations[name].apply(null, args));
-          }).then(function ( ) {
+          }).then(function ( result ) {
             self.trigger(_currentState, _store.state[_currentState]);
           });
         }
@@ -81,15 +81,24 @@
         return this.actions;
       },
       /**
-       * @name emit
+       * @name action
        * @description Emit an action for store dispatcher to change the state
        * @return { void }
        */
-      emit: function ( ) {
-        var args = Array.prototype.slice.call(arguments, 2);
+      action: function ( ) {
         _currentState = arguments[0];
-        this.actions[arguments[1]].apply(null, args);
+        if (_store.state[_currentState] !== undefined ) {
+          var args = Array.prototype.slice.call(arguments, 2);
+          this.actions[arguments[1]].apply(null, args);
+        } else {
+          var args = Array.prototype.slice.call(arguments, 1);
+          this.actions[arguments[0]].apply(null, args);
+        }
       },
+      /**
+       * @name getter
+       * @param  { string } name The name of state
+       */
       getter: function ( name ) {
         return _store.state[name];
       }
