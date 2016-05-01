@@ -1,6 +1,6 @@
 {
   "name": "riotux",
-  "description": "Simple Event Controller for Riot.js, inspired in Flux Pattern.",
+  "description": "Flux and Redux inspired Application Architecture for Riot.js.",
   "main": "riotux.js",
   "authors": [
     "Luis Vinícius <dev_luis@hotmail.com>"
@@ -10,6 +10,7 @@
     "riotjs",
     "riot.js",
     "flux",
+    "redux",
     "riotux"
   ],
   "homepage": "https://github.com/luisvinicius167/riotux",
