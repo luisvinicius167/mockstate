@@ -133,6 +133,7 @@ The ```action``` recieves the **state** that you wants to change as first argume
 If you want to get the state value, use ```riotux.getter(sate_name)```.
 
 ### Application Structure
+Just suggesting.
 
 ```project
 ├──index.html
