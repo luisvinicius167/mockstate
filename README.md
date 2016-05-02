@@ -5,8 +5,7 @@
 riotux is an application architecture for centralized state management in Riot.js applications. It is inspired by Flux and Redux, but with simplified concepts.
 
 ### Examples:
-<a href="https://front-sale.firebaseapp.com/">Brazilian Point of Sale with Riot.js and riotux</a><br>
-<a href="http://luisvinicius167.github.io/riot-riotux-blog">Blog example with Riot.js and riotux</a><br>
+<a href="http://luisvinicius167.github.io/riot-riotux-blog"> riotux Todo </a><br>
 
 ### Install
 Requires Riot 2.0+
