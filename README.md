@@ -2,7 +2,7 @@
 > Flux and Redux inspired Application Architecture for Riot.js.
 
 ## Intro 
-riotux is an application architecture for centralized state management in Riot.js applications. It is inspired by Flux and Redux, but with simplified concepts.
+**riotux** is an application architecture for centralized state management in Riot.js applications. It is inspired by Flux and Redux, but with simplified concepts.
 
 ### Examples:
 <a href="http://luisvinicius167.github.io/riotux-todo/"> riotux Todo </a><br>
