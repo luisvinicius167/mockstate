@@ -8,8 +8,6 @@
 <a href="http://luisvinicius167.github.io/riotux-todo/"> riotux Todo App </a><br>
 
 ### Install
-Requires Riot 2.0+
-
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
 * Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.3/riotux.min.js ```
@@ -58,14 +56,19 @@ var store = riotux.Store({
 #### State
 Application state is held in the store, as a single object. **riotux** uses a single state tree - that is, this single object contains all your application level state and serves as the "single source of truth". This also means usually you will have only one store for each application.
 
-#### Observer state changes in your Component
-Simple. When the state change in your store, the new state value is triggered. To recieve the new state value, you just use ```riotux.on(stateObserver, callback)```. The ```stateObserver``` is the state name that you want to observe and when it change, the callback will be triggered.
+#### Observe state changes in your Component
+When some state change in your store, all components that will listening the changed state will be updated. You just use ```riotux.subscribe(component, state, [...states])```.
 
-```javascript
-  riotux.on('count', function ( new_state ) {
-    self.count = new_state;
-    self.update();
-  });
+```html
+<!-- in your component -->
+  <h1> Count: { count } </h1>
+  <script>
+    riotux.subscribe(this, 'count');
+
+    this.on('update', function ( ) {
+      self.count = riotux.getter('count'); // get the count state value
+    });
+  </script>
 ```
 
 #### Mutations
