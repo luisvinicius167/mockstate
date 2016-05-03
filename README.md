@@ -1,4 +1,4 @@
-# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.3-blue.svg)](https://www.npmjs.com/package/riotux)
+# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.4-blue.svg)](https://www.npmjs.com/package/riotux)
 > Flux and Redux inspired Application Architecture for Riot.js.
 
 ## Intro 
@@ -10,7 +10,7 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
-* Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.3/riotux.min.js ```
+* Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.4/riotux.min.js ```
 
 ### Why you need riotux?
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your Riot components. This is where riotux comes into play.
