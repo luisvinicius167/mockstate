@@ -61,7 +61,7 @@ var store = riotux.Store({
 Application state is held in the store, as a single object. **riotux** uses a single state tree - that is, this single object contains all your application level state and serves as the "single source of truth". This also means usually you will have only one store for each application.
 
 #### Observe state changes in your Component
-When some state change in your store, all components that will listening the changed state will be updated. You just use ```riotux.subscribe(component, state, [...states])```.
+When some state change in your store, all components that will listening the changed state will be updated. You just use ``` riotux.subscribe(component, state, [...states]) ```. When your component will **unmount**, you can unsubscribe for states changes: ``` riotux.subscribe(component) ```.
 
 ```html
 <!-- in your component -->
@@ -71,6 +71,10 @@ When some state change in your store, all components that will listening the cha
 
     this.on('update', function ( ) {
       self.count = riotux.getter('count'); // get the count state value
+    });
+
+    this.on('unmount', function ( ) {
+      riotux.unsubscribe(this); // Unsubscribe the observe states
     });
   </script>
 ```
