@@ -3,29 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>riotux tests</title>
-  <link rel="stylesheet" href="css/mocha.css" />
-  <script src="js/mocha.js"></script>
-  <script src="js/chai.js"></script>
   <script src="js/riot.min.js"></script>
   <script src="../riotux.js"></script>
 </head>
 <body>
-  <div id="mocha"></div>
   <div id="app">
     <one></one>
     <two></two>
   </div>
-  <script>
-    mocha.setup('bdd');
-    window.onload = function() {
-      mocha.run();  
-    }
-  </script>
 
     <script src="riotux/store.js"></script>
      <script src="riotux/actions.js"></script>
-    <script src="js/build-test.js"></script>
-    <script src="js/test.js"></script>
+    <script src="js/app.js"></script>
     <script>
       riot.mount('*');
     </script>
