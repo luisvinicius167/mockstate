@@ -34,7 +34,7 @@
      * @param  { array } states Array that contain the states
      */
     subscribe: function ( tag, states ) {
-      _store.tags.push({tag, states});
+      _store.tags.push({ tag: tag, states: states });
     },
     /**
      * @name emit
