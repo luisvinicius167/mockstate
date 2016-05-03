@@ -9,7 +9,7 @@
 </p>
 
 ### Examples:
-<a href="http://luisvinicius167.github.io/riotux-todo/"> riotux Todo App </a><br>
+<a href="https://github.com/luisvinicius167/riotux-todo"> Todo app example + guide </a><br>
 
 ### Install
 * Npm: ``` npm install riotux ```
