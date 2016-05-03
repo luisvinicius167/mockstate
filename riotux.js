@@ -48,11 +48,15 @@
     subscribe: function ( tag, states ) {
       _store.tags.push({ tag: tag, states: states });
     },
+    /**
+     * @name  unsubscribe
+     * @description Unsubscribre the component for states changes
+     * @param  { Component instance } tag Your component
+     */
     unsubscribe: function ( tag ) {
       _store.tags.forEach(function( el, i ) { 
         if ( el.tag === tag ) {
           _store.tags.splice(i, 1);
-          console.log('Unsubscribed', _store.tags);
         }
       });
     },
@@ -129,7 +133,12 @@
       var states = Array.prototype.slice.call(arguments, 1);
       _store.subscribe(tag, states);
     },
-    unsubscribe: function ( component ) {
+    /**
+     * @name unsubscribe
+     * @description unsubscribe component for states changes
+     * @param  { string } component The Component instance
+     */
+    unsubscribe: function ( tag ) {
       _store.unsubscribe(component);
     },
     /**
