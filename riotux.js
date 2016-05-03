@@ -1,12 +1,3 @@
-/*!
-  --------------------------------
-  riotux.js
-  --------------------------------
-  + https://luisvinicius167.github.io/riotux/
-  + Copyright 2016 Luis Vinícius
-  + Licensed under the MIT license
-  + Documentation: https://github.com/luisvinicius167/riotux
-*/
 /**
  * UMD Support
  */
@@ -20,6 +11,15 @@
     root.riotux = factory();
   }
 } ( this, function ( ) {
+  /*!
+  --------------------------------
+  riotux.js
+  --------------------------------
+  + https://luisvinicius167.github.io/riotux/
+  + Copyright 2016 Luis Vinícius
+  + Licensed under the MIT license
+  + Documentation: https://github.com/luisvinicius167/riotux
+*/
   'use strict';
   
   /**
