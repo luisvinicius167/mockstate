@@ -1,4 +1,4 @@
-riot.tag2('one', '<h1>Counter: { counter }</h1>', '', '', function(opts) {
+riot.tag2('one', '<h1>Foo Component: counter = { counter }</h1>', '', '', function(opts) {
     var self = this;
     riotux.subscribe(self, 'counter');
     
@@ -14,7 +14,7 @@ riot.tag2('one', '<h1>Counter: { counter }</h1>', '', '', function(opts) {
     });
 });
 
-riot.tag2('two', '<h1>Tag two Counter: { counter }</h1>', '', '', function(opts) {
+riot.tag2('two', '<h1>Bar Component: counter = { counter }</h1>', '', '', function(opts) {
     var self = this;
     riotux.subscribe(self, 'counter');
 
