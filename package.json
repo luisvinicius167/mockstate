@@ -1,6 +1,6 @@
 {
  "name": "riotux",
- "version": "1.0.3",
+ "version": "1.0.4",
  "description": "Flux and Redux inspired Application Architecture for Riot.js.",
  "main": "riotux.js",
  "scripts": {
@@ -12,7 +12,7 @@
  },
  "keywords": [
    "riotjs",
-   "riot.js",
+   "redux",
    "flux",
    "riotux"
  ],
