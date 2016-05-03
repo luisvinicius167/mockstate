@@ -8,6 +8,7 @@
   "license": "MIT",
   "keywords": [
     "riotjs",
+    "redux-flux"
     "riot.js",
     "flux",
     "redux",
