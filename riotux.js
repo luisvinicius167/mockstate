@@ -7,7 +7,7 @@
     + Licensed under the MIT license
     + Documentation: https://github.com/luisvinicius167/riotux
   */
-  ;(function ( window, riot ) {
+  ;(function ( window ) {
     'use strict';
     
     /**
@@ -20,14 +20,49 @@
      * @name  the store state and mutations
      * @type { Object }
      */
-    var _store = {};
-
+    var _store = {
+      tags: [],
+      /**
+       * @name  subscribe
+       * @description Add the tag and the states for the tag
+       * update when the states changes
+       * @param  { Component instance } tag Your component
+       * @param  { array } states Array that contain the states
+       */
+      subscribe: function ( tag, states ) {
+        _store.tags.push({tag, states});
+      },
+      /**
+       * @name emit
+       * @param  { string }   event The name of the event
+       * @param  {Function} callback The callback function that will be triggered
+       */
+      emit: function ( event, callback ) {
+        if ( event === 'update' ) {
+          callback();
+        }
+      },
+      /**
+       * @name update
+       * @description Update all tag instances with are observing the _currentState
+       * @return {[type]} [description]
+       */
+      update: function ( ) {
+        _store.emit('update', function ( ) {
+          _store.tags.forEach(function ( el, index, arr ) {
+            if ( el.states.indexOf(_currentState) !== -1 ) {
+              console.log('Changed the state #' + _currentState + ' of the Tag ',  el.tag.root);
+              el.tag.update();
+            }
+          });
+        });
+      }
+    };
     /**
-     * @desc Event Controller for Riot.js
+     * @desc Flux and Redux inspired Application Architecture for Riot.js.
      * @function riotux
      */
     function riotux ( ) {
-      riot.observable(this);
       var self = this;
       /**
        * @name store
@@ -49,7 +84,7 @@
           return new Promise( function ( resolve, reject ) {
             resolve(_store.mutations[name].apply(null, args));
           }).then(function ( result ) {
-            self.trigger(_currentState, _store.state[_currentState]);
+            _store.update();
           });
         }
       };
@@ -63,12 +98,21 @@
 
     riotux.prototype = {
       /**
+       * @name subscribe
+       * @description subscribe the tag to update when the states changes
+       * @param  { string } tag The tag/component instance
+       */
+      subscribe: function ( tag ) {
+        var states = Array.prototype.slice.call(arguments, 1);
+        _store.subscribe(tag, states);
+      },
+      /**
        * @name Store
        * @param  { object } data The data that contain the store mutations and state
        * @return { object } Return the store
        */
       Store: function ( data ) {
-        _store = Object.assign({}, data);
+        _store = Object.assign(_store, data);
         return this.store;
       },  
       /**
@@ -111,4 +155,4 @@
     if ( typeof(module) !== "undefined" ) {
       module.exports = riotux;
     };
-  }( window, riot ));
+  }( window ));
