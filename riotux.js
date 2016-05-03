@@ -27,7 +27,21 @@
    * @description The current state for state that will be changed
    */
   var _currentState;
-  
+  /**
+   * @name  _trigger
+   * @description The update function that
+   * will be called to update the component
+   * @param  { Component } component Your component instance
+   */
+  var _trigger = function ( component ) {
+    if ( typeof component.forceUpdate === "function" ) {
+        component.forceUpdate();
+        return;
+      } else {
+        component.update();
+      }
+    }
+  ;  
   /**
    * @name  the store state and mutations
    * @type { Object }
@@ -42,11 +56,11 @@
      * @name  subscribe
      * @description Add the tag and the states for the tag
      * update when the states changes
-     * @param  { Component instance } tag Your component
+     * @param  { Component instance } component Your component
      * @param  { array } states Array that contain the states
      */
-    subscribe: function ( tag, states ) {
-      _store.tags.push({ tag: tag, states: states });
+    subscribe: function ( component, states ) {
+      _store.tags.push({ component: component, states: states });
     },
     /**
      * @name  unsubscribe
@@ -65,10 +79,8 @@
      * @param  { string }   event The name of the event
      * @param  {Function} callback The callback function that will be triggered
      */
-    emit: function ( event, callback ) {
-      if ( event === 'update' ) {
+    emit: function ( callback ) {
         callback();
-      }
     },
     /**
      * @name update
@@ -76,10 +88,10 @@
      * @return {[type]} [description]
      */
     update: function ( ) {
-      _store.emit('update', function ( ) {
+      _store.emit(function ( ) {
         _store.tags.forEach(function ( el, index, arr ) {
           if ( el.states.indexOf(_currentState) !== -1 ) {
-            el.tag.update();
+            _trigger(el.component);
           }
         });
       });
@@ -124,14 +136,17 @@
   };
 
   riotux.prototype = {
+    get: function() {
+      return _store.tags;
+    },
     /**
      * @name subscribe
      * @description subscribe the tag to update when the states changes
      * @param  { string } tag The tag/component instance
      */
-    subscribe: function ( tag ) {
+    subscribe: function ( component ) {
       var states = Array.prototype.slice.call(arguments, 1);
-      _store.subscribe(tag, states);
+      _store.subscribe(component, states);
     },
     /**
      * @name unsubscribe

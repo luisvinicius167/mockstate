@@ -1,7 +1,7 @@
 {
  "name": "riotux",
- "version": "1.0.4",
- "description": "Flux and Redux inspired Application Architecture for Riot.js.",
+ "version": "1.0.5",
+ "description": "A centralized state management inspired in Flux and Redux.",
  "main": "riotux.js",
  "scripts": {
    "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
  },
  "keywords": [
    "riotjs",
+   "react",
    "redux",
    "flux",
    "riotux"
