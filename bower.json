@@ -1,6 +1,6 @@
 {
   "name": "riotux",
-  "description": "Flux and Redux inspired Application Architecture for Riot.js.",
+  "description": "A centralized state management inspired in Flux and Redux.",
   "main": "riotux.js",
   "authors": [
     "Luis Vinícius <dev_luis@hotmail.com>"

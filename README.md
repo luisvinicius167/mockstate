@@ -1,8 +1,8 @@
-# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.4-blue.svg)](https://www.npmjs.com/package/riotux)
-> Flux and Redux inspired Application Architecture for Riot.js.
+# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.5-blue.svg)](https://www.npmjs.com/package/riotux)
+> A centralized state management inspired in Flux and Redux.
 
 ## Intro 
-**riotux** is an application architecture for centralized state management in Riot.js applications. It is inspired by Flux and Redux, but with simplified concepts.
+**riotux** is a centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
 <p align="center">
   <img src="test/img/riotux_todo.gif" alt="riotux todo app" width="600">
@@ -14,7 +14,7 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
-* Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.4/riotux.min.js ```
+* Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.5/riotux.min.js ```
 
 ### Why you need riotux?
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your Riot components. This is where riotux comes into play.
