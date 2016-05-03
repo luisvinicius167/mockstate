@@ -4,6 +4,10 @@
 ## Intro 
 **riotux** is an application architecture for centralized state management in Riot.js applications. It is inspired by Flux and Redux, but with simplified concepts.
 
+<p align="center">
+  <img src="test/img/riotux_todo.gif" alt="riotux todo app" width="600">
+</p>
+
 ### Examples:
 <a href="http://luisvinicius167.github.io/riotux-todo/"> riotux Todo App </a><br>
 
