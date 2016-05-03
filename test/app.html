@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <title>riotux tests</title>
   <script src="js/riot.min.js"></script>
-  <script src="../dist/riotux.min.js"></script>
+  <script src="../riotux.js"></script>
 </head>
 <body>
   <div id="app">
     <one></one>
     <two></two>
   </div>
-
     <script src="riotux/store.js"></script>
      <script src="riotux/actions.js"></script>
     <script src="js/app.js"></script>
     <script>
+    console.log(this)
       riot.mount('*');
     </script>
 </body>

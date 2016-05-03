@@ -7,7 +7,19 @@
   + Licensed under the MIT license
   + Documentation: https://github.com/luisvinicius167/riotux
 */
-;(function ( window ) {
+/**
+ * UMD Support
+ */
+(function ( root, factory ) {
+  if ( typeof define === "function" && define.amd ) {
+    define([], factory);
+  }
+  else if ( typeof module !== "undefined" ) {
+    module.exports = factory;
+  } else {
+    root.riotux = factory();
+  }
+} ( this, function ( ) {
   'use strict';
   
   /**
@@ -36,6 +48,14 @@
     subscribe: function ( tag, states ) {
       _store.tags.push({ tag: tag, states: states });
     },
+    unsubscribe: function ( tag ) {
+      _store.tags.forEach(function( el, i ) { 
+        if ( el.tag === tag ) {
+          _store.tags.splice(i, 1);
+          console.log('Unsubscribed', _store.tags);
+        }
+      });
+    },
     /**
      * @name emit
      * @param  { string }   event The name of the event
@@ -62,14 +82,14 @@
     }
   };
   /**
-   * @desc Flux and Redux inspired Application Architecture for Riot.js.
+   * @desc Central State management inspired in Redux and Flux pattern
    * @function riotux
    */
   function riotux ( ) {
     var self = this;
     /**
      * @name store
-     * @description Manage all application state 
+     * @description Manage all application state
      * @type { Object }
      */
     this.store = {
@@ -108,6 +128,9 @@
     subscribe: function ( tag ) {
       var states = Array.prototype.slice.call(arguments, 1);
       _store.subscribe(tag, states);
+    },
+    unsubscribe: function ( component ) {
+      _store.unsubscribe(component);
     },
     /**
      * @name Store
@@ -150,12 +173,5 @@
       return _store.state[name];
     }
   };
-
-  if ( !window.riotux ) {
-    window.riotux = new riotux;
-  };
-  
-  if ( typeof(module) !== "undefined" ) {
-    module.exports = riotux;
-  };
-}( window ));
+  return new riotux;
+}));
