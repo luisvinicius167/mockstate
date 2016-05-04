@@ -125,9 +125,6 @@
   };
 
   riotux.prototype = {
-    get: function() {
-      return _store.tags;
-    },
     /**
      * @name subscribe
      * @description subscribe the tag to update when the states changes
