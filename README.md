@@ -5,11 +5,12 @@
 **riotux** is a centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
 <p align="center">
-  <img src="test/img/riotux_todo.gif" alt="riotux todo app" width="600">
+  <img src="test/img/react-riotux.gif" alt="react count" width="600">
 </p>
 
 ### Examples:
-<a href="https://github.com/luisvinicius167/riotux-todo"> Todo app example + guide </a><br>
+<a href="https://github.com/luisvinicius167/riotux-react-count"> React count app example + guide </a><br>
+<a href="https://github.com/luisvinicius167/riotux-todo"> Riot Todo app example + guide </a><br>
 
 ### Install
 * Npm: ``` npm install riotux ```
