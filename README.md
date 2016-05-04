@@ -18,7 +18,7 @@
 * Cdn: ``` https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.5/riotux.min.js ```
 
 ### Why you need riotux?
-If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your Riot components. This is where riotux comes into play.
+If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your components. This is where riotux comes into play.
 
 ### Data Flow
 In riotux data flow is unidirectional, as it should be in Flux:
