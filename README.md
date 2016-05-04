@@ -65,7 +65,7 @@ Application state is held in the store, as a single object. **riotux** uses a si
 When some state change in your store, all components that will listening the changed state will be updated. You just use ``` riotux.subscribe(component, state, [...states]) ```. When your component will **unmount**, you can unsubscribe for states changes: ``` riotux.subscribe(component) ```.
 
 ```html
-<!-- in your component -->
+<!-- In this example, a Riot Component -->
   <h1> Count: { count } </h1>
   <script>
     riotux.subscribe(this, 'count');
