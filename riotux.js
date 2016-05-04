@@ -1,16 +1,5 @@
-/**
- * UMD Support
- */
-(function ( root, factory ) {
-  if ( typeof define === "function" && define.amd ) {
-    define([], factory);
-  }
-  else if ( typeof module !== "undefined" ) {
-    module.exports = factory;
-  } else {
-    root.riotux = factory();
-  }
-} ( this, function ( ) {
+!function(e,n){"function"==typeof define&&define.amd?define([],n):"undefined"!=typeof module?module.exports=n:e.riotux=n()}(this,
+ function ( ) {
   /*!
   --------------------------------
   riotux.js
@@ -198,4 +187,4 @@
     }
   };
   return new riotux;
-}));
+});
