@@ -20,6 +20,12 @@
 ### Why you need riotux?
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your components. This is where riotux comes into play.
 
+### Reasons to use:
+* Simple and minimalistic API
+* Single state tree
+* Immutable state
+* Unidirectional data flow
+
 ### Data Flow
 In riotux data flow is unidirectional, as it should be in Flux:
 
