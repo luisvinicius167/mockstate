@@ -5,7 +5,7 @@ riot.tag2('one', '<h1>Foo Component: counter = { counter }</h1>', '', '', functi
     self.on('mount', function() {
       console.log('Calling the action for change the #counter state in the ', this.root, ' tag.');
       setTimeout(function(){
-        riotux.action('counter', 'change_count', 2);
+        riotux.action('counter', 'increment_counter', 1);
       }, 3000);
       setTimeout(function(){
         self.unmount();
