@@ -10,30 +10,12 @@
   + Documentation: https://github.com/luisvinicius167/riotux
 */
   'use strict';
-  /**
-   * [verifyState function to check the state tree]
-   * @param  {[Array]} arr [the names of states tree]
-   * @return {[string]}     [return the name of state to get your value]
-   */
-  var verifyState = function ( arr ) {
-    var valuecount = _store.state [arr[arr.length-2]]
-      , value = _store.state[arr[arr.length-2]][arr[arr.length-1]]
-      , currentState
-    ;
-    for (var i=0; i < arr.length; i++) {
-      if (_store.state[arr[arr.length-2]][arr[arr.length-1]] !== "object") {
-        currentState = [arr[arr.length-2]];
-      }
-    }
-    return currentState.toString();
-  };
+  
   /**
    * @name  _currentState
    * @description The current state for state that will be changed
    */
-  var _currentState
-  , _substate
-  ;
+  var _currentState;
   /**
    * @name  _trigger
    * @description The update function that
@@ -120,23 +102,22 @@
        * @name  dispatch 
        * @description Send the data for change state and update all listening components when state changed]
        * @param  { string } name [the name of mutation function you want to call]
-       * @return { Promise } 
        */
       dispatch: function ( name ) {
         var _slice = Array.prototype.slice.call(arguments, 1)
           , state = [_store.state]
           , args = state.concat(_slice)
         ;
-        if ( _substate ) {
-          state = [_store.state[_substate]];
+        return Promise
+          .resolve(_store.mutations[name].apply(null, args))
+          .then(function ( ) {
+            _store.update();
+          })
+          .catch(function ( e ) {
+            throw new Error('Your component cannot be updated.');
+          });
         }
-        return new Promise( function ( resolve, reject ) {
-          resolve(_store.mutations[name].apply(null, args));
-        }).then(function ( result ) {
-          _store.update();
-        });
-      }
-    };
+      },
     /**
      * @name actions
      * @description All actions for components call
@@ -188,16 +169,7 @@
      */
     action: function ( ) {
       _currentState = arguments[0];
-      // check if has state tree
-      if (_currentState.indexOf(':') !== -1 ) {
-        var arr = _currentState.split(':');
-        _substate = verifyState(arr);
-        _currentState = [arr[arr.length-1]];
-        if (_store.state[_substate][arr[arr.length-1]] !== undefined ) {
-          var args = Array.prototype.slice.call(arguments, 2);
-          this.actions[arguments[1]].apply(null, args);
-        }
-      } else if (_store.state[_currentState] !== undefined ) {
+      if (_store.state[_currentState] !== undefined ) {
         var args = Array.prototype.slice.call(arguments, 2);
         this.actions[arguments[1]].apply(null, args);
       } else {
