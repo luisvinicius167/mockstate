@@ -7,7 +7,7 @@ var store = riotux.Store({
     increment: function ( state, n ) {
       state.count += n;
     },
-    increment_counter: function ( state, n, b, c ) {
+    increment_counter: function ( state, n ) {
       state.counter += n;
       console.log('State #counter changed.');
     },

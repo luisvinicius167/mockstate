@@ -65,19 +65,26 @@ var store = riotux.Store({
 ```
 
 #### State
-Application state is held in the store, as a single object. **riotux** uses a single state tree - that is, this single object contains all your application level state and serves as the "single source of truth". This also means usually you will have only one store for each application.
+Application state is held in the store, as a single object. **riotux** uses a **single state tree** - that is, this single object contains all your application level state and serves as the *"single source of truth"*. This also means usually you will have only one store for each application.
 
 #### Observe state changes in your Component
-When some state change in your store, all components that will listening the changed state will be updated. You just use ``` riotux.subscribe(component, state, [...states]) ```. When your component will **unmount**, you can unsubscribe for states changes: ``` riotux.subscribe(component) ```.
+> When some state change in your store, your handler function will called. 
+
+In your **Component** you just use ``` riotux.subscribe(component, [states], handler) ```. In your hanlder function, you can update your component. **Your handler recieves two arguments: the state name that was changed and the new state value.**
+
+When your component will **unmount**, you can unsubscribe for states changes: ``` riotux.subscribe(component) ```.
 
 ```html
 <!-- In this example, a Riot Component -->
   <h1> Count: { count } </h1>
   <script>
-    riotux.subscribe(this, 'count');
+    var self = this;
+    riotux.subscribe(this, 'count', function ( state, state_value ) {
+      self.update();
+    });
 
     this.on('update', function ( ) {
-      self.count = riotux.getter('count'); // get the count state value
+      self.count = riotux.getter('count'); // recieves the new state value
     });
 
     this.on('unmount', function ( ) {
@@ -123,20 +130,15 @@ var store = riotux.Store({
 });
 ```
 
-```javascript
-  store.dispatch('increment', 2); //  log-> 3;
-```
 ### Actions
-Actions are just functions that dispatch mutations. The actions will be called from components.
+Actions are just functions that dispatch mutations. **All actions recieves the store as frist argumets**. The actions will be called from components.
 
 Creating an action:
 
 ```javascript
 var action = riotux.Actions({
-  add: function ( number ) {
+  add: function ( store, number ) {
     store.dispatch('increment', number);
-    // if you don't have a store instance in your application
-    // riotux.store.dispatch('increment', 1);
   }
 }); 
 ```
@@ -149,7 +151,7 @@ var action = riotux.Actions({
 The ```action``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
 
 ### Getter
-If you want to get the state value, use ```riotux.getter(sate_name)```.
+To get the state value, use ```riotux.getter(sate_name)``` in your Components.
 
 ### Application Structure
 Just suggesting.

@@ -21,6 +21,17 @@
      * @type { Object }
      */
     var _store = {
+      dispatch: function ( name ) {
+        var _slice = Array.prototype.slice.call(arguments, 1)
+          , state = [_store.state]
+          , args = state.concat(_slice)
+        ;
+        return Promise
+          .resolve(_store.mutations[name].apply(null, args))
+          .then(function ( ) {
+            _store.update();
+          });
+        },
       /**
        * [tags contain all tags and states]
        * @type {Array}
@@ -67,30 +78,6 @@
      * @function riotux
      */
     function riotux ( ) {
-      var self = this;
-      /**
-       * @name store
-       * @description Manage all application state
-       * @type { Object }
-       */
-      this.store = {
-        /**
-         * @name  dispatch 
-         * @description Send the data for change state and update all listening components when state changed]
-         * @param  { string } name [the name of mutation function you want to call]
-         */
-        dispatch: function ( name ) {
-          var _slice = Array.prototype.slice.call(arguments, 1)
-            , state = [_store.state]
-            , args = state.concat(_slice)
-          ;
-          return Promise
-            .resolve(_store.mutations[name].apply(null, args))
-            .then(function ( ) {
-              _store.update();
-            });
-          }
-        },
       /**
        * @name actions
        * @description All actions for components call
@@ -129,7 +116,6 @@
        */
       Store: function ( data ) {
         _store = Object.assign(_store, data);
-        return this.store;
       },  
       /**
        * @name  Actions
@@ -147,11 +133,16 @@
        */
       action: function ( ) {
         _currentState = arguments[0];
+        // pass just the method dispatch to action
+        var store_to_action = { dispatch: _store.dispatch }
+          , store = [store_to_action]
+          , args
+        ;
         if (_store.state[_currentState] !== undefined ) {
-          var args = Array.prototype.slice.call(arguments, 2);
+          args = store.concat(Array.prototype.slice.call(arguments, 2));
           this.actions[arguments[1]].apply(null, args);
         } else {
-          var args = Array.prototype.slice.call(arguments, 1);
+          args = store.concat(Array.prototype.slice.call(arguments, 1));
           this.actions[arguments[0]].apply(null, args);
         }
       },
