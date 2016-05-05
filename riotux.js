@@ -2,7 +2,7 @@
    function ( ) {
     /*!
     --------------------------------
-    riotux.js
+    riotux.js 
     --------------------------------
     + https://luisvinicius167.github.io/riotux/
     + Copyright 2016 Luis Vinícius
