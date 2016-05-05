@@ -101,21 +101,23 @@
       /**
        * @name  dispatch 
        * @description Send the data for change state and update all listening components when state changed]
-       * @param  { string } type [the name of mutation function you want to call]
-       * @return { Promise } 
+       * @param  { string } name [the name of mutation function you want to call]
        */
       dispatch: function ( name ) {
         var _slice = Array.prototype.slice.call(arguments, 1)
           , state = [_store.state]
           , args = state.concat(_slice)
         ;
-        return new Promise( function ( resolve, reject ) {
-          resolve(_store.mutations[name].apply(null, args));
-        }).then(function ( result ) {
-          _store.update();
-        });
-      }
-    };
+        return Promise
+          .resolve(_store.mutations[name].apply(null, args))
+          .then(function ( ) {
+            _store.update();
+          })
+          .catch(function ( e ) {
+            throw new Error('Your component cannot be updated.');
+          });
+        }
+      },
     /**
      * @name actions
      * @description All actions for components call
@@ -139,7 +141,7 @@
      * @description unsubscribe component for states changes
      * @param  { string } component The Component instance
      */
-    unsubscribe: function ( tag ) {
+    unsubscribe: function ( component ) {
       _store.unsubscribe(component);
     },
     /**
