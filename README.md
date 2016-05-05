@@ -1,4 +1,4 @@
-# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.5-blue.svg)](https://www.npmjs.com/package/riotux)
+# riotux  [![npm package](https://img.shields.io/badge/npm-1.0.51-blue.svg)](https://www.npmjs.com/package/riotux)
 > A centralized state management inspired in Flux and Redux.
 
 ## Intro 
