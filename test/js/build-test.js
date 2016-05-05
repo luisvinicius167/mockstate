@@ -1,13 +1,14 @@
 riot.tag2('one', '', '', '', function(opts) {
     var self = this;
-    riotux.subscribe(self, 'counter');
+    riotux.subscribe(self, ['counter'], function ( ) {
+      self.update();
+    });
 
     self.on('mount', function(){
-      riotux.action('counter', 'change_count', 2);
+      riotux.action('counter', 'increment_counter', 2);
     });
 
     self.on('update', function ( ) {
       window.counter = riotux.getter('counter');
-      riotux.action('add', 1, 2);
     });
 });
