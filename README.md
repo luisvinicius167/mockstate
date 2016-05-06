@@ -15,6 +15,8 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
+* Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
+
 
 ### Why you need riotux?
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your components. This is where riotux comes into play.
