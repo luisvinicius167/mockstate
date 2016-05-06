@@ -22,6 +22,7 @@
 If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your components. This is where riotux comes into play.
 
 ### Reasons to use:
+* Tiny size: ~1.3kb
 * Simple and minimalistic API
 * Single state tree
 * Immutable state
