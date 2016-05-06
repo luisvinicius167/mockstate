@@ -168,5 +168,23 @@ Just suggesting.
 |   ├──action.js
 ```
 
+### API Reference
+
+* #### Store:
+  * ``` riotux.Store({ state, mutations }) ```: Create a single store with the state of your application and the mutations functions.
+
+* #### Actions:
+  * ``` riotux.Actions({}) ```: Creates all actions of your application.
+
+* #### Component:
+  * ``` riotux.subscribe(component, [states], handler( state_name, value )) ```: Subscribe your component to observe the state changes. Every time the state that your component are observing, the handler function will called. In the handle function you can update your component. The ``` handler ``` recieves as first argument the state name that was changed and the value of the state as second argument.
+  
+  * ``` riotux.unsubscribe(component) ```: Unsubscribe your component. Your component don't observe the states changes anymore.
+  
+  * ``` riotux.action('state', 'event_name' [,args]) ```: Trigger the action for call the mutation store function. The ``` state ``` is the name of state that you wants to change. ``` event_name ``` is the mutation function name and you can pass tha arguments after the ``` event_name ```.
+  
+  * ``` riotux.getter(state) ```: Gets a value of the state that you passed as argument.
+
+
 ### License
 MIT License.
