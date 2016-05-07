@@ -11,7 +11,7 @@
 ### Examples:
 <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
 <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
-<a href="http://luisvinicius167.github.io/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
+<a href="https://github.com/luisvinicius167/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
 
 ### Install
 * Npm: ``` npm install riotux ```
