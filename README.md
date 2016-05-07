@@ -1,8 +1,8 @@
 # riotux  [![npm package](https://img.shields.io/badge/npm-1.0.6-blue.svg)](https://www.npmjs.com/package/riotux)
-> A centralized state management inspired in Flux and Redux.
+> A reactive centralized state management for Javascript Apps.
 
 ## Intro 
-**riotux** is a centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
+**riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
 <p align="center">
   <img src="test/img/react-riotux.gif" alt="react count" width="600">
@@ -17,15 +17,11 @@
 * Bower: ``` bower install riotux ```
 * Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
 
-
-### Why you need riotux?
-If your app is simple enough, you probably don't need riotux. Don't apply it prematurely. But if you are building a medium-to-large-scale SPA, chances are you have run into situations that make you think about how to better structure things outside of your components. This is where riotux comes into play.
-
-### Reasons to use:
+### Why riotux:
 * Tiny size: ~1.3kb
 * Simple and minimalistic API
 * Single state tree
-* Immutable state
+* Reactive
 * Unidirectional data flow
 
 ### Data Flow
@@ -33,7 +29,7 @@ In riotux data flow is unidirectional, as it should be in Flux:
 
 * The component triggers action calls;
 * Actions dispatch mutations that change the state;
-* Changes in state flow from the store back into the component via riotux obervables.
+* Changes in state flow from the store back into the component via handler.
 
 ### Principles:
 * Application state is held in the store, as a single object. 
@@ -41,13 +37,13 @@ In riotux data flow is unidirectional, as it should be in Flux:
 * Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
 ### Store: 
-The **store** is basically a container that holds your application state. There are two things that makes a riotux store different:
+The **Store** is basically a container that holds your application state. There are two things that makes a riotux Store different:
 
- * The store are **reactive**. Your component can observe changes in the store state, and when the state is changed, your component will be updated.
+ * The Store are **reactive**. Your Component can observe changes in the store state, and when the state is changed, your component will be notified.
  
  * You cannot directly mutate the store's **state**. The only way to change a store's state is by explicitly dispatching mutations.
 
-Creating a riotux store is pretty straightforward - just provide an initial state object, and some mutations:
+Creating a riotux Store is pretty straightforward - just provide an initial state object, and some mutations:
 
 ```javascript
 var store = riotux.Store({
@@ -67,12 +63,12 @@ var store = riotux.Store({
 ```
 
 #### State
-Application state is held in the store, as a single object. **riotux** uses a **single state tree** - that is, this single object contains all your application level state and serves as the *"single source of truth"*. This also means usually you will have only one store for each application.
+Application state is held in the store, as a single object. **riotux** uses a **single state tree** - that is, this single object contains all your application level state and serves as the *"single source of truth"*. This also means usually you will have only one Store for each application.
 
 #### Observe state changes in your Component
 > When some state change in your store, your handler function will called. 
 
-In your **Component** you just use ``` riotux.subscribe(component, [states], handler) ```. In your hanlder function, you can update your component. **Your handler recieves two arguments: the state name that was changed and the new state value.**
+In your **Component** you just use ``` riotux.subscribe(component, [states], handler) ```. In your hanlder function, you can update your component. **Your handler recieves two arguments: the name of the state that was changed and the new state value.**
 
 When your component will **unmount**, you can unsubscribe for states changes: ``` riotux.subscribe(component) ```.
 
@@ -82,6 +78,7 @@ When your component will **unmount**, you can unsubscribe for states changes: ``
   <script>
     var self = this;
     riotux.subscribe(this, 'count', function ( state, state_value ) {
+      // the state changed, than update the component
       self.update();
     });
 
@@ -96,7 +93,7 @@ When your component will **unmount**, you can unsubscribe for states changes: ``
 ```
 
 #### Mutations
-The mutations are essentially events: each mutation has a name and a callback. In riotux the callback function will receive the state as the first argument:
+The mutations are essentially events: each mutation has a name and a callback. In riotux, the mutation function always receives the Store state as the first argument:
 
 ```javascript
 var store = riotux.Store({
@@ -109,12 +106,6 @@ var store = riotux.Store({
     }
   }
 });
-```
-
-You cannot directly call a mutation callback. When an increment event is dispatched, the callback is triggered. To invoke a mutation callback, you need to dispatch a mutation event:
-
-```javascript
-  store.dispatch('increment');
 ```
 
 #### Dispatch with Arguments
@@ -131,6 +122,8 @@ var store = riotux.Store({
   }
 });
 ```
+
+> You cannot directly call a mutation callback. When an increment event is dispatched, the callback is triggered. To invoke a mutation callback, you need to call an action.
 
 ### Actions
 Actions are just functions that dispatch mutations. **All actions recieves the store as frist argumets**. The actions will be called from components.
