@@ -18,7 +18,7 @@
 * Bower: ``` bower install riotux ```
 * Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
 
-### Why riotux:
+### Why riotux?
 * Tiny size: ~1.3kb
 * Simple and minimalistic API
 * Single state tree
