@@ -4,6 +4,15 @@
 ## Intro 
 **riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
+```
+╔═════════╗       ╔═══════════╗       ╔═══════════╗       ╔═════════════════╗
+║ Actions ║──────>║ Mutations ║ ────> ║   State   ║ ────> ║ View Components ║
+╚═════════╝       ╚═══════════╝       ╚═══════════╝       ╚═════════════════╝
+     ^                                                            │
+     └────────────────────────────────────────────────────────────┘
+
+```
+
 <p align="center">
   <img src="test/img/react-riotux.gif" alt="react count" width="600">
 </p>
@@ -11,14 +20,14 @@
 ### Examples:
 <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
 <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
-<a href="http://luisvinicius167.github.io/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
+<a href="https://github.com/luisvinicius167/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
 
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
 * Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
 
-### Why riotux:
+### Why riotux?
 * Tiny size: ~1.3kb
 * Simple and minimalistic API
 * Single state tree
