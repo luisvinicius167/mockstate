@@ -87,10 +87,6 @@
     };
 
     riotux.prototype = {
-      listen: function ( callback ) {
-        _store.addListener( callback );
-      },
-
       /**
        * @name subscribe
        * @description subscribe the tag to update when the states changes
