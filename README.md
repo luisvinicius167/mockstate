@@ -50,7 +50,7 @@ In riotux data flow is unidirectional, as it should be in Flux:
 ### Store:
 A **Store** is basically a container that holds your application state. There are two things that makes a __riotux__ store different:
 
- * A Store are **reactive**. Your Component can observe changes in the store's state, and when the state is changed, your component will be notified.
+ * A Store is **reactive**. Your component can observe changes in the store's state, if there is a change, your component will be notified.
 
  * You cannot directly mutate the store's **state**. The only way to change a store's state is by explicitly dispatching mutations.
 
