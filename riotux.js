@@ -150,5 +150,5 @@
         return _store.state[name];
       }
     };
-    return new riotux;
+    return new riotux();
   });
