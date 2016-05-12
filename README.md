@@ -48,9 +48,9 @@ In riotux data flow is unidirectional, as it should be in Flux:
 * Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
 ### Store:
-The **Store** is basically a container that holds your application state. There are two things that makes a __riotux__ store different:
+A **Store** is basically a container that holds your application state. There are two things that makes a __riotux__ store different:
 
- * The Store are **reactive**. Your Component can observe changes in the store state, and when the state is changed, your component will be notified.
+ * A Store are **reactive**. Your Component can observe changes in the store's state, and when the state is changed, your component will be notified.
 
  * You cannot directly mutate the store's **state**. The only way to change a store's state is by explicitly dispatching mutations.
 
@@ -183,7 +183,7 @@ Just suggesting.
 
 * #### Component:
   * ``` riotux.subscribe(component, [states], handler( state_name, value )) ```: Subscribe your component to observe state changes. Every time the state changes, the corresponding handler function will called. In most cases, you would update your component in this handler. The ``` handler ``` receives as the first argument, the state name that was changed and the value of the state as second argument.
-  
+
   * ``` riotux.unsubscribe(component) ```: Unsubscribe your component. Your component stops observing state changes.
 
   * ``` riotux.action('state', 'event_name' [,args]) ```: Trigger the action that invokes the corresponding mutation store function. The ``` state ``` is the name of state that you wants to change. ``` event_name ``` is the mutation function name. Arguments can be passed after the ``` event_name ```.
