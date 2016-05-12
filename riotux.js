@@ -143,7 +143,7 @@
         }
       },
       /**
-       * @name getter
+       * @name get
        * @param  { string } name The name of state
        */
       get: function ( name ) {
