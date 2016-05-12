@@ -146,7 +146,7 @@
        * @name getter
        * @param  { string } name The name of state
        */
-      getter: function ( name ) {
+      get: function ( name ) {
         return _store.state[name];
       }
     };
