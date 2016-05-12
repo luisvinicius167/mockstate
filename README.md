@@ -5,15 +5,14 @@
 ## Intro
 **riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
-```
+<pre align="center">
 ╔═════════╗       ╔═══════════╗       ╔═══════════╗       ╔═════════════════╗
 ║ Actions ║──────>║ Mutations ║ ────> ║   State   ║ ────> ║ View Components ║
 ╚═════════╝       ╚═══════════╝       ╚═══════════╝       ╚═════════════════╝
      ^                                                            │
      └────────────────────────────────────────────────────────────┘
 
-```
-
+</pre>
 <p align="center">
   <img src="test/img/react-riotux.gif" alt="react count" width="600">
 </p>
