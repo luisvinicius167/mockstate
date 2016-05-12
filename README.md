@@ -29,9 +29,15 @@
 * Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
 
 ### Why riotux?
-* Tiny size: ~1.3kb
+Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates. 
+
+By centralizing its management in a single place, we no longer need to pass events around, because everything that affects more than one component should belong there. In addition, this allows us to record and inspect every mutation for easier understanding of state changes. 
+
+### Reasons for use
+* Tiny size: ~1.4kb
 * Simple and minimalistic API
 * Single state tree
+* Support nested states.
 * Reactive
 * Unidirectional data flow
 
