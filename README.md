@@ -94,7 +94,7 @@ When your component will **unmount**, you can unsubscribe for states changes: ``
     });
 
     this.on('update', function ( ) {
-      self.count = riotux.getter('count'); // recieves the new state value
+      self.count = riotux.get('count'); // recieves the new state value
     });
 
     this.on('unmount', function ( ) {
@@ -156,8 +156,8 @@ var action = riotux.Actions({
 
 The ```action``` recieves the **state** that you wants to change as first argument, the ***mutation event name** as the second argument and the values you nedd to pass like arguments to the mutation callback.
 
-### Getter
-To get the state value, use ```riotux.getter(sate_name)``` in your Components.
+### Get
+To get the state value, use ```riotux.get(sate_name)``` in your Components.
 
 ### Application Structure
 Just suggesting.
@@ -187,7 +187,7 @@ Just suggesting.
   
   * ``` riotux.action('state', 'event_name' [,args]) ```: Trigger the action for call the mutation store function. The ``` state ``` is the name of state that you wants to change. ``` event_name ``` is the mutation function name and you can pass tha arguments after the ``` event_name ```.
   
-  * ``` riotux.getter(state) ```: Gets a value of the state that you passed as argument.
+  * ``` riotux.get(state) ```: Gets a value of the state that you passed as argument.
 
 
 ### License
