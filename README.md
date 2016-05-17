@@ -20,6 +20,7 @@
 ### Examples:
 <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
 <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
+<a href="https://github.com/luisvinicius167/riotux-cart-shopping"> Riot.js Shopping Cart Example </a><br>
 <a href="https://github.com/luisvinicius167/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
 
 ### Install
