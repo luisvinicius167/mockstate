@@ -9,6 +9,6 @@ riot.tag2('one', '', '', '', function(opts) {
     });
 
     self.on('update', function ( ) {
-      window.counter = riotux.getter('counter');
+      window.counter = riotux.get('counter');
     });
 });

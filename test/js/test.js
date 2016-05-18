@@ -2,12 +2,12 @@
 describe('state', function(){
   describe('#count', function(){
     it('should be one', function(){
-      chai.assert.equal(1, riotux.getter('count'));
+      chai.assert.equal(1, riotux.get('count'));
     })
   })
   describe('#counter', function(){
     it('should be three', function(){
-      chai.assert.equal(3, riotux.getter('counter'));
+      chai.assert.equal(3, riotux.get('counter'));
     })
   })
 });
