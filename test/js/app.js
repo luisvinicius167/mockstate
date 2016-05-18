@@ -13,8 +13,8 @@ riot.tag2('one', '<h1>Foo Component: counter = { counter } { count ? "Count: " +
     });
 
     self.on('update', function ( ) {
-      self.counter = riotux.getter('counter');
-      self.count = riotux.getter('count');
+      self.counter = riotux.get('counter');
+      self.count = riotux.get('count');
     });
 
     self.on('unmount', function() {
@@ -33,6 +33,6 @@ riot.tag2('two', '<h1>Bar Component: counter = { counter }</h1>', '', '', functi
       }, 7000);
 
     self.on('update', function ( ) {
-      self.counter = riotux.getter('counter');
+      self.counter = riotux.get('counter');
     });
 });
