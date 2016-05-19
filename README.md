@@ -14,7 +14,7 @@
 
 </pre>
 <p align="center">
-  <img src="test/img/react-riotux.gif" alt="react count" width="600">
+  <img src="test/img/react-count.gif" alt="react riotux" width="600">
 </p>
 
 ### Examples:
