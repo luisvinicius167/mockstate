@@ -18,6 +18,7 @@
 </p>
 
 ### Examples:
+<a href="http://luisvinicius167.github.io/react-todo-riotux/"> React.js Todo Example </a><br>
 <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
 <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
 <a href="https://github.com/luisvinicius167/riotux-cart-shopping"> Riot.js Shopping Cart Example </a><br>
