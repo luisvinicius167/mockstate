@@ -1,5 +1,5 @@
 # riotux <br/>
-[![npm package](https://img.shields.io/badge/npm-1.0.6-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
+[![npm package](https://img.shields.io/badge/npm-1.0.61-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
 > A reactive centralized state management for Javascript Apps.
 
 ## Intro
