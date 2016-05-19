@@ -26,7 +26,7 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
-* Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.6/riotux.min.js"></script> ```
+* Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.61/riotux.min.js"></script> ```
 
 ### Why riotux?
 Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates. 
