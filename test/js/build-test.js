@@ -1,6 +1,7 @@
 riot.tag2('one', '', '', '', function(opts) {
     var self = this;
-    riotux.subscribe(self, ['counter'], function ( ) {
+    riotux.subscribe(self, ['counter'], function ( state, stateValue, actionName ) {
+      console.log(state, stateValue, actionName)
       self.update();
     });
 

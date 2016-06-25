@@ -17,17 +17,17 @@
      */
     var _currentState;
     /**
-     * @name  the store state and mutations
+     * @actionName  the store state and mutations
      * @type { Object }
      */
     var _store = {
-      dispatch: function ( name ) {
+      dispatch: function ( actionName ) {
         var _slice = Array.prototype.slice.call(arguments, 1)
           , state = [_store.state]
           , args = state.concat(_slice)
         ;
-          _store.mutations[name].apply(null, args)
-           return _store.update();
+          _store.mutations[actionName].apply(null, args)
+           return _store.update(actionName);
         },
       /**
        * [tags contain all tags and states]
@@ -60,11 +60,11 @@
        * @name update
        * @description Execute the component handler, because the state changed
        */
-      update: function ( ) {
+      update: function ( actionName ) {
         _store.tags.forEach(function ( el, index, arr ) {
           if ( el.states.indexOf(_currentState) !== -1 ) {
             if (typeof el.handler === "function") {
-              el.handler( _currentState, _store.state[_currentState] );
+              el.handler( _currentState, _store.state[_currentState], actionName );
             }
           }
         });

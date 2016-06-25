@@ -1,8 +1,8 @@
 riot.tag2('one', '<h1>Foo Component: counter = { counter } { count ? "Count: " + count : ""}</h1>', '', '', function(opts) {
     var self = this;
-    riotux.subscribe(self, ['counter', 'count'], function ( state, value ) {
-        self.update();
-      console.log('The state name: #', state, ' The state value: #', value);
+    riotux.subscribe(self, ['counter', 'count'], function ( state, stateValue, actionName ) {
+      self.update();
+      console.log('The state name: #', state, ' The state value: #', stateValue, 'Action:', actionName);
     });
     
     self.on('mount', function() {
