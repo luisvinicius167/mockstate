@@ -1,6 +1,6 @@
 {
  "name": "riotux",
- "version": "1.0.61",
+ "version": "1.0.62",
  "description": "A centralized state management inspired in Flux and Redux.",
  "main": "riotux.js",
  "scripts": {
