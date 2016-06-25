@@ -26,11 +26,8 @@
           , state = [_store.state]
           , args = state.concat(_slice)
         ;
-        return Promise
-          .resolve(_store.mutations[name].apply(null, args))
-          .then(function ( ) {
-            _store.update();
-          });
+          _store.mutations[name].apply(null, args)
+           return _store.update();
         },
       /**
        * [tags contain all tags and states]
