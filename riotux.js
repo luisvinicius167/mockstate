@@ -21,13 +21,13 @@
      * @type { Object }
      */
     var _store = {
-      dispatch: function ( actionName ) {
-        var _slice = Array.prototype.slice.call(arguments, 1)
+      dispatch: function ( stateName, actionName ) {
+        var _slice = Array.prototype.slice.call(arguments, 2)
           , state = [_store.state]
           , args = state.concat(_slice)
         ;
           _store.mutations[actionName].apply(null, args)
-           return _store.update(actionName);
+           return _store.update(stateName, actionName);
         },
       /**
        * [tags contain all tags and states]
@@ -60,11 +60,11 @@
        * @name update
        * @description Execute the component handler, because the state changed
        */
-      update: function ( actionName ) {
+      update: function ( stateName, actionName ) {
         _store.tags.forEach(function ( el, index, arr ) {
-          if ( el.states.indexOf(_currentState) !== -1 ) {
+          if ( el.states.indexOf(stateName) !== -1 ) {
             if (typeof el.handler === "function") {
-              el.handler( _currentState, _store.state[_currentState], actionName );
+              el.handler( stateName, _store.state[stateName], actionName );
             }
           }
         });
@@ -127,7 +127,11 @@
       action: function ( ) {
         _currentState = arguments[0];
         // pass just the method dispatch to action
-        var store_to_action = { dispatch: _store.dispatch }
+        var stateName = arguments[0]
+          , store_to_action = { dispatch: function(){
+                    Array.prototype.unshift.call(arguments, stateName);
+                    _store.dispatch.apply(null, arguments);
+                }}
           , store = [store_to_action]
           , args
         ;
