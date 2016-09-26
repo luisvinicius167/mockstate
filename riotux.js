@@ -12,11 +12,6 @@
     'use strict';
     
     /**
-     * @name  _currentState
-     * @description The current state for state that will be changed
-     */
-    var _currentState;
-    /**
      * @actionName  the store state and mutations
      * @type { Object }
      */
@@ -125,8 +120,7 @@
        * @return { void }
        */
       action: function ( ) {
-        _currentState = arguments[0];
-        // pass just the method dispatch to action
+        // pass the dispatch method with state name as first argument to action
         var stateName = arguments[0]
           , store_to_action = { dispatch: function(){
                     Array.prototype.unshift.call(arguments, stateName);
@@ -135,7 +129,7 @@
           , store = [store_to_action]
           , args
         ;
-        if (_store.state[_currentState] !== undefined ) {
+        if (_store.state[stateName] !== undefined ) {
           args = store.concat(Array.prototype.slice.call(arguments, 2));
           this.actions[arguments[1]].apply(null, args);
         } else {
