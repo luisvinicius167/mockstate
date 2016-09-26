@@ -1,5 +1,5 @@
 # riotux <br/>
-[![npm package](https://img.shields.io/badge/npm-1.0.62-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
+[![npm package](https://img.shields.io/badge/npm-1.0.63-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
 > A reactive centralized state management for Javascript Apps.
 
 ## Intro
@@ -27,7 +27,7 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
-* Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.62/riotux.min.js"></script> ```
+* Cdn: ``` <script src="https://cdnjs.cloudflare.com/ajax/libs/riotux/1.0.63/riotux.min.js"></script> ```
 
 ### Why riotux?
 Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates. 
