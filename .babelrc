@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "es2017"
+  ],
+  "plugins": [
+    [
+      "transform-regenerator"
+    ]
+  ]
+}
