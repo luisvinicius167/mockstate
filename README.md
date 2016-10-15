@@ -1,168 +1,212 @@
-# Preact Boilerplate / Starter Kit
+# riotux <br/>
+[![npm package](https://img.shields.io/badge/npm-2.0-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
+> A reactive centralized state management for Javascript Apps.
 
-[![Build Status](https://travis-ci.org/developit/preact-boilerplate.svg?branch=master)](https://travis-ci.org/developit/preact-boilerplate)
-[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/developit/preact)
+## Intro
+**riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
-> :guitar: Ready-to-rock [Preact] starter project, powered by [webpack].
->
-> :rocket: If you're starting a new project using [Preact], you've come to the right place.
-Below is a step-by-step guide that takes you straight from downloading this boilerplate to production.
->
-> **[:boom: View Demo :boom:](https://preact-boilerplate.surge.sh)**
+<pre align="center">
+╔══════════╗       ╔═══════════╗       ╔═════════════════╗
+║ dispatch ║──────>║  Mutators ║ ────> ║ View Components ║
+╚══════════╝       ╚═══════════╝       ╚═════════════════╝       
+     ^                                           │
+     └───────────────────────────────────────────┘
 
+</pre>
+<p align="center">
+  <img src="test/img/react-count.gif" alt="react riotux" width="600">
+</p>
 
----
+### Examples:
+ * <a href="https://github.com/luisvinicius167/react-todo-riotux/"> React.js Todo Example </a><br>
+ * <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
+ * <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
+ * <a href="https://github.com/luisvinicius167/riotux-cart-shopping"> Riot.js Shopping Cart Example </a><br>
+ * <a href="https://github.com/luisvinicius167/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
 
+### Install
+* Npm: ``` npm install riotux ```
+* Bower: ``` bower install riotux ```
 
-# Quick-Start Guide
+### Whats new on riotux 2.0?
+Now, you just use dispatch method to trigget action to mutators for change the Appliaction Store State. When the State Change, you will receive the New data that contain the State value and Action Name.
 
-- [Installation](#installation)
-- [Development Workflow](#development-workflow)
-- [Structure](#structure)
-- [CSS Modules](#css-modules)
-- [Handling URLS](#handling-urls)
-
-
-## Installation
-
-**1. Clone this repo:**
-
-```sh
-git clone --depth 1 https://github.com/developit/preact-boilerplate.git my-app
-cd my-app
+```javascript
+import {dispatch} from 'riotux'
+dispatch('increment', 1)
+  .then( ( data ) => {
+    console.log('The state was changed.');
+    // this.setState({count: data.stateValue});
+  })
 ```
 
-
-**2. Make it your own:**
-
-```sh
-rm -rf .git && git init && npm init
-```
-
-> :information_source: This re-initializes the repo and sets up your NPM project.
+### Very simple to use.
+Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates.
 
 
-**3. Install the dependencies:**
+### Reasons for use
+* Tiny size: ~1.6kb
+* Simple and minimalistic API
+* Single state tree
+* Support nested states.
+* Reactive
+* Unidirectional data flow
 
-```sh
-npm install
-```
+### Data Flow
+In riotux data flow is unidirectional, as it should be in Flux:
 
-> You're done installing! Now let's get started developing.
+* Your component dispatch actions.
+* Actions dispatch mutations that change the state.
+* Changes in state flow from the store back into the component via handler.
 
+### Principles:
+* Application state is held in the store, as a single object.
+* The only way to mutate the state is by dispatching mutations on the store.
+* Mutations must be synchronous, and the only side effects they produce should be mutating the state.
 
+### Store:
+A **Store** is basically a container that holds your application state. There are two things that makes a __riotux__ store different:
 
-## Development Workflow
+ * A Store is **reactive**. Your component can observe changes in the store's state, if there is a change, your component will be notified.
 
+ * You cannot directly mutate the store's **state**. The only way to change a store's state is by explicitly dispatching mutations.
 
-**4. Start a live-reload development server:**
+Creating a riotux Store is pretty straightforward - just provide an initial state object, and some mutations:
 
-```sh
-npm run dev
-```
-
-> This is a full web server nicely suited to your project. Any time you make changes within the `src` directory, it will rebuild and even refresh your browser.
-
-**5. Testing with `mocha`, `karma`, `chai`, `sinon` via `phantomjs`:**
-
-```sh
-npm test
-```
-
-**6. Generate a production build in `./build`:**
-
-```sh
-npm run build
-```
-
-> You can now deploy the contents of the `build` directory to production!
->
-> **[Surge.sh](https://surge.sh) Example:** `surge ./build -d my-app.surge.sh`
-
-
-**5. Start local production server with `superstatic`:**
-
-```sh
-npm start
-```
-
-> This is to simulate a production (CDN) server with gzip. It just serves up the contents of `./build`.
-
-
-
----
-
-
-## Structure
-
-Apps are built up from simple units of functionality called Components. A Component is responsible for rendering a small part of an application, given some input data called `props`, generally passed in as attributes in JSX. A component can be as simple as:
-
-```js
-class Link extends Component {
-  render({ to, children }) {
-    return <a href={ to }>{ children }</a>;
+```javascript
+var store = riotux.Store({
+  state: {
+    count: 1,
+    title: 'riotux is nice!'
+  },
+  mutations: {  
+    increment: function ( state ) {
+      state.count += 1;
+    },
+    changeTitle: function ( state, newTitle ) {
+      state.title = newTitle;
+    }
   }
-}
-// usage:
-<Link to="/">Home</Link>
+});
 ```
 
+#### State
+Application state is held in the store, as a single object. **riotux** uses a **single state tree** - that is, this single object contains all your application level state and serves as the *"single source of truth"*. This also means usually you will have only one Store for each application.
 
----
+#### Observe state changes in your Component
+> When some state change in your store, your handler function will called.
 
+In your **Component** you just use ``` riotux.subscribe(component, [states], handler) ```. In your handler function, you can update your component. **Your handler receives two arguments: the name of the state that was changed and the new state value.**
 
-## CSS Modules
+Alternately, you could unsubscribe for state changes, for example, when unmounting
+a component.
 
-This project is set up to support [CSS Modules](https://github.com/css-modules/css-modules).  By default, styles in `src/style` are **global** (not using CSS Modules) to make global declarations, imports and helpers easy to declare.  Styles in `src/components` are loaded as CSS Modules via [Webpack's css-loader](https://github.com/webpack/css-loader#css-modules).  Modular CSS namespaces class names, and when imported into JavaScript returns a mapping of canonical (unmodified) CSS classes to their local (namespaced/suffixed) counterparts.
+```html
+<!-- In this example, a Riot Component -->
+  <h1> Count: { count } </h1>
+  <script>
+    var self = this;
+    riotux.subscribe(this, 'count', function ( state, state_value ) {
+      // the state changed, than update the component
+      self.update();
+    });
 
-When imported, this LESS/CSS:
+    this.on('update', function ( ) {
+      self.count = riotux.get('count'); // recieves the new state value
+    });
 
-```css
-.redText { color:red; }
-.blueText { color:blue; }
+    this.on('unmount', function ( ) {
+      riotux.unsubscribe(this); // Unsubscribe the observe states
+    });
+  </script>
 ```
 
-... returns the following map:
+#### Mutations
+The mutations are essentially events, each mutation has a name and a callback. In riotux, the mutation function always receives the Store state as the first argument:
 
-```js
-import styles from './style.css';
-console.log(styles);
-// {
-//   redText: 'redText_local_9gt72',
-//   blueText: 'blueText_local_9gt72'
-// }
+```javascript
+var store = riotux.Store({
+  state: {
+    count: 1,
+  },
+  mutations: {  
+    increment: function ( state ) {
+      state.count += 1;
+    }
+  }
+});
 ```
 
-Note that the suffix for local classNames is generated based on an md5 hash of the file. Changing the file changes the hash.
+#### Dispatch with Arguments
 
-
----
-
-
-## Handling URLS
-
-:information_desk_person: This project contains a basic two-page app with [URL routing](http://git.io/preact-router).
-
-Pages are just regular components that get mounted when you navigate to a certain URL. Any URL parameters get passed to the component as `props`.
-
-Defining what component(s) to load for a given URL is easy and declarative. You can even mix-and-match URL parameters and normal props.
-
-```js
-<Router>
-  <A path="/" />
-  <B path="/b" id="42" />
-  <C path="/c/:id" />
-</Router>
+```javascript
+var store = riotux.Store({
+  state: {
+    count: 1,
+  },
+  mutations: {  
+    increment: function ( state, value ) {
+      state.count += value;
+    }
+  }
+});
 ```
 
+> You cannot directly call a mutation callback. When an increment event is dispatched, the callback is triggered. To invoke a mutation callback, you need to call an action.
 
----
+### Actions
+Actions are just functions that dispatch mutations. **All actions receive a store as first argument**. The actions are called from components.
+
+Creating an action:
+
+```javascript
+var action = riotux.Actions({
+  add: function ( store, number ) {
+    store.dispatch('increment', number);
+  }
+});
+```
+#### Calling an action on your component
+
+```javascript
+  riotux.action('count', 'add', 10);
+```
+
+An ```action``` receives the **state** property that you want to change as first argument, the ***mutation event name** as the second argument, anything after these are passed as arguments to the mutation callback.
+
+### Get
+To get the state value, use ```riotux.get( stateName )``` in your Components.
+
+### Application Structure
+Just suggesting.
+
+```project
+├──index.html
+├──components
+|   ├──component.tag
+|   ├──other.tag
+├──riotux
+|   ├──store.js
+|   ├──action.js
+```
+
+### API Reference
+
+* #### Store:
+  * ``` riotux.Store({ state, mutations }) ```: Create a single store with the state of your application and the mutations functions.
+
+* #### Actions:
+  * ``` riotux.Actions({}) ```: Creates all actions of your application.
+
+* #### Component:
+  * ``` riotux.subscribe(component, [states], handler( stateName, stateValue, actionName )) ```: Subscribe your component to observe state changes. Every time the state changes, the corresponding handler function will called. In most cases, you would update your component in this handler. The ``` handler ``` receives as the first argument the state name that was changed, the value of the state as second argument and the actionName as third argument.
+
+  * ``` riotux.unsubscribe(component) ```: Unsubscribe your component. Your component stops observing state changes.
+
+  * ``` riotux.action('state', 'event_name' [,args]) ```: Trigger the action that invokes the corresponding mutation store function. The ``` state ``` is the name of state that you wants to change. ``` event_name ``` is the mutation function name. Arguments can be passed after the ``` event_name ```.
+
+  * ``` riotux.get(state) ```: Gets a value of the state that you passed as argument.
 
 
-## License
-
-MIT
-
-
-[Preact]: https://developit.github.io/preact
-[webpack]: https://webpack.github.io
+### License
+MIT License.
