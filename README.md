@@ -9,6 +9,8 @@
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
 
+Demo: <a href="http://riotux-preact.surge.sh/">riotux 2.0 with Preact.js</a>
+
 ### Whats new on riotux 2.0?
 Trigger actions and do something when the state was changed. You just use { dispatch } method to trigger actions for change the Appliaction Store State. 
 When the State changes, you will receive the new state data, that contain the State value and Action Name.
