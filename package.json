@@ -2,7 +2,7 @@
   "name": "riotux",
   "version": "2.0",
   "description": "A centralized state management inspired in Flux and Redux.",
-  "main": "/build/riotux.js",
+  "main": "dist/riotux.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
