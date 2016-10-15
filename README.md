@@ -5,18 +5,6 @@
 ## Intro
 **riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
 
-<pre align="center">
-╔══════════╗       ╔═══════════╗       ╔═════════════════╗
-║ dispatch ║──────>║  Mutators ║ ────> ║ View Components ║
-╚══════════╝       ╚═══════════╝       ╚═════════════════╝       
-     ^                                           │
-     └───────────────────────────────────────────┘
-
-</pre>
-<p align="center">
-  <img src="test/img/react-count.gif" alt="react riotux" width="600">
-</p>
-
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
@@ -24,6 +12,11 @@
 ### Whats new on riotux 2.0?
 Trigger actions and do something when the state was changed. You just use { dispatch } method to trigger actions for change the Appliaction Store State. 
 When the State changes, you will receive the new state data, that contain the State value and Action Name.
+
+
+### Very simple to use.
+Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates.
+
 
 ## API
 #### dispatch Trigger some action for change the state.
@@ -86,10 +79,5 @@ import {store, getState} from 'riotux';
       store.unsubscribe(this)
     }
 ```
-
-### Very simple to use.
-Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates.
-
-
 ### License
 MIT License.
