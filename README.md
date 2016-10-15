@@ -17,13 +17,6 @@
   <img src="test/img/react-count.gif" alt="react riotux" width="600">
 </p>
 
-### Examples:
- * <a href="https://github.com/luisvinicius167/react-todo-riotux/"> React.js Todo Example </a><br>
- * <a href="https://github.com/luisvinicius167/riotux-react-count"> React.js count app example + guide </a><br>
- * <a href="https://github.com/luisvinicius167/riotux-todo"> Riot.js Todo app example + guide </a><br>
- * <a href="https://github.com/luisvinicius167/riotux-cart-shopping"> Riot.js Shopping Cart Example </a><br>
- * <a href="https://github.com/luisvinicius167/mithril-riotux-count/"> Mithril.js Count app example + guide </a><br>
-
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
