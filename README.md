@@ -21,7 +21,7 @@ Sometimes, to better deal with shared state in large applications, we need to di
 
 
 ## API
-#### dispatch Trigger some action for change the state.
+#### dispatch: Trigger some action for change the state.
 ```javascript
 /**
  * @name dispatch
@@ -40,8 +40,14 @@ dispatch('increment', 1)
     // this.setState({count: data.stateValue});
   })
 ```
-#### setActions
+#### setActions: Set you actions functions.
 ```javascript
+/**
+ * @name setActions
+ * @description Set the actions functions.
+ * @param {object} state The Store State as first argument
+ * @param { any } args Other Arguments
+ */
 // actions/index.js
 import {setActions} from 'riotux';
 setActions({
@@ -56,8 +62,13 @@ setActions({
   }
 });
 ```
-#### setState
+#### setState: Set the application Store state
 ```javascript
+/**
+ * @name setState
+ * @description Set you application store state
+ * @param {object} state Your application state data
+ */
 // store/index.js
 import {setState} from 'riotux';
 setState({
@@ -65,17 +76,23 @@ setState({
 });
 ```
 
-#### store.subscribe/unsubscribe
+#### store.subscribe: Subscribe some component for trigger the handler function when some state was changed.
 ```javascript
+/**
+ * @name store.subscribe
+ * @description Subscribe some component for trigger the handler function when some state was changed.
+ * @param { any } component Your component.
+ * @param { handler } handler Your function that will be triggered when some state change.
+ */
 // components/app/index.js
 import {store, getState} from 'riotux';
-		componentWillMount(){
-      // when some state change, do something.
-      store.subscribe(this, ( data ) => {
-        // this.forceUpdate();
-        this.setState({count: getState('count')})
-      });
-    }
+  componentWillMount(){
+     // when some state change, do something.
+     store.subscribe(this, ( data ) => {
+       // this.forceUpdate();
+       this.setState({count: getState('count')})
+     });
+  }
     componentWillUnmount(){
       // remove this component for observe the changes on the state
       store.unsubscribe(this)
