@@ -56,7 +56,7 @@ let riotux = {
             (
             null,
             [].concat(riotux._store.state, args)
-          )
+            )
         )
           .then(stateValue => {
             let component = riotux._store.components
@@ -69,7 +69,7 @@ let riotux = {
               })
             )
           })
-          .then( ( ) => {
+          .then(() => {
             return state;
           });
         return updateStoreState;
@@ -102,8 +102,11 @@ let riotux = {
   }
 };
 
-let store = riotux.store
+let store = Object.assign({}, { dispatch: riotux.store.dispatch, subscribe: riotux.store.subscribe, unsubscribe: riotux.store.unsubscribe })
   , dispatch = riotux.store.dispatch
+  , getState = riotux.store.get
+  , setState = riotux.store.setState
+  , setActions = riotux.store.setActions
   ;
 
-export {store, dispatch};
+export {store, dispatch, getState, setState, setActions};
