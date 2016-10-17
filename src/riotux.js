@@ -50,8 +50,8 @@ let riotux = {
      */
     dispatch: (action, ...args) => {
       let state;
-      let updateStoreData = async () => {
-        let updateStoreState = await Promise.resolve(
+      let updateStoreData = () => {
+        let updateStoreState = Promise.resolve(
           riotux._store.actions[action].apply
             (
             null,
