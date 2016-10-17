@@ -59,6 +59,7 @@ Set you actions functions.
 // actions/index.js
 import {setActions} from 'riotux';
 setActions({
+  // each function receive the state as first argument
   increment: (state, n) => {
     //Always return Promise.
     return new Promise((resolve, reject) => {
