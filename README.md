@@ -1,9 +1,8 @@
-# Riotux <br/>
+<img src="https://github.com/luisvinicius167/riotux/blob/new/img/riotux_logo.png?raw=true"/><br/>
 [![npm package](https://img.shields.io/badge/npm-2.0-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
 > A reactive centralized state management for Javascript Apps.
 
-## Intro
-**riotux** is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.
+**Riotux is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.**
 
 ### Install
 * Npm: ``` npm install riotux ```
@@ -13,22 +12,23 @@
   <img src="https://github.com/luisvinicius167/riotux/blob/new/img/react-count.gif" alt="react riotux" width="600">
 </p>
 
-Demo: <a href="http://riotux-preact.surge.sh/">Riotux 2.0 with Preact.js</a>
+Demo: :information_desk_person: Demo Project here [Preact.js + Riotux ➞](http://riotux-preact.surge.sh/)
 
-### Whats new on Riotux 2.0?
-* Trigger actions and do something when the state was changed. 
-* You just use { dispatch } method to trigger actions for change the Application Store state. 
-* When the State changes, you will receive the new state data, that contain the State value and Action Name.
-
-
-### Very simple to use.
-Sometimes, to better deal with shared state in large applications, we need to differentiate between Component local state and Application level state. Application state does not belong to a specific Component, but our Components can still observe it for reactive DOM updates.
+### :star: Whats new on Riotux 2.0?
+- Trigger actions and do something when the state was changed. 
+- You just use ``{ dispatch }`` method to trigger actions for change the Application Store state. 
+- When the State changes, you will receive the new state data, that contain the State value and Action Name.
 
 
-## API
+### :raised_hands: Very simple to use.
+Dispatch actions ➞ Do something  ➞ Receive the result of your action
 
-#### { dispatch }
-Trigger some action for change the state.
+---
+
+### API
+
+##### ``{ dispatch }``
+ * Trigger some action for change the state.
 ```javascript
 /**
  * @name dispatch
@@ -47,8 +47,8 @@ dispatch('increment', 1)
     // this.setState({count: data.stateValue});
   })
 ```
-#### { setActions }: 
-Set you actions functions.
+##### ``{ setActions }``
+ * Set you actions functions.
 ```javascript
 /**
  * @name setActions
@@ -71,7 +71,7 @@ setActions({
   }
 });
 ```
-#### { setState }: 
+##### ``{ setState }`` 
 Set the application Store state
 ```javascript
 /**
@@ -86,7 +86,7 @@ setState({
 });
 ```
 
-#### { subscribe, unsubscribe } : 
+##### ``{ subscribe, unsubscribe }`` 
 Subscribe some component for trigger the handler function when some state was changed. Unsubscribe when you don't wnat to trigger the handler function.
 ```javascript
 /**
@@ -109,5 +109,6 @@ import {store, getState} from 'riotux';
       store.unsubscribe(this)
     }
 ```
-### License
+
+#### License
 MIT License.
