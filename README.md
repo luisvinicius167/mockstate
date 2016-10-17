@@ -10,7 +10,7 @@
 * Bower: ``` bower install riotux ```
 
 <p align="center">
-  <img src="test/img/react-count.gif" alt="react riotux" width="600">
+  <img src="https://github.com/luisvinicius167/riotux/blob/new/img/react-count.gif" alt="react riotux" width="600">
 </p>
 
 Demo: <a href="http://riotux-preact.surge.sh/">Riotux 2.0 with Preact.js</a>
@@ -27,7 +27,8 @@ Sometimes, to better deal with shared state in large applications, we need to di
 
 ## API
 
-#### { dispatch }: Trigger some action for change the state.
+#### { dispatch }
+Trigger some action for change the state.
 ```javascript
 /**
  * @name dispatch
@@ -46,7 +47,8 @@ dispatch('increment', 1)
     // this.setState({count: data.stateValue});
   })
 ```
-#### { setActions }: Set you actions functions.
+#### { setActions }: 
+Set you actions functions.
 ```javascript
 /**
  * @name setActions
@@ -68,7 +70,8 @@ setActions({
   }
 });
 ```
-#### { setState }: Set the application Store state
+#### { setState }: 
+Set the application Store state
 ```javascript
 /**
  * @name setState
@@ -82,10 +85,11 @@ setState({
 });
 ```
 
-#### { store.subscribe} : Subscribe some component for trigger the handler function when some state was changed.
+#### { subscribe, unsubscribe } : 
+Subscribe some component for trigger the handler function when some state was changed. Unsubscribe when you don't wnat to trigger the handler function.
 ```javascript
 /**
- * @name store.subscribe
+ * @name subscribe
  * @description Subscribe some component for trigger the handler function when some state was changed.
  * @param { any } component Your component.
  * @param { handler } handler Your function that will be triggered when some state change.
