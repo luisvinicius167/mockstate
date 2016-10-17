@@ -1,18 +1,13 @@
 <img src="https://github.com/luisvinicius167/riotux/blob/new/img/riotux_logo.png?raw=true"/><br/>
+
+ **Riotux is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.**
+
+Demo: :information_desk_person: Demo Project here [Preact.js + Riotux ➞](http://riotux-preact.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-2.0-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
-> A reactive centralized state management for Javascript Apps.
-
-**Riotux is a reactive centralized state management for Javascript applications. It is inspired by Flux and Redux, but with simplified concepts.**
-
-Demo: :information_desk_person: Demo Project here [Preact.js + Riotux ➞](http://riotux-preact.surge.sh/)
 
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
-
-<p align="center">
-  <img src="https://github.com/luisvinicius167/riotux/blob/new/img/react-count.gif" alt="react riotux" width="600">
-</p>
 
 ### :star: Whats new on Riotux 2.0?
 - Trigger actions and do something when the state was changed. 
@@ -21,7 +16,11 @@ Demo: :information_desk_person: Demo Project here [Preact.js + Riotux ➞](http:
 
 
 ### :raised_hands: Very simple to use.
-Dispatch actions ➞ Do something  ➞ Receive the result of your action
+ - Dispatch actions ➞ Do something  ➞ Receive the result of your action
+
+<p align="center">
+  <img src="https://github.com/luisvinicius167/riotux/blob/new/img/react-count.gif" alt="react riotux" width="600">
+</p>
 
 ---
 
@@ -49,7 +48,7 @@ dispatch('increment', 1)
   })
 ```
 ##### ``{ setActions }``
- * Set you actions functions.
+ * Set your actions functions.
 ```javascript
 /**
  * @name setActions
