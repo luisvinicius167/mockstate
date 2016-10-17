@@ -47,7 +47,7 @@ dispatch('increment', 1)
   })
 ```
 ##### ``{ setActions }``
- * Set your actions functions. Your action functions always need to return a Promise and receive the state as first argument.
+ * Set your actions functions. Your action functions always needs to return a Promise and receive the state as first argument.
 ```javascript
 /**
  * @name setActions
