@@ -61,13 +61,11 @@ let riotux = {
           .then(stateValue => {
             let component = riotux._store.components
             state = { action, stateValue }
-            Promise.resolve(
               component.forEach((el, i) => {
                 if (el.component !== undefined && typeof el.handler === "function") {
                   el.handler(state)
                 }
               })
-            )
           })
           .then(() => {
             return state;
