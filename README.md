@@ -26,7 +26,7 @@
 ### API
 
 ##### ``{ dispatch }``
- * Trigger some action for change the state.
+ * Trigger some action for change the state. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
 ```javascript
 /**
  * @name dispatch
