@@ -61,11 +61,11 @@ let riotux = {
           .then(stateValue => {
             let component = riotux._store.components
             state = { action, stateValue }
-              component.forEach((el, i) => {
-                if (el.component !== undefined && typeof el.handler === "function") {
-                  el.handler(state)
-                }
-              })
+            component.forEach((el, i) => {
+              if (el.component !== undefined && typeof el.handler === "function") {
+                el.handler(state)
+              }
+            })
           })
           .then(() => {
             return state;
@@ -100,11 +100,12 @@ let riotux = {
   }
 };
 
-let store = Object.assign({}, { dispatch: riotux.store.dispatch, subscribe: riotux.store.subscribe, unsubscribe: riotux.store.unsubscribe })
-  , dispatch = riotux.store.dispatch
+let dispatch = riotux.store.dispatch
   , getState = riotux.store.get
   , setState = riotux.store.setState
   , setActions = riotux.store.setActions
+  , subscribe = riotux.store.subscribe
+  , unsubscribe = riotux.store.unsubscribe
   ;
 
-export {store, dispatch, getState, setState, setActions};
+export { dispatch, getState, setState, setActions, subscribe, unsubscribe };
