@@ -58,9 +58,9 @@ let riotux = {
             [].concat(riotux._store.state, args)
             )
         )
-          .then(stateValue => {
+          .then(value => {
             let component = riotux._store.components
-            state = { action, stateValue }
+            state = { action, value }
             component.forEach((el, i) => {
               if (el.component !== undefined && typeof el.handler === "function") {
                 el.handler(state)

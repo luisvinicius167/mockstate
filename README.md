@@ -26,7 +26,7 @@
 ### API
 
 ##### ``{ dispatch }``
- * Trigger some action for change the state.
+ * Trigger some action for change the state. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
 ```javascript
 /**
  * @name dispatch
@@ -47,7 +47,7 @@ dispatch('increment', 1)
   })
 ```
 ##### ``{ setActions }``
- * Set your actions functions.
+ * Set your actions functions. Your action functions always needs to return a Promise and receive the state as first argument.
 ```javascript
 /**
  * @name setActions
