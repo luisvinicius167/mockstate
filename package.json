@@ -2,7 +2,7 @@
   "name": "riotux",
   "version": "2.0",
   "description": "A centralized state management inspired in Flux and Redux.",
-  "main": "dist/riotux.js",
+  "main": "dist/riotux.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,6 @@
     "url": "git+https://github.com/luisvinicius167/riotux.git"
   },
   "keywords": [
-    "riotjs",
     "react",
     "redux",
     "flux",

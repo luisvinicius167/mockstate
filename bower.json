@@ -1,0 +1,26 @@
+{
+  "name": "riotux",
+  "description": "A centralized state management inspired in Flux and Redux. ",
+  "main": "riotux.js",
+  "authors": [
+    "Luis Vinícius <dev_luis@hotmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "riotjs",
+    "redux-flux",
+    "riot.js",
+    "flux",
+    "redux",
+    "riotux"
+  ],
+  "homepage": "https://github.com/luisvinicius167/riotux",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
