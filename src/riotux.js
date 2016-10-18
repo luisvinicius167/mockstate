@@ -4,10 +4,11 @@
     } else if (typeof exports === "object") {
         module.exports = {
         	dispatch: factory().store.dispatch
-          , getState: factory().store.get
+          , getState: factory().store.getState
           , setState: factory().store.setState
           , setActions:factory().store.setActions
           , subscribe: factory().store.subscribe
+          , middleware: factory().store.middleware
           , unsubscribe: factory().store.unsubscribe
         }
     } else {
@@ -15,7 +16,6 @@
     }
 }(this, function(){
 	'use strict';
-
 /**
  * @name riotux
  * @description The object that will manage all application state
@@ -40,13 +40,20 @@ let riotux = {
      * @name state
      * @description The Components that was subscribed
      */
-    components: []
+    components: [],
+    middleware: {}
   },
   /**
    * @name store
    * @description Public Store
    */
   store: {
+    /**
+     * @name subscribe
+     * @description Subscribe to call the handler function when the action will be triggered
+     * @param {Component} component The Component
+     * @param {Function} handler The function that will be called
+     **/
     subscribe: (component, handler) => {
       riotux._store.components.push({ component, handler });
     },
@@ -56,6 +63,15 @@ let riotux = {
           riotux._store.components.splice(index, 1);
         }
       });
+    },
+    /**
+     * @name middleware
+     * @description The middleware function that will be triggered
+     * every time when an action called.
+     * @param {Function} callback A function that will be called 
+     **/
+    middleware: ( callback ) => {
+    	riotux._store.middleware = callback;
     },
     /**
      * @name dispatch
@@ -75,8 +91,15 @@ let riotux = {
             )
         )
           .then(value => {
+         	state = { action, value }
+         	/**
+         	 * has middleware?
+         	 **/
+         	if (typeof riotux._store.middleware === "function") {
+      			riotux._store.middleware.call(null, state, riotux._store.state)
+      		}
+      		
             let component = riotux._store.components
-            state = { action, value }
             component.forEach((el, i) => {
               if (el.component !== undefined && typeof el.handler === "function") {
                 el.handler(state)
@@ -102,7 +125,7 @@ let riotux = {
      * @name get
      * @param {string} stateName The Store state name
      */
-    get: (stateName) => {
+    getState: (stateName) => {
       return riotux._store.state[stateName];
     },
     /**
@@ -115,6 +138,5 @@ let riotux = {
     }
   }
 };
-
 return riotux;
-}))
+}));
