@@ -1,4 +1,20 @@
-'use strict';
+(function(root, factory){
+	if (typeof define === "function" && define.amd) {
+        define([], factory());
+    } else if (typeof exports === "object") {
+        module.exports = {
+        	dispatch: factory().store.dispatch
+          , getState: factory().store.get
+          , setState: factory().store.setState
+          , setActions:factory().store.setActions
+          , subscribe: factory().store.subscribe
+          , unsubscribe: factory().store.unsubscribe
+        }
+    } else {
+        root.Riotux = factory().store;
+    }
+}(this, function(){
+	'use strict';
 
 /**
  * @name riotux
@@ -50,22 +66,22 @@ let riotux = {
      */
     dispatch: (action, ...args) => {
       let state;
-      let updateStoreData = async () => {
-        let updateStoreState = await Promise.resolve(
+      let updateStoreData = () => {
+        let updateStoreState = Promise.resolve(
           riotux._store.actions[action].apply
             (
             null,
             [].concat(riotux._store.state, args)
             )
         )
-          .then(stateValue => {
+          .then(value => {
             let component = riotux._store.components
-            state = { action, stateValue }
-              component.forEach((el, i) => {
-                if (el.component !== undefined && typeof el.handler === "function") {
-                  el.handler(state)
-                }
-              })
+            state = { action, value }
+            component.forEach((el, i) => {
+              if (el.component !== undefined && typeof el.handler === "function") {
+                el.handler(state)
+              }
+            })
           })
           .then(() => {
             return state;
@@ -100,11 +116,5 @@ let riotux = {
   }
 };
 
-let store = Object.assign({}, { dispatch: riotux.store.dispatch, subscribe: riotux.store.subscribe, unsubscribe: riotux.store.unsubscribe })
-  , dispatch = riotux.store.dispatch
-  , getState = riotux.store.get
-  , setState = riotux.store.setState
-  , setActions = riotux.store.setActions
-  ;
-
-export {store, dispatch, getState, setState, setActions};
+return riotux;
+}))
