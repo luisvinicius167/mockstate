@@ -3,16 +3,16 @@
         define([], factory());
     } else if (typeof exports === "object") {
         module.exports = {
-        	dispatch: factory().store.dispatch
-          , getState: factory().store.getState
-          , setState: factory().store.setState
-          , setActions:factory().store.setActions
-          , subscribe: factory().store.subscribe
-          , middleware: factory().store.middleware
-          , unsubscribe: factory().store.unsubscribe
+        	dispatch: factory().dispatch
+          , getState: factory().getState
+          , setState: factory().setState
+          , setActions:factory().setActions
+          , subscribe: factory().subscribe
+          , middleware: factory().middleware
+          , unsubscribe: factory().unsubscribe
         }
     } else {
-        root.Riotux = factory().store;
+        root.Riotux = factory();
     }
 }(this, function(){
 	'use strict';
@@ -138,5 +138,5 @@ let riotux = {
     }
   }
 };
-return riotux;
+return riotux.store;
 }));
