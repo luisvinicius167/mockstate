@@ -1,32 +1,27 @@
-<img src="https://github.com/luisvinicius167/riotux/blob/new/img/riotux_logo.png?raw=true"/>
- > A reactive centralized state management for Javascript applications. <br/>
+<img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/new/img/state_logo.png?raw=true"/>
+ > A centralized state management for Javascript applications, made easy. <br/>
 
-### :information_desk_person: Demo Project here [Preact.js + Riotux ➞](http://riotux-preact.surge.sh/)<br/>
-[![npm package](https://img.shields.io/badge/npm-2.0-blue.svg)](https://www.npmjs.com/package/riotux) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000)](https://gitter.im/luisvinicius167/riotux)
+### :information_desk_person: Demo Project here [Preact.js + State ➞](http://state-preact.surge.sh/)<br/>
+[![npm package](https://img.shields.io/badge/npm-0.0.1-blue.svg)](https://www.npmjs.com/package/state)
 
 ### Install
-* Npm: ``` npm install riotux ```
-* Bower: ``` bower install riotux ```
-* CDN : ```https://cdnjs.cloudflare.com/ajax/libs/riotux/2.0.0/riotux.min.js```
+* Npm: ``` npm install state ```
+* Bower: ``` bower install state ```
 
-### :star: Whats new on Riotux 2.0?
-- Trigger actions and do something when the state was changed. 
-- You just use ``{ dispatch }`` method to trigger actions for change the Application Store state. 
-- When the State changes, you will receive the new state data, that contain the State value and Action Name.
-
-
+### :star: Why you should be using State?
+ * It's pure flux, the flow is unidirectional.
+ * Reactive state.
+ * Very simple to Get Started.
+ * Easy API.
+ * Actively maintained and being used in production.
+ 
 ### :raised_hands: Very simple to use.
  - Dispatch actions ➞ Do something  ➞ Receive the result of your action
 
-<p align="center">
-  <img src="https://github.com/luisvinicius167/riotux/blob/new/img/react-count.gif" alt="react riotux" width="600">
-</p>
 
----
+### What does it look like?
 
-### API
-
-##### ``{ dispatch }``
+Dispatch
  * Trigger some action for change the state. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
 ```javascript
 /**
@@ -39,7 +34,7 @@
  */
 
 // On your component
-import {dispatch} from 'riotux';
+import {dispatch} from 'state';
 
 dispatch('increment', 1)
   .then( ( data ) => {
@@ -47,7 +42,8 @@ dispatch('increment', 1)
     // this.setState({count: data.stateValue});
   })
 ```
-##### ``{ setActions }``
+
+Actions
  * Set your actions functions. Your action functions always needs to return a Promise and receive the state as first argument.
 ```javascript
 /**
@@ -58,7 +54,7 @@ dispatch('increment', 1)
  */
  
 // actions/index.js
-import {setActions} from 'riotux';
+import {setActions} from 'state';
 
 setActions({
   // each function receive the state as first argument
@@ -73,7 +69,8 @@ setActions({
   }
 });
 ```
-##### ``{ setState }`` 
+
+Store State
  * Set the application Store state
 ```javascript
 /**
@@ -83,14 +80,14 @@ setActions({
  */
  
 // store/index.js
-import {setState} from 'riotux';
+import {setState} from 'state';
 
 setState({
   count: 1
 });
 ```
 
-##### ``{ getState }`` 
+Getting the Store State
  * Get a state value of your store
 ```javascript
 /**
@@ -100,12 +97,12 @@ setState({
  */
  
 // store/index.js
-import {getState} from 'riotux';
+import {getState} from 'state';
 
 let count = getState('count');
 ```
 
-##### ``{ middleware }`` 
+Middleware
  * Set a middleware function, that will be triggered after the action changed the state.
 ```javascript
 /**
@@ -115,15 +112,15 @@ let count = getState('count');
  * receives the data of your action and the all state of your store application.
  */
  
-// riotux/index.js
-import { middleware } from 'riotux';
+// state/index.js
+import { middleware } from 'state';
 
 middleware( (data, state) => {
     console.log('After action triggers:', data, ' and the Store State is: ', state);
 })
 ```
 
-##### ``{ subscribe, unsubscribe }`` 
+Subscribe/Unsubscribe
  * Subscribe some component for trigger the handler function when some state was changed. 
  * Unsubscribe when you don't wnat to trigger the handler function.
 ```javascript
@@ -135,7 +132,7 @@ middleware( (data, state) => {
  */
  
 // components/app/index.js
-import {subscribe, unsubscribe, getState} from 'riotux';
+import {subscribe, unsubscribe, getState} from 'state';
   
   componentWillMount(){
      // when some state change, do something.
