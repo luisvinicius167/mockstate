@@ -12,15 +12,15 @@
       , unsubscribe: factory().unsubscribe
     }
   } else {
-    root.mockState = factory();
+    root.Mockstate = factory();
   }
 } (this, function () {
   'use strict';
   /**
-   * @name mockState
+   * @name Mockstate
    * @description The object that will manage all application state
    */
-  let mockState = {
+  let Mockstate = {
     /**
      * @name _store
      * @description The private store
@@ -55,12 +55,12 @@
        * @param {Function} handler The function that will be called
        **/
       subscribe: (component, handler) => {
-        mockState._store.components.push({ component, handler });
+        Mockstate._store.components.push({ component, handler });
       },
       unsubscribe: (component) => {
-        mockState._store.components.forEach(el, index => {
+        Mockstate._store.components.forEach(el, index => {
           if (el === component) {
-            mockState._store.components.splice(index, 1);
+            Mockstate._store.components.splice(index, 1);
           }
         });
       },
@@ -71,7 +71,7 @@
        * @param {Function} callback A function that will be called 
        **/
       middleware: (callback) => {
-        mockState._store.middleware = callback;
+        Mockstate._store.middleware = callback;
       },
       /**
        * @name dispatch
@@ -84,10 +84,10 @@
         let state;
         let updateStoreData = () => {
           let updateStoreState = Promise.resolve(
-            mockState._store.actions[action].apply
+            Mockstate._store.actions[action].apply
               (
               null,
-              [].concat(mockState._store.state, args)
+              [].concat(Mockstate._store.state, args)
               )
           )
             .then(value => {
@@ -95,10 +95,10 @@
               /**
                * has middleware?
                **/
-              if (typeof mockState._store.middleware === "function") {
-                mockState._store.middleware.call(null, state, mockState._store.state)
+              if (typeof Mockstate._store.middleware === "function") {
+                Mockstate._store.middleware.call(null, state, Mockstate._store.state)
               }
-              let component = mockState._store.components
+              let component = Mockstate._store.components
               component.forEach((el, i) => {
                 if (el.component !== undefined && typeof el.handler === "function") {
                   el.handler(state)
@@ -118,14 +118,14 @@
        * @param {object} data Simple Object that contain the State
        */
       setState: (data) => {
-        Object.assign(mockState._store.state, data);
+        Object.assign(Mockstate._store.state, data);
       },
       /**
        * @name get
        * @param {string} stateName The Store state name
        */
       getState: (stateName) => {
-        return mockState._store.state[stateName];
+        return Mockstate._store.state[stateName];
       },
       /**
        * @name setActions
@@ -133,9 +133,9 @@
        * that will change the Store state
        */
       setActions: (data) => {
-        Object.assign(mockState._store.actions, data);
+        Object.assign(Mockstate._store.actions, data);
       }
     }
   };
-  return mockState.store;
+  return Mockstate.store;
 }));
