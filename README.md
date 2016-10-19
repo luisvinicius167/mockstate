@@ -1,8 +1,8 @@
 <img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/master/img/state-logo.png?raw=true"/> 
-<h3 color="#333">mockState</h3>
+<h3 color="#333">Mockstate</h3>
  A centralized state management for Javascript applications, made easy. <br/>
 
-### :information_desk_person: Demo Project here [Preact.js + mockState ➞](http://mockstate-preact.surge.sh)<br/>
+### :information_desk_person: Demo Project here [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
 
 ### Install
