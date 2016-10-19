@@ -1,15 +1,15 @@
 <img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/master/img/state-logo.png?raw=true"/> 
-<h3 color="#333">State</h3>
+<h3 color="#333">mockState</h3>
  A centralized state management for Javascript applications, made easy. <br/>
 
 ### :information_desk_person: Demo Project here [Preact.js + State ➞](http://state-preact.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.1-blue.svg)](https://www.npmjs.com/package/state)
 
 ### Install
-* Npm: ``` npm install state ```
-* Bower: ``` bower install state ```
+* Npm: ``` npm install mockstate ```
+* Bower: ``` bower install mockstate ```
 
-### :star: Why you should be using State?
+### :star: Why you should be using mockState?
  * It's pure flux, the flow is unidirectional.
  * Reactive state.
  * Very simple to Get Started.
@@ -17,7 +17,7 @@
  * Actively maintained and being used in production.
  
 ### :raised_hands: Very simple to use.
- - Dispatch actions ➞ Do something  ➞ Receive the result of your action
+ > Dispatch actions ➞ Do something  ➞ Receive the result of your action
 
 
 ### What does it look like?
