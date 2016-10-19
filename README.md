@@ -9,7 +9,7 @@
 * Npm: ``` npm install mockstate ```
 * Bower: ``` bower install mockstate ```
 
-### :star: Why you should be using mockState?
+### :star: Why you should be using Mockstate?
  * It's pure flux, the flow is unidirectional.
  * Reactive state.
  * Very simple to Get Started.
@@ -45,7 +45,7 @@ dispatch('increment', 1)
 ```
 
 Actions
- * Set your actions functions. Your action functions always needs to return a Promise and receive the state as first argument.
+ * Set your actions functions. Your action always needs to return a Promise and receive the state as first argument.
 ```javascript
 /**
  * @name setActions
