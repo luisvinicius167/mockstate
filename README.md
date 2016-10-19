@@ -1,4 +1,4 @@
-<img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/new/img/state_logo.png?raw=true"/>
+<img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/master/img/state-logo.png?raw=true"/>
  > A centralized state management for Javascript applications, made easy. <br/>
 
 ### :information_desk_person: Demo Project here [Preact.js + State ➞](http://state-preact.surge.sh/)<br/>
