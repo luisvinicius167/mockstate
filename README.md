@@ -1,5 +1,5 @@
-<img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/master/img/state-logo.png?raw=true"/> 
-<h3 color="#333">Mockstate</h3>
+<img src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/logo_h_small.png"/> 
+
 Mockstate is a centralized state management for Javascript applications. It makes easy the work with State of your app. Has a very simple and efficiently API. <br/>
 
 ### :information_desk_person: Demo Project here [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh)<br/>
