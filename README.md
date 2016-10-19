@@ -5,6 +5,7 @@ Mockstate is a centralized state management for Javascript applications. It make
 ### :information_desk_person: Demo Project here [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
 
+<img src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/mockstate-react.gif">
 ### Install
 * Npm: ``` npm install mockstate ```
 * Bower: ``` bower install mockstate ```
