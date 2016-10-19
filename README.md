@@ -7,6 +7,7 @@
 ### Install
 * Npm: ``` npm install riotux ```
 * Bower: ``` bower install riotux ```
+* CDN : ```https://cdnjs.cloudflare.com/ajax/libs/riotux/2.0.0/riotux.min.js```
 
 ### :star: Whats new on Riotux 2.0?
 - Trigger actions and do something when the state was changed. 
@@ -87,6 +88,39 @@ import {setState} from 'riotux';
 setState({
   count: 1
 });
+```
+
+##### ``{ getState }`` 
+ * Get a state value of your store
+```javascript
+/**
+ * @name getState
+ * @description Get the state value
+ * @param {string} stateName The state name
+ */
+ 
+// store/index.js
+import {getState} from 'riotux';
+
+let count = getState('count');
+```
+
+##### ``{ middleware }`` 
+ * Set a middleware function, that will be triggered after the action changed the state.
+```javascript
+/**
+ * @name middleware
+ * @description Get the state value
+ * @param {Function} callback The callback that will be triggered and
+ * receives the data of your action and the all state of your store application.
+ */
+ 
+// riotux/index.js
+import { middleware } from 'riotux';
+
+middleware( (data, state) => {
+    console.log('After action triggers:', data, ' and the Store State is: ', state);
+})
 ```
 
 ##### ``{ subscribe, unsubscribe }`` 

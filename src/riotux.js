@@ -1,5 +1,21 @@
-'use strict';
-
+;(function(root, factory){
+	if (typeof define === "function" && define.amd) {
+        define([], factory());
+    } else if (typeof exports === "object") {
+        module.exports = {
+        	dispatch: factory().dispatch
+          , getState: factory().getState
+          , setState: factory().setState
+          , setActions:factory().setActions
+          , subscribe: factory().subscribe
+          , middleware: factory().middleware
+          , unsubscribe: factory().unsubscribe
+        }
+    } else {
+        root.Riotux = factory();
+    }
+}(this, function(){
+	'use strict';
 /**
  * @name riotux
  * @description The object that will manage all application state
@@ -24,13 +40,20 @@ let riotux = {
      * @name state
      * @description The Components that was subscribed
      */
-    components: []
+    components: [],
+    middleware: {}
   },
   /**
    * @name store
    * @description Public Store
    */
   store: {
+    /**
+     * @name subscribe
+     * @description Subscribe to call the handler function when the action will be triggered
+     * @param {Component} component The Component
+     * @param {Function} handler The function that will be called
+     **/
     subscribe: (component, handler) => {
       riotux._store.components.push({ component, handler });
     },
@@ -42,6 +65,15 @@ let riotux = {
       });
     },
     /**
+     * @name middleware
+     * @description The middleware function that will be triggered
+     * every time when an action called.
+     * @param {Function} callback A function that will be called 
+     **/
+    middleware: ( callback ) => {
+    	riotux._store.middleware = callback;
+    },
+    /**
      * @name dispatch
      * @description Dispatch an action to change
      * the store state
@@ -50,17 +82,23 @@ let riotux = {
      */
     dispatch: (action, ...args) => {
       let state;
-      let updateStoreData = async () => {
-        let updateStoreState = await Promise.resolve(
+      let updateStoreData = () => {
+        let updateStoreState = Promise.resolve(
           riotux._store.actions[action].apply
             (
             null,
             [].concat(riotux._store.state, args)
             )
         )
-          .then(stateValue => {
+          .then(value => {
+         	state = { action, value }
+         	/**
+         	 * has middleware?
+         	 **/
+         	if (typeof riotux._store.middleware === "function") {
+      			riotux._store.middleware.call(null, state, riotux._store.state)
+      		}
             let component = riotux._store.components
-            state = { action, stateValue }
             component.forEach((el, i) => {
               if (el.component !== undefined && typeof el.handler === "function") {
                 el.handler(state)
@@ -86,7 +124,7 @@ let riotux = {
      * @name get
      * @param {string} stateName The Store state name
      */
-    get: (stateName) => {
+    getState: (stateName) => {
       return riotux._store.state[stateName];
     },
     /**
@@ -100,12 +138,5 @@ let riotux = {
   }
 };
 
-let dispatch = riotux.store.dispatch
-  , getState = riotux.store.get
-  , setState = riotux.store.setState
-  , setActions = riotux.store.setActions
-  , subscribe = riotux.store.subscribe
-  , unsubscribe = riotux.store.unsubscribe
-  ;
-
-export { dispatch, getState, setState, setActions, subscribe, unsubscribe };
+return riotux.store;
+}));
