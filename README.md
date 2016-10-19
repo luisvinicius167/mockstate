@@ -31,7 +31,7 @@ Dispatch
  * @param {string} actionName The action name
  * @param { any } args Other Arguments
  * @return {Promise} Return a Promise with an Object that contain the stateValue and action. 
- * {stateValue, action} = data;
+ * {value, action} = data;
  */
 
 // On your component
@@ -40,7 +40,7 @@ import {dispatch} from 'mockstate';
 dispatch('increment', 1)
   .then( ( data ) => {
     console.log('The state was changed.');
-    // this.setState({count: data.stateValue});
+    // this.setState({count: data.value});
   })
 ```
 
