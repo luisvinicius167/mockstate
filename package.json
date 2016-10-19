@@ -1,25 +1,26 @@
 {
-  "name": "riotux",
-  "version": "2.1.0",
-  "description": "A centralized state management inspired in Flux and Redux.",
-  "main": "dist/riotux.min.js",
+  "name": "state",
+  "version": "0.0.1",
+  "description": "A centralized state management for Javascript applications, made easy.",
+  "main": "dist/state.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luisvinicius167/riotux.git"
+    "url": "git+https://github.com/luisvinicius167/state.git"
   },
   "keywords": [
     "react",
     "redux",
     "flux",
-    "riotux"
+    "state container",
+    "flux pattern"
   ],
   "author": "Luis Vinícius <dev_luis@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luisvinicius167/riotux/issues"
+    "url": "https://github.com/luisvinicius167/state/issues"
   },
-  "homepage": "https://github.com/luisvinicius167/riotux#readme"
+  "homepage": "https://github.com/luisvinicius167/state#readme"
 }
