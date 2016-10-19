@@ -35,7 +35,7 @@ Dispatch
  */
 
 // On your component
-import {dispatch} from 'state';
+import {dispatch} from 'mockstate';
 
 dispatch('increment', 1)
   .then( ( data ) => {
@@ -55,7 +55,7 @@ Actions
  */
  
 // actions/index.js
-import {setActions} from 'state';
+import {setActions} from 'mockstate';
 
 setActions({
   // each function receive the state as first argument
@@ -81,7 +81,7 @@ Store State
  */
  
 // store/index.js
-import {setState} from 'state';
+import {setState} from 'mockstate';
 
 setState({
   count: 1
@@ -98,7 +98,7 @@ Getting the Store State
  */
  
 // store/index.js
-import {getState} from 'state';
+import {getState} from 'mockstate';
 
 let count = getState('count');
 ```
@@ -114,7 +114,7 @@ Middleware
  */
  
 // state/index.js
-import { middleware } from 'state';
+import { middleware } from 'mockstate';
 
 middleware( (data, state) => {
     console.log('After action triggers:', data, ' and the Store State is: ', state);
@@ -133,7 +133,7 @@ Subscribe/Unsubscribe
  */
  
 // components/app/index.js
-import {subscribe, unsubscribe, getState} from 'state';
+import {subscribe, unsubscribe, getState} from 'mockstate';
   
   componentWillMount(){
      // when some state change, do something.
