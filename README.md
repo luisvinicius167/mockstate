@@ -1,6 +1,6 @@
 <img with="100" height="100" src="https://github.com/luisvinicius167/state/blob/master/img/state-logo.png?raw=true"/> 
 <h3 color="#333">Mockstate</h3>
- A centralized state management for Javascript applications, made easy. <br/>
+Mockstate is a centralized state management for Javascript applications. It makes easy the work with State of your app. Has a very simple and efficiently API. <br/>
 
 ### :information_desk_person: Demo Project here [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
@@ -12,8 +12,8 @@
 ### :star: Why you should be using Mockstate?
  * It's pure flux, the flow is unidirectional.
  * Reactive state.
- * Very simple to Get Started.
- * Easy API.
+ * Small size (approximately 1.5kb)
+ * Simple and efficiently API.
  * Actively maintained and being used in production.
  
 ### :raised_hands: Very simple to use.
