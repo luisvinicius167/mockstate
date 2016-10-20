@@ -6,14 +6,12 @@ Mockstate is a centralized state management for Javascript applications. It make
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
 
 ## Demos
----
 
 [React.js Todo with Mockstate ➞](http://mockstate-react.surge.sh/)<br/>
 [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh/)
 
 
 ## Getting Started
----
 
 ### Install
 * Npm: ``` npm install mockstate ```
