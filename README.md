@@ -24,8 +24,15 @@ Mockstate is a centralized state management for Javascript applications. It make
  * Simple and efficiently API.
  * Actively maintained and being used in production.
  
-### :raised_hands: Very simple to use.
- > Dispatch actions ➞ Do something  ➞ Receive the result of your action
+### :raised_hands: Very simple to use and to understand.
+```javascript
+import { dispatch } from 'mockstate';
+
+dispatch('action').then( ( data ) => {
+  // When the Store State are changed, this function will be called. Do what you want here.
+  console.log(`The state was changed, the result of the action ${data.action} is: ${data.value}`);
+});
+```
 
 
 ### Simple and efficiently API.
