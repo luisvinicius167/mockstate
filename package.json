@@ -26,9 +26,11 @@
   "homepage": "https://github.com/luisvinicius167/state#readme",
   "devDependencies": {
     "babel-preset-es2015": "^6.16.0",
+    "babel-preset-es2015-script": "^1.1.0",
     "grunt": "latest",
     "grunt-babel": "^6.0.0",
     "grunt-contrib-uglify": "^2.0.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "time-grunt": "^1.4.0"
   }
 }
