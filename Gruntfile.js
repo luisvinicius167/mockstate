@@ -15,17 +15,11 @@ module.exports = function (grunt) {
     uglify: {
       my_target: {
         files: {
-          'dist/output.min.js': ['dist/mockstate.js']
+          'dist/mockstate.min.js': ['dist/mockstate.js']
         }
       },
     },
       watch: {
-
-        // for stylesheets, watch css and less files 
-        // only run less and cssmin styleshee ts: { 
-        // files: ['src//*.css', 'src//*.less'], 
-        // tasks: ['less', 'cssmin'] },
-
         // for scripts, run jshint and uglify 
         scripts: {
           files: 'src/**/*.js', tasks: ['babel', 'uglify']
