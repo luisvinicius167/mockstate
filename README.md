@@ -2,8 +2,18 @@
 
 Mockstate is a centralized state management for Javascript applications. It makes easy the work with State of your app. Has a very simple and efficiently API. <br/>
 
-### :information_desk_person: Demo Project here [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh)<br/>
+### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
+
+## Demos
+---
+
+[React.js Todo with Mockstate ➞](http://mockstate-react.surge.sh/)<br/>
+[Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh/)
+
+
+## Getting Started
+---
 
 ### Install
 * Npm: ``` npm install mockstate ```
@@ -20,7 +30,7 @@ Mockstate is a centralized state management for Javascript applications. It make
  > Dispatch actions ➞ Do something  ➞ Receive the result of your action
 
 
-### What does it look like?
+### Simple and efficiently API.
 
 Dispatch
  * Trigger some action for change the state. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
