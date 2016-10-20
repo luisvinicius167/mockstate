@@ -1,7 +1,7 @@
 {
-  "name": "state",
+  "name": "mockstate",
   "description": "A centralized state management for Javascript applications, made easy.",
-  "main": "dist/state.min.js",
+  "main": "dist/mockstate.min.js",
   "authors": [
     "Luis Vinícius <dev_luis@hotmail.com>"
   ],
@@ -12,7 +12,7 @@
     "riot.js",
     "flux",
     "redux",
-    "riotux"
+    "mockstate"
   ],
   "homepage": "https://github.com/luisvinicius167/state",
   "moduleType": [],
