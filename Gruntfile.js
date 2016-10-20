@@ -1,13 +1,14 @@
 module.exports = function (grunt) {
+  require('time-grunt')(grunt);
   grunt.initConfig({
     babel: {
       options: {
         sourceMap: true,
-        presets: ['babel-preset-es2015']
+        presets: ['babel-preset-es2015-script']
       },
       dist: {
         files: {
-          'dist/in.js': 'src/in.js'
+          'dist/mockstate.js': 'src/mockstate.js'
         }
       }
     },
@@ -21,7 +22,7 @@ module.exports = function (grunt) {
       watch: {
 
         // for stylesheets, watch css and less files 
-        // only run less and cssmin stylesheets: { 
+        // only run less and cssmin styleshee ts: { 
         // files: ['src//*.css', 'src//*.less'], 
         // tasks: ['less', 'cssmin'] },
 
@@ -34,6 +35,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-babel');
-  grunt.registerTask('uglify', ['uglify']);
   grunt.registerTask('default', ['babel', 'uglify']);
 }
