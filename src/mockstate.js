@@ -25,6 +25,20 @@
      * Persists the store state in localStorage
      */
     localState: {
+      recoveryStateWhenOffline: () => {
+        window.addEventListener('online', ( e ) => {
+          let s = localStorage.getItem('stateToRecovery');
+          let recoveredState = JSON.parse(s);
+          Mockstate.mockStoreState = recoveredState;
+          localStorage.setItem('mockstateLocalState', s);
+        });
+
+        window.addEventListener('offline', ( e ) => {
+          // when the network connection is offline, store the moment state
+          // on localStorage
+          localStorage.setItem('stateToRecovery', JSON.stringify(Mockstate.mockStoreState));
+        });
+      },
       /**
        * savedState
        */
@@ -145,10 +159,11 @@
        */
       setState: (data) => {
         // setting the immutable initial state
-        Object.assign(Mockstate._store.state, data);
+        let state = Object.assign(Mockstate._store.state, data);
         // persist the initial state on localStorage
-        Mockstate.localState.persistInitialStateOnLocalStorage(data);
+        Mockstate.localState.persistInitialStateOnLocalStorage(state);
         Object.assign(Mockstate.mockStoreState, data);
+        Mockstate.localState.recoveryStateWhenOffline();
       },
       /**
        * @name get
