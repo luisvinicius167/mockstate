@@ -1,6 +1,6 @@
 <img width="260" src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/logo_h_small.png"/> 
 
-Mockstate is a centralized state management for Javascript applications. It provides more control of your state application with a simple and efficiently API. <br/>
+Mockstate is a centralized state management for Javascript applications. It provides more control of your state application with a simple and efficiently API and keep the state safe, when the user connection goes offline the state is saved in localStorage to be picked up when the connection back. <br/>
 
 ### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
@@ -20,9 +20,9 @@ Mockstate provides more control of your application state. It's envolve ideas of
 * Bower: ``` bower install mockstate ```
 
 ### Why you should be using Mockstate?
- * More control of you application state
+ * More control of you application state.
+ * Safe State. 
  * It's pure flux, the flow is unidirectional.
- * Small size (approximately 1.5kb)
  * Tiny API.
  * Actively maintained and being used in production.
  
