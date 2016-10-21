@@ -42,14 +42,13 @@
             // remove the temporary recovery state
             localStorage.removeItem('mockstate:StateToRecovery');
           };
-        })
+        });
 
         // if the network connection back whithout the user reload the page, 
         // recovery the  state.
         window.addEventListener('online', (e) => {
           let recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
           Mockstate.mockStoreState = recoveredState;
-          localStorage.setItem('mockstate:LocalState', recoveredState);
 
           // remove the temporary recovery state
           localStorage.removeItem('mockstate:StateToRecovery');
@@ -64,12 +63,6 @@
            */
           localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
         });
-      },
-      /**
-       * save the initial 
-       */
-      persistInitialStateOnLocalStorage: (state) => {
-        localStorage.setItem('mockstate:LocalState', JSON.stringify(state));
       }
     },
     /**
@@ -180,8 +173,6 @@
       setState: (data) => {
         // setting the immutable initial state
         let state = Object.assign(Mockstate._store.state, data);
-        // // persist the initial state on localStorage
-        // Mockstate.localState.persistInitialStateOnLocalStorage(state);
         Object.assign(Mockstate.mockStoreState, data);
         Mockstate.localState.recoveryStateWhenOffline();
       },

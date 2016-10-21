@@ -52,7 +52,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         window.addEventListener('online', function (e) {
           var recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
           Mockstate.mockStoreState = recoveredState;
-          localStorage.setItem('mockstate:LocalState', recoveredState);
 
           // remove the temporary recovery state
           localStorage.removeItem('mockstate:StateToRecovery');
@@ -67,12 +66,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
            */
           localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
         });
-      },
-      /**
-       * save the initial 
-       */
-      persistInitialStateOnLocalStorage: function persistInitialStateOnLocalStorage(state) {
-        localStorage.setItem('mockstate:LocalState', JSON.stringify(state));
       }
     },
     /**
@@ -180,8 +173,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       setState: function setState(data) {
         // setting the immutable initial state
         var state = Object.assign(Mockstate._store.state, data);
-        // // persist the initial state on localStorage
-        // Mockstate.localState.persistInitialStateOnLocalStorage(state);
         Object.assign(Mockstate.mockStoreState, data);
         Mockstate.localState.recoveryStateWhenOffline();
       },
