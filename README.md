@@ -1,6 +1,6 @@
-<img src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/logo_h_small.png"/> 
+<img width="260" src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/logo_h_small.png"/> 
 
-Mockstate is a centralized state management for Javascript applications. It makes easy the work with State of your app. Has a very simple and efficiently API. <br/>
+Mockstate is a centralized state management for Javascript applications. It provides more control of your state application with a simple and efficiently API. <br/>
 
 ### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
@@ -10,6 +10,8 @@ Mockstate is a centralized state management for Javascript applications. It make
 [React.js Todo with Mockstate ➞](http://mockstate-react.surge.sh/)<br/>
 [Preact.js + Mockstate ➞](http://mockstate-preact.surge.sh/)
 
+### Influences
+Mockstate provides more control of your application state. It's envolve ideas of Redux and Flux, but explores all power of Promises, doing the work with async action easy.
 
 ## Getting Started
 
@@ -17,50 +19,96 @@ Mockstate is a centralized state management for Javascript applications. It make
 * Npm: ``` npm install mockstate ```
 * Bower: ``` bower install mockstate ```
 
-### :star: Why you should be using Mockstate?
+### Why you should be using Mockstate?
+ * More control of you application state
  * It's pure flux, the flow is unidirectional.
- * Reactive state.
  * Small size (approximately 1.5kb)
- * Simple and efficiently API.
+ * Tiny API.
  * Actively maintained and being used in production.
  
-### :raised_hands: Very simple to use and to understand.
+### The Gist
+The application state is stored in an object tree inside a single store.
+The only way to change the state tree is to emit an action, that always return a Promise.
+You can receive the result of your action using ``.then`` after your ``dispatch`` call.
+
+That's it!
+
 ```javascript
-import { dispatch } from 'mockstate';
+import { setState, setActions, subscribe, dispatch } from 'mockstate';
 
-dispatch('action').then( ( data ) => {
-  // When the Store State are changed, this function will be called. Do what you want here.
-  console.log(`The state was changed, the result of the action ${data.action} is: ${data.value}`);
+/**
+ * Set your store state in a single object.
+ */
+setState({
+ count: 0
+})
+
+/**
+ * Set your store state in a single object,
+ * that always receive the store state as first argument.
+ */
+setActions({
+  increment: ( state, n ) => {
+    return new Promise(( resolve, reject ) => {
+      let count = state.count += n
+      resolve(count);
+    });
+  }
 });
-```
 
+/**
+ * You can use subscribe() to update your UI in response to state changes.
+ * `${this}` can be your UI component, where the subscribe handler will be applied.
+ */
+subscribe( this, ( data ) => {
+  console.log(`Some action was called, do something. Action name: ${data.action} Action Value: ${data.value}.`);
+})
+
+/**
+ * The only way to mutate the internal state is to dispatch an action.
+ * You can receive the response of your action and do something, or not.
+ */
+dispatch('increment', 1).then( data => {
+    console.log(`The result of this action ${data.action} is: ${data.value}`);
+})
+//1
+dispatch('increment', 1);
+//2
+dispatch('increment', 1);
+//3
+```
 
 ### Simple and efficiently API.
 
 Dispatch
- * Trigger some action for change the state. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
+ * Trigger some action for do something. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
 ```javascript
 /**
  * @name dispatch
- * @description Trigger some action for change the state.
- * @param {string} actionName The action name
- * @param { any } args Other Arguments
- * @return {Promise} Return a Promise with an Object that contain the stateValue and action. 
+ * @description Trigger some action.
+ * @param {string} actionName Action name
+ * @param { arguments } Arguments You can pass the arguments after the actionName
+ * @return {Promise} Return a Promise with an Object that contain the value of the action and the action name. 
  * {value, action} = data;
  */
 
 // On your component
 import {dispatch} from 'mockstate';
 
+// You can receive the response of your action and do something, or not.
+// If you whant, you can chaining the dispatch Promises.
 dispatch('increment', 1)
-  .then( ( data ) => {
-    console.log('The state was changed.');
-    // this.setState({count: data.value});
+  .then( data => {
+    console.log(`The action will be called. The result is: ${data.value}`);
+    return data.value;
+  })
+  .then( value => {
+    console.log(`The response is: ${value}`);
   })
 ```
 
 Actions
- * Set your actions functions. Your action always needs to return a Promise and receive the state as first argument.
+ * Set your actions functions. Your actions always needs to return a Promise and receive the state as first argument.
 ```javascript
 /**
  * @name setActions
@@ -73,7 +121,7 @@ Actions
 import {setActions} from 'mockstate';
 
 setActions({
-  // each function receive the state as first argument
+  // each action receive the state as first argument
   increment: (state, n) => {
     //Always return Promise.
     return new Promise((resolve, reject) => {
@@ -119,7 +167,7 @@ let count = getState('count');
 ```
 
 Middleware
- * Set a middleware function, that will be triggered after the action changed the state.
+ * Set a middleware function, that will be triggered after the action calls.
 ```javascript
 /**
  * @name middleware
@@ -137,13 +185,13 @@ middleware( (data, state) => {
 ```
 
 Subscribe/Unsubscribe
- * Subscribe some component for trigger the handler function when some state was changed. 
+ * Subscribe some UI Component for trigger the handler function when some action are trigger. 
  * Unsubscribe when you don't wnat to trigger the handler function.
 ```javascript
 /**
  * @name subscribe
- * @description Subscribe some component for trigger the handler function when some state was changed.
- * @param { any } component Your component.
+ * @description Subscribe some UI Component for trigger the handler function when some action calls.
+ * @param { object } BindComponent The UI element that the handler function will be applied.
  * @param { handler } handler Your function that will be triggered when some state change.
  */
  
@@ -153,7 +201,6 @@ import {subscribe, unsubscribe, getState} from 'mockstate';
   componentWillMount(){
      // when some state change, do something.
      subscribe(this, ( data ) => {
-       // this.forceUpdate();
        this.setState({count: getState('count')})
      });
   }
