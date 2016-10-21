@@ -25,6 +25,62 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   var Mockstate = {
     /**
+     * Persists the store state on localStorage
+     * @name localState
+     */
+    localState: {
+      /**
+       * @name recoveryStateWhenOffline
+       * @description When the user will be offline, keep the store state safe.
+       */
+      recoveryStateWhenOffline: function recoveryStateWhenOffline() {
+        /**
+         * When the page reloads, if the recovery state are present
+         * recovery the store state.
+         */
+        window.addEventListener("load", function () {
+          // verify if the recored state are present when the page loads
+          if (localStorage.getItem('mockstate:StateToRecovery') !== null) {
+            Mockstate.mockStoreState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+            // remove the temporary recovery state
+            localStorage.removeItem('mockstate:StateToRecovery');
+          };
+        });
+
+        // if the network connection back whithout the user reload the page, 
+        // recovery the  state.
+        window.addEventListener('online', function (e) {
+          var recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+          Mockstate.mockStoreState = recoveredState;
+          localStorage.setItem('mockstate:LocalState', recoveredState);
+
+          // remove the temporary recovery state
+          localStorage.removeItem('mockstate:StateToRecovery');
+        });
+
+        window.addEventListener('offline', function (e) {
+          /**
+           * when the network connection is offline, store the actual
+           * state on localStorage to be recovered when the connection
+           * become without reload the page or when reload in the same route,
+           * keeping the state and UI component safe.
+           */
+          localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
+        });
+      },
+      /**
+       * save the initial 
+       */
+      persistInitialStateOnLocalStorage: function persistInitialStateOnLocalStorage(state) {
+        localStorage.setItem('mockstate:LocalState', JSON.stringify(state));
+      }
+    },
+    /**
+     * The copy of initial store state, that will be used to work
+     * in application. Keeping the store state immutable.
+     */
+    mockStoreState: {},
+    /**
      * @name _store
      * @description The private store
      */
@@ -61,9 +117,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         Mockstate._store.components.push({ component: component, handler: handler });
       },
       unsubscribe: function unsubscribe(component) {
-        Mockstate._store.components.forEach(el, function (index) {
+        var components = Mockstate._store.components;
+        components.forEach(el, function (index) {
           if (el === component) {
-            Mockstate._store.components.splice(index, 1);
+            components.splice(index, 1);
           }
         });
       },
@@ -90,21 +147,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         var state = void 0;
         var updateStoreData = function updateStoreData() {
-          var updateStoreState = Promise.resolve(Mockstate._store.actions[action].apply(null, [].concat(Mockstate._store.state, args))).then(function (value) {
-            state = { action: action, value: value };
+          var updateStoreState = Promise.resolve(Mockstate._store.actions[action].apply(null, [].concat(Mockstate.mockStoreState, args))).then(function (value) {
+            var middleware = Mockstate._store.middleware,
+                component = Mockstate._store.components;
+
+            // state that will be returned
+            var state = { action: action, value: value };
+
             /**
              * has middleware?
              **/
-            if (typeof Mockstate._store.middleware === "function") {
-              Mockstate._store.middleware.call(null, state, Mockstate._store.state);
+            if (typeof middleware === "function") {
+              middleware.call(null, state, Mockstate.mockStoreState);
             }
-            var component = Mockstate._store.components;
+
             component.forEach(function (el, i) {
               if (el.component !== undefined && typeof el.handler === "function") {
                 el.handler(state);
               }
             });
-          }).then(function () {
             return state;
           });
           return updateStoreState;
@@ -117,14 +178,22 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @param {object} data Simple Object that contain the State
        */
       setState: function setState(data) {
-        Object.assign(Mockstate._store.state, data);
+        // setting the immutable initial state
+        var state = Object.assign(Mockstate._store.state, data);
+        // // persist the initial state on localStorage
+        // Mockstate.localState.persistInitialStateOnLocalStorage(state);
+        Object.assign(Mockstate.mockStoreState, data);
+        Mockstate.localState.recoveryStateWhenOffline();
       },
       /**
        * @name get
        * @param {string} stateName The Store state name
        */
       getState: function getState(stateName) {
-        return Mockstate._store.state[stateName];
+        if (stateName === '*') {
+          return Mockstate.mockStoreState;
+        }
+        return Mockstate.mockStoreState[stateName];
       },
       /**
        * @name setActions

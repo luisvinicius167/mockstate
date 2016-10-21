@@ -22,34 +22,54 @@
    */
   let Mockstate = {
     /**
-     * Persists the store state in localStorage
+     * Persists the store state on localStorage
+     * @name localState
      */
     localState: {
+      /**
+       * @name recoveryStateWhenOffline
+       * @description When the user will be offline, keep the store state safe.
+       */
       recoveryStateWhenOffline: () => {
-        window.addEventListener('online', ( e ) => {
-          let s = localStorage.getItem('stateToRecovery');
-          let recoveredState = JSON.parse(s);
+        /**
+         * When the page reloads, if the recovery state are present
+         * recovery the store state.
+         */
+        window.addEventListener("load", () => {
+          // verify if the recored state are present when the page loads
+          if (localStorage.getItem('mockstate:StateToRecovery') !== null) {
+            Mockstate.mockStoreState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+            // remove the temporary recovery state
+            localStorage.removeItem('mockstate:StateToRecovery');
+          };
+        })
+
+        // if the network connection back whithout the user reload the page, 
+        // recovery the  state.
+        window.addEventListener('online', (e) => {
+          let recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
           Mockstate.mockStoreState = recoveredState;
-          localStorage.setItem('mockstateLocalState', s);
+          localStorage.setItem('mockstate:LocalState', recoveredState);
+
+          // remove the temporary recovery state
+          localStorage.removeItem('mockstate:StateToRecovery');
         });
 
-        window.addEventListener('offline', ( e ) => {
-          // when the network connection is offline, store the moment state
-          // on localStorage
-          localStorage.setItem('stateToRecovery', JSON.stringify(Mockstate.mockStoreState));
+        window.addEventListener('offline', (e) => {
+          /**
+           * when the network connection is offline, store the actual
+           * state on localStorage to be recovered when the connection
+           * become without reload the page or when reload in the same route,
+           * keeping the state and UI component safe.
+           */
+          localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
         });
       },
       /**
-       * savedState
+       * save the initial 
        */
       persistInitialStateOnLocalStorage: (state) => {
-        localStorage.setItem('mockstateLocalState', JSON.stringify(state));
-      },
-      getInitialLocalState: (stateName) => {
-        let savedLocalState = localStorage.getItem('mockstateLocalState');
-        let state = JSON.parse(savedLocalState);
-        if (stateName === '*') return state;
-        return state[stateName];
+        localStorage.setItem('mockstate:LocalState', JSON.stringify(state));
       }
     },
     /**
@@ -123,24 +143,24 @@
           let updateStoreState = Promise.resolve(
             Mockstate._store.actions[action].apply
               (
-                null, [].concat(Mockstate.mockStoreState, args)
+              null, [].concat(Mockstate.mockStoreState, args)
               )
           )
-            .then( value => {
+            .then(value => {
               let middleware = Mockstate._store.middleware
                 , component = Mockstate._store.components
-              ;
+                ;
 
               // state that will be returned
-             let state = { action, value }
-              
+              let state = { action, value }
+
               /**
                * has middleware?
                **/
               if (typeof middleware === "function") {
                 middleware.call(null, state, Mockstate.mockStoreState);
               }
-              
+
               component.forEach((el, i) => {
                 if (el.component !== undefined && typeof el.handler === "function") {
                   el.handler(state)
@@ -160,8 +180,8 @@
       setState: (data) => {
         // setting the immutable initial state
         let state = Object.assign(Mockstate._store.state, data);
-        // persist the initial state on localStorage
-        Mockstate.localState.persistInitialStateOnLocalStorage(state);
+        // // persist the initial state on localStorage
+        // Mockstate.localState.persistInitialStateOnLocalStorage(state);
         Object.assign(Mockstate.mockStoreState, data);
         Mockstate.localState.recoveryStateWhenOffline();
       },
