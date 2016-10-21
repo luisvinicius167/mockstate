@@ -112,25 +112,26 @@
                 null, [].concat(Mockstate.mockStoreState, args)
               )
           )
-            .then(value => {
+            .then( value => {
               let middleware = Mockstate._store.middleware
                 , component = Mockstate._store.components
               ;
+
               // state that will be returned
-              state = { action, value }
+             let state = { action, value }
+              
               /**
                * has middleware?
                **/
               if (typeof middleware === "function") {
                 middleware.call(null, state, Mockstate.mockStoreState);
               }
+              
               component.forEach((el, i) => {
                 if (el.component !== undefined && typeof el.handler === "function") {
                   el.handler(state)
                 }
-              })
-            })
-            .then(() => {
+              });
               return state;
             });
           return updateStoreState;
