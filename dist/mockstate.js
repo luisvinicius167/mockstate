@@ -172,7 +172,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        */
       setState: function setState(data) {
         // setting the immutable initial state
-        var state = Object.assign(Mockstate._store.state, data);
+        Object.assign(Mockstate._store.state, data);
         Object.assign(Mockstate.mockStoreState, data);
         Mockstate.localState.recoveryStateWhenOffline();
       },
