@@ -61,7 +61,7 @@ setActions({
  * `${this}` can be your UI component, where the subscribe handler will be applied.
  */
 subscribe( this, ( data ) => {
-  console.log(`Some action was called, do something. Action name: ${data.action} Action Value: ${data.value}.`);
+  console.log(`Some action was called, Action name: ${data.action} Action Value: ${data.value}.`);
 })
 
 /**
