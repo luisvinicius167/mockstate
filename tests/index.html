@@ -8,6 +8,7 @@
   <div id="mocha"></div>
 
   <script src="../dist/mockstate.min.js"></script>
+  
   <script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
 
@@ -15,6 +16,8 @@
 
   <script>mocha.setup('bdd')</script>
   
+  <script src="store.js"></script>
+  <script src="actions.js"></script>
   <script src="setState.js"></script>
   <script>
     mocha.checkLeaks();
