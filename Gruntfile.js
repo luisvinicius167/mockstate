@@ -28,5 +28,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-babel');
+    grunt.registerTask('build', ['babel']);
   grunt.registerTask('default', ['babel', 'uglify']);
 }
