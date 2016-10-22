@@ -1,21 +1,20 @@
-; (function (root, factory) {
+;(function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define([], factory);
   } else if (typeof exports === "object") {
     module.exports = {
-      dispatch: factory().dispatch
-      , getState: factory().getState
-      , setState: factory().setState
-      , setActions: factory().setActions
-      , subscribe: factory().subscribe
-      , middleware: factory().middleware
-      , unsubscribe: factory().unsubscribe
+      dispatch: factory.dispatch
+      , getState: factory.getState
+      , setState: factory.setState
+      , setActions: factory.setActions
+      , subscribe: factory.subscribe
+      , middleware: factory.middleware
+      , unsubscribe: factory.unsubscribe
     }
   } else {
-    root.Mockstate = factory();
+    root.Mockstate = factory;
   }
-} (this, function () {
-  'use strict';
+} (this, function (global) {
   /**
    * @name Mockstate
    * @description The object that will manage all application state
@@ -31,38 +30,41 @@
        * @description When the user will be offline, keep the store state safe.
        */
       recoveryStateWhenOffline: () => {
-        /**
-         * When the page reloads, if the recovery state are present
-         * recovery the store state.
-         */
-        window.addEventListener("load", () => {
-          // verify if the recored state are present when the page loads
-          if (localStorage.getItem('mockstate:StateToRecovery') !== null) {
-            Mockstate.mockStoreState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+        // verify if this === window
+        if (this.addEventListener !== undefined) {
+          /**
+           * When the page reloads, if the recovery state are present
+           * recovery the store state.
+           */
+          this.addEventListener("load", () => {
+            // verify if the recored state are present when the page loads
+            if (localStorage.getItem('mockstate:StateToRecovery') !== null) {
+              Mockstate.mockStoreState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+              // remove the temporary recovery state
+              localStorage.removeItem('mockstate:StateToRecovery');
+            };
+          });
+
+          // if the network connection back whithout the user reload the page, 
+          // recovery the  state.
+          this.addEventListener('online', (e) => {
+            let recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
+            Mockstate.mockStoreState = recoveredState;
+
             // remove the temporary recovery state
             localStorage.removeItem('mockstate:StateToRecovery');
-          };
-        });
+          });
 
-        // if the network connection back whithout the user reload the page, 
-        // recovery the  state.
-        window.addEventListener('online', (e) => {
-          let recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
-          Mockstate.mockStoreState = recoveredState;
-
-          // remove the temporary recovery state
-          localStorage.removeItem('mockstate:StateToRecovery');
-        });
-
-        window.addEventListener('offline', (e) => {
-          /**
-           * when the network connection is offline, store the actual
-           * state on localStorage to be recovered when the connection
-           * become without reload the page or when reload in the same route,
-           * keeping the state and UI component safe.
-           */
-          localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
-        });
+          this.addEventListener('offline', (e) => {
+            /**
+             * when the network connection is offline, store the actual
+             * state on localStorage to be recovered when the connection
+             * become without reload the page or when reload in the same route,
+             * keeping the state and UI component safe.
+             */
+            localStorage.setItem('mockstate:StateToRecovery', JSON.stringify(Mockstate.mockStoreState));
+          });
+        }
       }
     },
     /**
@@ -161,6 +163,7 @@
               });
               return state;
             });
+            
           return updateStoreState;
         };
         return updateStoreData()
@@ -197,4 +200,4 @@
     }
   };
   return Mockstate.store;
-}));
+}(this)));
