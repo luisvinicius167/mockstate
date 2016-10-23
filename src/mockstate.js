@@ -134,40 +134,40 @@
        */
       dispatch: (action, ...args) => {
         let state,
-        components = Mockstate._store.components;
-        
+          components = Mockstate._store.components;
+
         let updateStoreData = () => {
-          let updateStoreState = 
-          // actions don't need to return a promise
-          Promise.resolve(
-            Mockstate._store.actions[action].apply
-              (
-              null, [].concat(Mockstate.mockStoreState, args)
-              )
-          )
-            .then(value => {
-              let middleware = Mockstate._store.middleware;
+          let updateStoreState =
+            // actions don't need to return a promise
+            Promise.resolve(
+              Mockstate._store.actions[action].apply
+                (
+                null, [].concat(Mockstate.mockStoreState, args)
+                )
+            )
+              .then(value => {
+                let middleware = Mockstate._store.middleware;
 
-              // state that will be returned
-              let state = { action, value }
+                // state that will be returned
+                let state = { action, value }
 
-              /**
-               * has middleware?
-               **/
-              if (typeof middleware === "function") {
-                middleware.call(null, state, Mockstate.mockStoreState);
-              }
-
-              return state;
-
-            }).then( state => {
-              components.forEach((el, i) => {
-                if (el.component !== undefined && typeof el.handler === "function") {
-                  el.handler(state)
+                /**
+                 * has middleware?
+                 **/
+                if (typeof middleware === "function") {
+                  middleware.call(null, state, Mockstate.mockStoreState);
                 }
+
+                return state;
+
+              }).then(state => {
+                components.forEach((el, i) => {
+                  if (el.component !== undefined && typeof el.handler === "function") {
+                    el.handler(state)
+                  }
+                });
+                return state;
               });
-              return state;
-            });
 
           return updateStoreState;
         };
