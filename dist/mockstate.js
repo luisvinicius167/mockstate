@@ -141,11 +141,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           args[_key - 1] = arguments[_key];
         }
 
-        var state = void 0;
+        var state = void 0,
+            components = Mockstate._store.components;
+
         var updateStoreData = function updateStoreData() {
-          var updateStoreState = Promise.resolve(Mockstate._store.actions[action].apply(null, [].concat(Mockstate.mockStoreState, args))).then(function (value) {
-            var middleware = Mockstate._store.middleware,
-                component = Mockstate._store.components;
+          var updateStoreState =
+          // actions don't need to return a promise
+          Promise.resolve(Mockstate._store.actions[action].apply(null, [].concat(Mockstate.mockStoreState, args))).then(function (value) {
+            var middleware = Mockstate._store.middleware;
 
             // state that will be returned
             var state = { action: action, value: value };
@@ -157,7 +160,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
               middleware.call(null, state, Mockstate.mockStoreState);
             }
 
-            component.forEach(function (el, i) {
+            return state;
+          }).then(function (state) {
+            components.forEach(function (el, i) {
               if (el.component !== undefined && typeof el.handler === "function") {
                 el.handler(state);
               }

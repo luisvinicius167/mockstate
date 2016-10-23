@@ -49,10 +49,8 @@ setState({
  */
 setActions({
   increment: ( state, n ) => {
-    return new Promise(( resolve, reject ) => {
       let count = state.count += n
-      resolve(count);
-    });
+      return count;
   }
 });
 
@@ -108,7 +106,7 @@ dispatch('increment', 1)
 ```
 
 Actions
- * Set your actions functions. Your actions always needs to return a Promise and receive the state as first argument.
+ * Set your actions functions. Your actions always needs to return a value and receive the state as first argument.
 ```javascript
 /**
  * @name setActions
@@ -123,13 +121,10 @@ import {setActions} from 'mockstate';
 setActions({
   // each action receive the state as first argument
   increment: (state, n) => {
-    //Always return Promise.
-    return new Promise((resolve, reject) => {
       setTimeout(() => {
         let result = state.count += n;
-        resolve(result)
+        return result;
       }, 2000)
-    });
   }
 });
 ```

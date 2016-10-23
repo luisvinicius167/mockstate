@@ -1,4 +1,4 @@
-;(function (root, factory) {
+; (function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define([], factory);
   } else if (typeof exports === "object") {
@@ -133,37 +133,42 @@
        * @param { any } args Arguments sended to the action
        */
       dispatch: (action, ...args) => {
-        let state;
+        let state,
+          components = Mockstate._store.components;
+
         let updateStoreData = () => {
-          let updateStoreState = Promise.resolve(
-            Mockstate._store.actions[action].apply
-              (
-              null, [].concat(Mockstate.mockStoreState, args)
-              )
-          )
-            .then(value => {
-              let middleware = Mockstate._store.middleware
-                , component = Mockstate._store.components
-                ;
+          let updateStoreState =
+            // actions don't need to return a promise
+            Promise.resolve(
+              Mockstate._store.actions[action].apply
+                (
+                null, [].concat(Mockstate.mockStoreState, args)
+                )
+            )
+              .then(value => {
+                let middleware = Mockstate._store.middleware;
 
-              // state that will be returned
-              let state = { action, value }
+                // state that will be returned
+                let state = { action, value }
 
-              /**
-               * has middleware?
-               **/
-              if (typeof middleware === "function") {
-                middleware.call(null, state, Mockstate.mockStoreState);
-              }
-
-              component.forEach((el, i) => {
-                if (el.component !== undefined && typeof el.handler === "function") {
-                  el.handler(state)
+                /**
+                 * has middleware?
+                 **/
+                if (typeof middleware === "function") {
+                  middleware.call(null, state, Mockstate.mockStoreState);
                 }
+
+                return state;
+
+              }).then(state => {
+                components.forEach((el, i) => {
+                  if (el.component !== undefined && typeof el.handler === "function") {
+                    el.handler(state)
+                  }
+                });
+                return state;
               });
-              return state;
-            });
-            
+
           return updateStoreState;
         };
         return updateStoreData()
@@ -200,4 +205,4 @@
     }
   };
   return Mockstate.store;
-}(this)));
+} (this)));
