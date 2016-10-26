@@ -9,6 +9,7 @@
       , setActions: factory.setActions
       , subscribe: factory.subscribe
       , middleware: factory.middleware
+      , emit: factory.emit
       , unsubscribe: factory.unsubscribe
     }
   } else {
@@ -124,6 +125,20 @@
        **/
       middleware: (callback) => {
         Mockstate._store.middleware = callback;
+      },
+      /**
+       * @name emit
+       * @description Tell to store that something happend,
+       * and the handler function will be called.
+       * @return void
+       **/
+      emit: () => {
+        let components = Mockstate._store.components;
+        components.forEach((el, i) => {
+          if (el.component !== undefined && typeof el.handler === "function") {
+            el.handler(state)
+          }
+        });
       },
       /**
        * @name dispatch

@@ -11,6 +11,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       setActions: factory.setActions,
       subscribe: factory.subscribe,
       middleware: factory.middleware,
+      emit: factory.emit,
       unsubscribe: factory.unsubscribe
     };
   } else {
@@ -128,6 +129,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        **/
       middleware: function middleware(callback) {
         Mockstate._store.middleware = callback;
+      },
+      /**
+       * @name emit
+       * @description Tell to store that something happend,
+       * and the handler function will be called.
+       * @return void
+       **/
+      emit: function emit() {
+        var components = Mockstate._store.components;
+        components.forEach(function (el, i) {
+          if (el.component !== undefined && typeof el.handler === "function") {
+            el.handler(state);
+          }
+        });
       },
       /**
        * @name dispatch
