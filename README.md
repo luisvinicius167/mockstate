@@ -177,6 +177,22 @@ import { middleware } from 'mockstate';
 middleware( (data, state) => {
     console.log('After action triggers:', data, ' and the Store State is: ', state);
 })
+
+```
+Emit
+ * Tell to store that something are happend and the handler function will be triggerd.
+```javascript
+/**
+  * @name emit
+  * @description Tell to store that something happend,
+  * and the handler function will be called.
+  * @return void
+  **/
+ 
+// state/index.js
+import { emit } from 'mockstate';
+
+emit();
 ```
 
 Subscribe/Unsubscribe
