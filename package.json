@@ -1,6 +1,6 @@
 {
   "name": "mockstate",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A centralized state management for Javascript applications, made easy.",
   "main": "dist/mockstate.min.js",
   "scripts": {
