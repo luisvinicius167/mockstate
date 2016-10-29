@@ -133,6 +133,7 @@
        * @return void
        **/
       emit: () => {
+        let state = { action:null, value:null};
         let components = Mockstate._store.components;
         components.forEach((el, i) => {
           if (el.component !== undefined && typeof el.handler === "function") {
@@ -175,8 +176,8 @@
 
                 return state;
 
-              }).then(state => {
-                components.forEach((el, i) => {
+              }).then( state => {
+                components.forEach( ( el, i) => {
                   if (el.component !== undefined && typeof el.handler === "function") {
                     el.handler(state)
                   }

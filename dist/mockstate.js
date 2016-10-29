@@ -137,6 +137,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @return void
        **/
       emit: function emit() {
+        var state = { action: null, value: null };
         var components = Mockstate._store.components;
         components.forEach(function (el, i) {
           if (el.component !== undefined && typeof el.handler === "function") {
