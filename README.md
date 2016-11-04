@@ -79,14 +79,16 @@ dispatch('increment', 1);
 ### Simple and efficiently API.
 
 Dispatch
- * Trigger some action for do something. A Promise will be returned, that contain an Object with the keys ``action`` and ``value`` of your correspondent action response.
+ * Trigger some action for do something. A Promise will be returned, that contain an Object with the <br>
+  keys ``action`` and ``value`` of your correspondent action response.
 ```javascript
 /**
  * @name dispatch
  * @description Trigger some action.
  * @param {string} actionName Action name
  * @param { arguments } Arguments You can pass the arguments after the actionName
- * @return {Promise} Return a Promise with an Object that contain the value of the action and the action name. 
+ * @return {Promise} Return a Promise with an Object that contain the value 
+ * of the action and the action name. 
  * {value, action} = data;
  */
 
