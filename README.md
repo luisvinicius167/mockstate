@@ -4,6 +4,7 @@ Mockstate is a centralized state management for Javascript applications. It prov
 
 ### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.2-blue.svg)](https://www.npmjs.com/package/state)
+[![CDNJS](https://img.shields.io/cdnjs/v/riotux.svg)](https://cdnjs.com/libraries/riotux/)
 
 ## Demos
 
