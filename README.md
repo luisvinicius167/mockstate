@@ -18,6 +18,7 @@ Mockstate provides more control of your application state. It's envolve ideas of
 ### Install
 * Npm: ``` npm install mockstate ```
 * Bower: ``` bower install mockstate ```
+* CDN: ```https://unpkg.com/mockstate@0.0.6```
 
 ### Why you should be using Mockstate?
  * More control of you application state.
