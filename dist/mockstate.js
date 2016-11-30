@@ -1,6 +1,7 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-;(function (root, factory) {
+;
+(function (root, factory) {
   if (typeof define === "function" && define.amd) {
     define([], factory);
   } else if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object") {
@@ -50,8 +51,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             };
           });
 
-          // if the network connection back whithout the user reload the page, 
-          // recovery the  state.
+          // if the network connection back whithout the user reload the page, recovery
+          // the  state.
           _this.addEventListener('online', function (e) {
             var recoveredState = JSON.parse(localStorage.getItem('mockstate:StateToRecovery'));
             Mockstate.mockStoreState = recoveredState;
@@ -125,7 +126,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @name middleware
        * @description The middleware function that will be triggered
        * every time when an action called.
-       * @param {Function} callback A function that will be called 
+       * @param {Function} callback A function that will be called
        **/
       middleware: function middleware(callback) {
         Mockstate._store.middleware = callback;
@@ -137,12 +138,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @return void
        **/
       emit: function emit() {
-        var state = { action: null, value: null };
-        var components = Mockstate._store.components;
-        components.forEach(function (el, i) {
-          if (el.component !== undefined && typeof el.handler === "function") {
-            el.handler(state);
-          }
+        return new Promise(function (resolve, reject) {
+          // emit just update the components
+          var state = {
+            action: null,
+            value: null
+          };
+          var components = Mockstate._store.components;
+          components.forEach(function (el, i) {
+            if (el.component !== undefined && typeof el.handler === "function") {
+              resolve(el.handler(state));
+            }
+          });
         });
       },
       /**
@@ -167,11 +174,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             var middleware = Mockstate._store.middleware;
 
             // state that will be returned
-            var state = { action: action, value: value };
+            var state = {
+              action: action,
+              value: value
+            };
 
             /**
-             * has middleware?
-             **/
+               * has middleware?
+               **/
             if (typeof middleware === "function") {
               middleware.call(null, state, Mockstate.mockStoreState);
             }
