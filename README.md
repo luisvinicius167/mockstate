@@ -197,7 +197,10 @@ Emit
 // state/index.js
 import { emit } from 'mockstate';
 
-emit();
+emit()
+  .then( () => {
+    console.log('After emit called.');
+  });
 ```
 
 Subscribe/Unsubscribe
