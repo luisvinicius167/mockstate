@@ -4,7 +4,7 @@ Mockstate is a centralized state management for Javascript applications. It prov
 
 ### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
 [![npm package](https://img.shields.io/badge/npm-0.0.7-blue.svg)](https://www.npmjs.com/package/state)
-[![CDN](https://img.shields.io/badge/cdn-0.0.6-ff69b4.svg)](https://unpkg.com/mockstate@0.0.7)
+[![CDN](https://img.shields.io/badge/cdn-0.0.7-ff69b4.svg)](https://unpkg.com/mockstate@0.0.7)
 
 
 ## Demos
@@ -20,7 +20,7 @@ Mockstate provides more control of your application state. It's envolve ideas of
 ### Install
 * Npm: ``` npm install mockstate ```
 * Bower: ``` bower install mockstate ```
-* CDN: ```https://unpkg.com/mockstate@0.0.6```
+* CDN: ```https://unpkg.com/mockstate@0.0.7```
 
 ### Why you should be using Mockstate?
  * More control of you application state.
