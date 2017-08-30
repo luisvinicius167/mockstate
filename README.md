@@ -1,5 +1,7 @@
 <img width="260" src="https://raw.githubusercontent.com/luisvinicius167/mockstate/master/img/logo_h_small.png"/> 
 
+## Deprecated! Use [Dutier](http://mockstate-react.surge.sh/) instead.
+
 Mockstate is a centralized state management for Javascript applications. It provides more control of your state application with a simple and efficiently API and keep the state safe, when the user connection goes offline the state is saved in localStorage to be picked up when the connection back. <br/>
 
 ### :information_desk_person: See the [React.js Todo ➞](http://mockstate-react.surge.sh/)<br/>
