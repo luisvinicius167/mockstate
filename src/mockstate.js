@@ -115,8 +115,8 @@
       },
       unsubscribe: (component) => {
         let components = Mockstate._store.components;
-        components.forEach(el, index => {
-          if (el === component) {
+        components.forEach((el, index) => {
+          if (el.component === component) {
             components.splice(index, 1);
           }
         });
